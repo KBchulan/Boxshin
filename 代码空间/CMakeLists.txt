@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.15)
 
-project(game_name)
+project(Boxshin)
 set(CMAKE_CXX_STANDARD 11)
 
 #依赖路径
@@ -13,12 +13,12 @@ file(GLOB RESOURCES "${PROJECT_SOURCE_DIR}/resources/*.mp3" "${PROJECT_SOURCE_DI
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
-add_executable(game ${SRC_LIST} ${RESOURCES})
-# add_library(game SHARED ${SRC_LIST} ${RESOURCES})
+add_executable(Boxshin ${SRC_LIST} ${RESOURCES})
+# add_library(Boxshin SHARED ${SRC_LIST} ${RESOURCES})
 
 # 链接库
 if (EASYX_LIBRARY)
-    target_link_libraries(game PUBLIC ${EASYX_LIBRARY})
+    target_link_libraries(Boxshin PUBLIC ${EASYX_LIBRARY})
     include_directories(${EASYX_INCLUDE_DIR})
 else()
     message(FATAL_ERROR "Could not find EasyX library.")
