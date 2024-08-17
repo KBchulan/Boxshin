@@ -16,5 +16,10 @@ set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 add_executable(game ${SRC_LIST} ${RESOURCES})
 # add_library(game SHARED ${SRC_LIST} ${RESOURCES})
 
-target_link_libraries(game PUBLIC ${EASYX_INCLUDE_DIR})
-target_link_directories(game PUBLIC ${EASYX_LIBRARY_DIR})
+# 链接库
+if (EASYX_LIBRARY)
+    target_link_libraries(game PUBLIC ${EASYX_LIBRARY})
+    include_directories(${EASYX_INCLUDE_DIR})
+else()
+    message(FATAL_ERROR "Could not find EasyX library.")
+endif()
