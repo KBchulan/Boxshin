@@ -4,7 +4,7 @@
 #include<iostream>
 #include<easyx.h>
 
-//按钮的属性包括矩形和三张图片
+//鎸夐挳鐨勫睘鎬у寘鎷煩褰㈠拰涓夊紶鍥剧墖
 class Button {
 public:
 	Button() = default;

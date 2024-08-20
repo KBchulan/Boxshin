@@ -134,6 +134,8 @@
     <ClInclude Include="exit_scene.h" />
     <ClInclude Include="game_introduction_scene.h" />
     <ClInclude Include="game_scene.h" />
+    <ClInclude Include="game_scene_concrete.h" />
+    <ClInclude Include="game_scene_pause.h" />
     <ClInclude Include="menu_scene.h" />
     <ClInclude Include="resources.h" />
     <ClInclude Include="scene.h" />
