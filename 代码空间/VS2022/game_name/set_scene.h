@@ -6,6 +6,7 @@
 #include"scene_manager.h"
 
 extern int flag;
+extern IMAGE img_set_background;
 extern SceneManager scene_manager;
 
 class SetScene :public Scene {
@@ -58,6 +59,7 @@ public:
 
 	void picture_draw() {
 		//渲染图片
+		putimage(0, 0, &img_set_background);
 		music.Button_draw();
 		soundeffects.Button_draw();
 		gameintroduction.Button_draw();

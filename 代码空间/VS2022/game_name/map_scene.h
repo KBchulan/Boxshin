@@ -6,6 +6,7 @@
 #include"scene_manager.h"
 
 extern int flag;
+extern IMAGE img_map_background;
 extern SceneManager scene_manager;
 
 class MapScene : public Scene {
@@ -42,6 +43,7 @@ public:
     }
     void picture_draw() {
         //background_draw();
+        putimage(0, 0, &img_map_background);
         firstMap.Button_draw();
         secondMap.Button_draw();
     }
