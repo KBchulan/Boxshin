@@ -3,9 +3,13 @@
 
 #include"scene.h"
 
+extern Scene* set_scene;
+extern Scene* exit_scene;
 extern Scene* menu_scene;
 extern Scene* game_scene;
 extern Scene* selector_scene;
+extern Scene* game_introduction_scene;
+extern Scene* team_introduction_scene;
 
 class SceneManager {
 public:
@@ -28,6 +32,21 @@ public:
 			break;
 		case 3:
 			current_scene = game_scene;
+			break;
+		case 4:
+
+			break;
+		case 5:
+			current_scene = set_scene;
+			break;
+		case 6:
+			current_scene = exit_scene;
+			break;
+		case 7:
+			current_scene = game_introduction_scene;
+			break;
+		case 8:
+			current_scene = team_introduction_scene;
 			break;
 		default:
 			break;

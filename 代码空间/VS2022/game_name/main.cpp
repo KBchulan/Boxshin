@@ -6,16 +6,24 @@
 #include"scene.h"
 #include"button.h"
 #include"resources.h"
+#include"set_scene.h"
+#include"exit_scene.h"
 #include"menu_scene.h"
 #include"game_scene.h"
 #include"scene_manager.h"
 #include"selector_scene.h"
+#include"game_introduction_scene.h"
+#include"team_introduction_scene.h"
 
 SceneManager scene_manager;
 
+Scene* set_scene = nullptr;
+Scene* exit_scene = nullptr;
 Scene* menu_scene = nullptr;
 Scene* game_scene = nullptr;
 Scene* selector_scene = nullptr;
+Scene* game_introduction_scene = nullptr;
+Scene* team_introduction_scene = nullptr;
 
 bool running = true;
 int flag = 1;
@@ -27,6 +35,8 @@ int flag = 1;
 	   4:map_scene
 	   5:set_scene
 	   6:exit_scenes
+	   7:game_introduction_scene
+	   8:team_introduction_scene
 	*/
 
 int main() {
@@ -39,9 +49,14 @@ int main() {
 
 	BeginBatchDraw();
 
+	set_scene = new SetScene();
+	exit_scene = new ExitScene();
 	menu_scene = new MenuScene();
 	game_scene = new GameScene();
 	selector_scene = new SelectorScene();
+	game_introduction_scene = new GameIntroductionScene();
+	team_introduction_scene = new TeamIntroductionScene();
+
 	scene_manager.set_start_scene(menu_scene);
 
 	while (running)

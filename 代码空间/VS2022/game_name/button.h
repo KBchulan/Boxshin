@@ -22,8 +22,7 @@ public:
 		case WM_MOUSEMOVE:
 			if (status == Status::Idle && checkcursorhit(msg.x, msg.y)) {
 				status = Status::Hovered;
-				mciSendString(_T("play hovered"), NULL, 0, NULL);
-				std::cout << "55555" << std::endl;
+				//mciSendString(_T("play hovered"), NULL, 0, NULL);
 			}
 			else if (status == Status::Hovered && !checkcursorhit(msg.x, msg.y)) {
 				status = Status::Idle;
@@ -33,13 +32,11 @@ public:
 			if (status == Status::Hovered && checkcursorhit(msg.x, msg.y)) {
 				mciSendString(_T("play confirm"), NULL, 0, NULL);
 				status = Status::Pushed;
-				std::cout << "66666" << std::endl;
 			}
 			break;
 		case WM_LBUTTONUP:
 			if (status == Status::Pushed && checkcursorhit(msg.x, msg.y)) {
 				OnClick();
-				std::cout << "77777" << std::endl;
 			}
 			status = Status::Idle;
 			break;

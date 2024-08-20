@@ -50,5 +50,17 @@
     <ClInclude Include="resources.h">
       <Filter>头文件\tool</Filter>
     </ClInclude>
+    <ClInclude Include="exit_scene.h">
+      <Filter>头文件\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="set_scene.h">
+      <Filter>头文件\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="game_introduction_scene.h">
+      <Filter>头文件\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="team_introduction_scene.h">
+      <Filter>头文件\scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
