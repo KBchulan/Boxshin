@@ -13,9 +13,12 @@
 #include"game_scene.h"
 #include"scene_manager.h"
 #include"selector_scene.h"
+#include"game_pause_scene.h"
+#include"game_concrete_scene.h"
 #include"game_introduction_scene.h"
 #include"team_introduction_scene.h"
 
+bool running = true;
 SceneManager scene_manager;
 
 Scene* map_scene = nullptr;
@@ -24,10 +27,15 @@ Scene* exit_scene = nullptr;
 Scene* menu_scene = nullptr;
 Scene* game_scene = nullptr;
 Scene* selector_scene = nullptr;
+Scene* game_pause_scene = nullptr;
 Scene* game_introduction_scene = nullptr;
 Scene* team_introduction_scene = nullptr;
 
-bool running = true;
+//关卡类如下
+Scene* map01 = nullptr;
+Scene* map02 = nullptr;
+
+
 int flag = 1;
 	/*
 	   flag用于判定场景类型
@@ -39,7 +47,11 @@ int flag = 1;
 	   6:exit_scenes
 	   7:game_introduction_scene
 	   8:team_introduction_scene
+	   9:game_pause_scene
+
+	   以下是game_concrete_scene的场景类型
 	   61:map01
+	   62:map02
 	*/
 
 int main() {
@@ -58,8 +70,13 @@ int main() {
 	menu_scene = new MenuScene();
 	game_scene = new GameScene();
 	selector_scene = new SelectorScene();
+	game_pause_scene = new GamePauseScene();
 	game_introduction_scene = new GameIntroductionScene();
 	team_introduction_scene = new TeamIntroductionScene();
+
+	//关卡类
+	map01 = new Map61();
+	map02 = new Map62();
 
 	scene_manager.set_start_scene(menu_scene);
 

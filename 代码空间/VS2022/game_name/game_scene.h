@@ -19,23 +19,22 @@ public:
 	}
 
 	void data_input(const ExMessage& msg) {
-		if (msg.message == WM_LBUTTONDOWN) {
-			flag = 1;
-		}
-		scene_manager.switch_to(flag);
-		//处理输入数据
+		//按钮输入
+		gamereset.Button_input(msg);
+		gamepause.Button_input(msg);
+		gamevoice.Button_input(msg);
 	}
 
 	void data_update(int delta) {
 		//更新数据
-		if (flag == 1) {
-			scene_exit();
-		}
+		
 	}
 
 	void picture_draw() {
-		std::cout << "33333" << std::endl;
-		//绘制图形
+		putimage(0, 0, &img_menu_background);
+		gamereset.Button_draw();
+		gamepause.Button_draw();
+		gamevoice.Button_draw();
 	}
 
 	void scene_exit() {
@@ -43,27 +42,71 @@ public:
 	}
 
 private:
-	class Menu :public Button {
+	class GameReset :public Button {
 	public:
-		Menu() = default;
-		~Menu() = default;
+		GameReset() = default;
+		~GameReset() = default;
 
-		Menu(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y)
-			:Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+		GameReset(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y) :
+			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
 
 	protected:
 		void OnClick() {
-			flag = 1;
+			//
+		}
+
+	};
+
+	class GamePause :public Button {
+	public:
+		GamePause() = default;
+		~GamePause() = default;
+
+		GamePause(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y) :
+			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+
+	protected:
+		void OnClick() {
+			flag = 9;						//跳转暂停场景game_scene_pause
 		}
 	};
 
+	class GameVoice :public Button {
+	public:
+		GameVoice() = default;
+		~GameVoice() = default;
+
+		GameVoice(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y) :
+			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+
+	protected:
+		void OnClick() {
+			//
+		}
+	};
+
+
+
 private:
-	RECT menu_button;								//定义按钮矩形
-	int menu_button_x = 100,
-		menu_button_y = 50;							//按钮的长宽
-	Menu menu;										//定义按钮
+
+	RECT reset_button;
+	int reset_button_x = 50,
+		reset_button_y = 50;
+	GameReset gamereset;
+
+	RECT pause_button;
+	int pause_button_x = 50,
+		pause_button_y = 50;
+	GamePause gamepause;
+
+	RECT voice_button;
+	int voice_button_x = 50,
+		voice_button_y = 50;
+	GameVoice gamevoice;
+
+	int x_distance = 30;//按钮间距
 
 };
 
 
-#endif // !_GAME_SCENE_H_
+#endif // !_GAME_SCENE_H

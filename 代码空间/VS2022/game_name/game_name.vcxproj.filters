@@ -65,5 +65,11 @@
     <ClInclude Include="map_scene.h">
       <Filter>头文件\scene</Filter>
     </ClInclude>
+    <ClInclude Include="game_concrete_scene.h">
+      <Filter>头文件\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="game_pause_scene.h">
+      <Filter>头文件\scene</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

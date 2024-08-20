@@ -132,7 +132,9 @@
   <ItemGroup>
     <ClInclude Include="button.h" />
     <ClInclude Include="exit_scene.h" />
+    <ClInclude Include="game_concrete_scene.h" />
     <ClInclude Include="game_introduction_scene.h" />
+    <ClInclude Include="game_pause_scene.h" />
     <ClInclude Include="game_scene.h" />
     <ClInclude Include="map_scene.h" />
     <ClInclude Include="menu_scene.h" />

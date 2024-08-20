@@ -91,7 +91,7 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 2;	//角色选择界面
+			flag = 2;			//角色选择界面
 		}
 	};
 
@@ -105,7 +105,7 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 5;	//设置界面
+			flag = 5;			//设置界面
 		}
 	};
 
@@ -119,7 +119,7 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 6;	//退出游戏界面
+			flag = 6;			//退出游戏界面
 		}
 	};
 	
