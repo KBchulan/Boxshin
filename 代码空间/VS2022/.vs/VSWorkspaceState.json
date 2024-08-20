@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\game_name"
   ],
-  "SelectedNode": "\\game_name.sln",
+  "SelectedNode": "\\game_name\\button.h",
   "PreviewInSolutionExplorer": false
 }
