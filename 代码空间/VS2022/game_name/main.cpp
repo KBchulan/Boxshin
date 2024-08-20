@@ -37,6 +37,7 @@ int flag = 1;
 	   6:exit_scenes
 	   7:game_introduction_scene
 	   8:team_introduction_scene
+	   61:map01
 	*/
 
 int main() {
