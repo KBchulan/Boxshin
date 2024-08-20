@@ -39,6 +39,10 @@ void load_game_resources() {
 	loadimage(&exit_hovered, _T("resources/exit_hovered.png"));
 	loadimage(&exit_pushed, _T("resources/exit_pushed.png"));
 
+	//“Ù–ß¿‡º”‘ÿ
+	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);
+	mciSendString(_T("open resources/hovered.mp3 alias hovered"), NULL, 0, NULL);
+
 }
 
 
