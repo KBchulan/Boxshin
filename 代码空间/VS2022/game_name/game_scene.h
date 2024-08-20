@@ -16,6 +16,24 @@ public:
 
 	void scene_enter() {
 		//≥ı ºªØ
+		voice_button.right = 1280;
+		voice_button.top = 0;
+		voice_button.left = voice_button.right - voice_button_x;
+		voice_button.bottom = pause_button_y;
+		gamevoice = GameVoice(voice_button, _T("resources/voice_button_idle.png"), _T("resources/voice_button_hovered.png"), _T("resources/voice_button_pushed.png"), voice_button_x, voice_button_y);
+
+		pause_button.right = 1280;
+		pause_button.top = 0;
+		pause_button.left = pause_button.right - pause_button_x;
+		pause_button.bottom = pause_button_y;
+		gamepause = GamePause(pause_button, _T("resources/pause_button_idle.png"), _T("resources/pause_button_hovered.png"), _T("resources/pause_button_pushed.png"), pause_button_x, pause_button_y);
+
+
+		reset_button.right = 1280;
+		reset_button.top = 0;
+		reset_button.left = reset_button.right - reset_button_x;
+		reset_button.bottom = reset_button_y;
+		gamereset = GameReset(reset_button, _T("resources/reset_button_idle.png"), _T("resources/reset_button_hovered.png"), _T("resources/reset_button_pushed.png"), reset_button_x, reset_button_y);
 	}
 
 	void data_input(const ExMessage& msg) {
