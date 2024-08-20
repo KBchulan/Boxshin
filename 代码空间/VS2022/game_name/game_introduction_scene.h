@@ -29,6 +29,9 @@ public:
 
     void data_update(int delta) {
         //¸üÐÂ°´Å¥
+        if (flag != 7) {
+            scene_manager.switch_to(flag);
+        }
     }
 
     void picture_draw() {

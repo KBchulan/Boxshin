@@ -3,48 +3,52 @@
   "WorkspaceRootPath": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\menu_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\menu_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\selector_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\selector_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\exit_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\exit_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\set_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\set_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\game_introduction_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\game_introduction_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\game_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\game_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\team_introduction_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\team_introduction_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\map_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\map_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\game_introduction_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\game_introduction_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\main.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\exit_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\exit_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\map_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\map_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\selector_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\selector_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\menu_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\menu_scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\button.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\scene_manager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\scene_manager.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{CA0FB329-A42E-4ED4-89E6-E437F35B4BB1}|game_name\\game_name.vcxproj|solutionrelative:game_name\\scene.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,17 +58,82 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 1,
+              "Title": "game_scene.h",
+              "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\game_scene.h",
+              "RelativeDocumentMoniker": "game_name\\game_scene.h",
+              "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\game_scene.h",
+              "RelativeToolTip": "game_name\\game_scene.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAADwvwAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-20T08:07:30.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "team_introduction_scene.h",
+              "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\team_introduction_scene.h",
+              "RelativeDocumentMoniker": "game_name\\team_introduction_scene.h",
+              "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\team_introduction_scene.h",
+              "RelativeToolTip": "game_name\\team_introduction_scene.h",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACAAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-20T05:59:14.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "game_introduction_scene.h",
+              "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\game_introduction_scene.h",
+              "RelativeDocumentMoniker": "game_name\\game_introduction_scene.h",
+              "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\game_introduction_scene.h",
+              "RelativeToolTip": "game_name\\game_introduction_scene.h",
+              "ViewState": "AQIAABsAAAAAAAAAAAAAACAAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-20T05:50:35.293Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "set_scene.h",
+              "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\set_scene.h",
+              "RelativeDocumentMoniker": "game_name\\set_scene.h",
+              "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\set_scene.h",
+              "RelativeToolTip": "game_name\\set_scene.h",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-20T05:18:01.016Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "exit_scene.h",
+              "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\exit_scene.h",
+              "RelativeDocumentMoniker": "game_name\\exit_scene.h",
+              "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\exit_scene.h",
+              "RelativeToolTip": "game_name\\exit_scene.h",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACkAAAAqAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-20T05:16:15.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "map_scene.h",
               "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\map_scene.h",
               "RelativeDocumentMoniker": "game_name\\map_scene.h",
               "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\map_scene.h",
               "RelativeToolTip": "game_name\\map_scene.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAAAAAA",
+              "ViewState": "AQIAABUAAAAAAAAAAAAAAE4AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-08-20T06:27:35.408Z",
               "EditorCaption": ""
@@ -72,84 +141,32 @@
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "team_introduction_scene.h",
-              "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\team_introduction_scene.h",
-              "RelativeDocumentMoniker": "game_name\\team_introduction_scene.h",
-              "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\team_introduction_scene.h",
-              "RelativeToolTip": "game_name\\team_introduction_scene.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAjAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T05:59:14.689Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "game_introduction_scene.h",
-              "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\game_introduction_scene.h",
-              "RelativeDocumentMoniker": "game_name\\game_introduction_scene.h",
-              "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\game_introduction_scene.h",
-              "RelativeToolTip": "game_name\\game_introduction_scene.h",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAABoAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T05:50:35.293Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "set_scene.h",
-              "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\set_scene.h",
-              "RelativeDocumentMoniker": "game_name\\set_scene.h",
-              "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\set_scene.h",
-              "RelativeToolTip": "game_name\\set_scene.h",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAAAGYAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T05:18:01.016Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "exit_scene.h",
-              "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\exit_scene.h",
-              "RelativeDocumentMoniker": "game_name\\exit_scene.h",
-              "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\exit_scene.h",
-              "RelativeToolTip": "game_name\\exit_scene.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADoAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T05:16:15.585Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "selector_scene.h",
               "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\selector_scene.h",
               "RelativeDocumentMoniker": "game_name\\selector_scene.h",
               "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\selector_scene.h",
               "RelativeToolTip": "game_name\\selector_scene.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAQAAAA",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAADoAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-08-20T06:07:42.011Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "menu_scene.h",
               "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\menu_scene.h",
               "RelativeDocumentMoniker": "game_name\\menu_scene.h",
               "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\menu_scene.h",
               "RelativeToolTip": "game_name\\menu_scene.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAiAAAA",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAAAEoAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-08-20T05:24:52.303Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 11,
               "Title": "scene.h",
               "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\scene.h",
               "RelativeDocumentMoniker": "game_name\\scene.h",
@@ -162,13 +179,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 9,
               "Title": "button.h",
               "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\button.h",
               "RelativeDocumentMoniker": "game_name\\button.h",
               "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\button.h",
               "RelativeToolTip": "game_name\\button.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAUAAAA",
+              "ViewState": "AQIAAEUAAAAAAAAAAAAAAAkAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-08-20T05:48:43.164Z",
               "EditorCaption": ""
@@ -181,21 +198,23 @@
               "RelativeDocumentMoniker": "game_name\\scene_manager.h",
               "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\scene_manager.h",
               "RelativeToolTip": "game_name\\scene_manager.h",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAADcAAAAfAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T05:47:20.39Z"
+              "WhenOpened": "2024-08-20T05:47:20.39Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 4,
               "Title": "main.cpp",
               "DocumentMoniker": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\main.cpp",
               "RelativeDocumentMoniker": "game_name\\main.cpp",
               "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\main.cpp",
               "RelativeToolTip": "game_name\\main.cpp",
-              "ViewState": "AQIAABgAAAAAAAAAAAAAACIAAAAPAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACYAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-20T05:15:29.514Z"
+              "WhenOpened": "2024-08-20T05:15:29.514Z",
+              "EditorCaption": ""
             }
           ]
         }

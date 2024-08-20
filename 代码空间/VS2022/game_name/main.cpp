@@ -7,6 +7,7 @@
 #include"button.h"
 #include"resources.h"
 #include"set_scene.h"
+#include"map_scene.h"
 #include"exit_scene.h"
 #include"menu_scene.h"
 #include"game_scene.h"
@@ -17,6 +18,7 @@
 
 SceneManager scene_manager;
 
+Scene* map_scene = nullptr;
 Scene* set_scene = nullptr;
 Scene* exit_scene = nullptr;
 Scene* menu_scene = nullptr;
@@ -50,6 +52,7 @@ int main() {
 
 	BeginBatchDraw();
 
+	map_scene = new MapScene();
 	set_scene = new SetScene();
 	exit_scene = new ExitScene();
 	menu_scene = new MenuScene();

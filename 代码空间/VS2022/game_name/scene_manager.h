@@ -3,6 +3,7 @@
 
 #include"scene.h"
 
+extern Scene* map_scene;
 extern Scene* set_scene;
 extern Scene* exit_scene;
 extern Scene* menu_scene;
@@ -34,7 +35,7 @@ public:
 			current_scene = game_scene;
 			break;
 		case 4:
-
+			current_scene = map_scene;
 			break;
 		case 5:
 			current_scene = set_scene;

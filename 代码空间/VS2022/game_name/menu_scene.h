@@ -73,8 +73,6 @@ public:
 		exit.Button_draw();
 		startgame.Button_draw();
 
-		std::cout << flag << std::endl;
-		//绘制一些按钮一类的
 	}
 
 	void scene_exit() {

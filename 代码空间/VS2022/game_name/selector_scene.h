@@ -50,12 +50,13 @@ public:
 
 	void data_update(int delta) {
 		//更新各种信息
-		scene_manager.switch_to(flag);
+		if (flag != 2) {
+			scene_manager.switch_to(flag);
+		}
 	}
 
 	void picture_draw() {
 		//绘制图片
-		std::cout << flag << std::endl;
 		putimage(0, 0, &img_selector_background);
 
 		entermap.Button_draw();
@@ -117,7 +118,7 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 3;			//游戏界面
+			flag = 4;			//地图界面
 		}
 
 	};
