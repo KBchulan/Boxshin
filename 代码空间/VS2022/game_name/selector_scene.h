@@ -31,7 +31,7 @@ public:
 		next_button.bottom = next_button.top + next_button_y;
 		nextgamer = NextGamer(last_button, _T("resources/nextgamer_idle.png"), _T("resources/nextgamer_hovered.png"), _T("resources/nextgamer_pushed.png"), next_button_x, next_button_y);
 	
-		enter_button.left = 540;
+		enter_button.left = 590;
 		enter_button.right = enter_button.left + enter_button_x;
 		enter_button.top = last_button.bottom + 50;
 		enter_button.bottom = enter_button.top + enter_button_y;
@@ -40,9 +40,6 @@ public:
 
 	void data_input(const ExMessage& msg) {
 		//处理玩家输入
-		if (msg.message == WM_LBUTTONDOWN) {
-			flag = 3;
-		}
 		entermap.Button_input(msg);
 		lastgamer.Button_input(msg);
 		nextgamer.Button_input(msg);
