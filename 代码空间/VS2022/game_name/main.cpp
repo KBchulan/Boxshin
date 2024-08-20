@@ -37,6 +37,7 @@ int flag = 1;
 	   6:exit_scenes
 	   7:game_introduction_scene
 	   8:team_introduction_scene
+<<<<<<< HEAD
 	   9:game_pause_scene
 
 	   101:game_scene_1
@@ -44,6 +45,9 @@ int flag = 1;
 	   103:game_scene_3
 	   104:game_scene_4
 	   105:game_scene_5
+=======
+	   61:map01
+>>>>>>> c64f2c8eae7b87feb0c42bf2d77c0426c12804d3
 	*/
 
 int main() {
