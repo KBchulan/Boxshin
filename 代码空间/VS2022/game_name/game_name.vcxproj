@@ -134,12 +134,7 @@
     <ClInclude Include="exit_scene.h" />
     <ClInclude Include="game_introduction_scene.h" />
     <ClInclude Include="game_scene.h" />
-<<<<<<< HEAD
-    <ClInclude Include="game_scene_concrete.h" />
-    <ClInclude Include="game_scene_pause.h" />
-=======
     <ClInclude Include="map_scene.h" />
->>>>>>> c64f2c8eae7b87feb0c42bf2d77c0426c12804d3
     <ClInclude Include="menu_scene.h" />
     <ClInclude Include="resources.h" />
     <ClInclude Include="scene.h" />

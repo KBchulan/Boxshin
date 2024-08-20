@@ -62,14 +62,7 @@
     <ClInclude Include="team_introduction_scene.h">
       <Filter>头文件\scene</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="game_scene_concrete.h">
-      <Filter>头文件\scene</Filter>
-    </ClInclude>
-    <ClInclude Include="game_scene_pause.h">
-=======
     <ClInclude Include="map_scene.h">
->>>>>>> c64f2c8eae7b87feb0c42bf2d77c0426c12804d3
       <Filter>头文件\scene</Filter>
     </ClInclude>
   </ItemGroup>

@@ -28,7 +28,7 @@ Scene* team_introduction_scene = nullptr;
 bool running = true;
 int flag = 1;
 	/*
-	   flagç”¨äºåˆ¤å®šåœºæ™¯ç±»å‹
+	   flagÓÃÓÚÅĞ¶¨³¡¾°ÀàĞÍ
 	   1:menu_scene
 	   2:selector_scene
 	   3:game_scene
@@ -37,17 +37,7 @@ int flag = 1;
 	   6:exit_scenes
 	   7:game_introduction_scene
 	   8:team_introduction_scene
-<<<<<<< HEAD
-	   9:game_pause_scene
-
-	   101:game_scene_1
-	   102:game_scene_2
-	   103:game_scene_3
-	   104:game_scene_4
-	   105:game_scene_5
-=======
 	   61:map01
->>>>>>> c64f2c8eae7b87feb0c42bf2d77c0426c12804d3
 	*/
 
 int main() {
@@ -74,25 +64,25 @@ int main() {
 	{
 		DWORD frame_start = GetTickCount();
 
-		//å¤„ç†è¾“å…¥
+		//´¦ÀíÊäÈë
 		while (peekmessage(&msg))
 		{
 			scene_manager.data_input(msg);
 		}
 
-		//æ›´æ–°æ•°æ®
+		//¸üĞÂÊı¾İ
 		static DWORD last_tick_time = GetTickCount();
 		DWORD current_tick_time = GetTickCount();
 		DWORD delta = current_tick_time - last_tick_time;
 		scene_manager.data_update(delta);
 		last_tick_time = current_tick_time;
 
-		//ç»˜å›¾
+		//»æÍ¼
 		cleardevice();
 		scene_manager.picture_draw();
 		FlushBatchDraw();
 
-		//åŠ¨æ€å»¶æ—¶
+		//¶¯Ì¬ÑÓÊ±
 		DWORD frame_end = GetTickCount();
 		DWORD frame_delta = frame_end - frame_start;
 		if (frame_delta < 1000 / FPS) {

@@ -10,7 +10,6 @@ extern Scene* game_scene;
 extern Scene* selector_scene;
 extern Scene* game_introduction_scene;
 extern Scene* team_introduction_scene;
-extern Scene* game_scene_pause;
 
 class SceneManager {
 public:
@@ -48,9 +47,6 @@ public:
 			break;
 		case 8:
 			current_scene = team_introduction_scene;
-			break;
-		case 9:
-			current_scene = game_scene_pause;
 			break;
 		default:
 			break;
