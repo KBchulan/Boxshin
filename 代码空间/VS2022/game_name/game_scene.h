@@ -104,7 +104,7 @@ private:
 		voice_button_y = 50;
 	GameVoice gamevoice;
 
-	int x_distance = 30;//按钮间距
+	int x_distance = 30;			//按钮间距
 
 };
 

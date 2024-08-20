@@ -21,6 +21,7 @@
 bool running = true;
 SceneManager scene_manager;
 
+//基本场景类如下
 Scene* map_scene = nullptr;
 Scene* set_scene = nullptr;
 Scene* exit_scene = nullptr;
@@ -64,6 +65,7 @@ int main() {
 
 	BeginBatchDraw();
 
+	//创建场景类
 	map_scene = new MapScene();
 	set_scene = new SetScene();
 	exit_scene = new ExitScene();

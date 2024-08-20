@@ -145,6 +145,7 @@
     <ClInclude Include="set_scene.h" />
     <ClInclude Include="team_introduction_scene.h" />
     <ClInclude Include="timer.h" />
+    <ClInclude Include="util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

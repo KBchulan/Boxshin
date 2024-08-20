@@ -71,5 +71,8 @@
     <ClInclude Include="game_pause_scene.h">
       <Filter>头文件\scene</Filter>
     </ClInclude>
+    <ClInclude Include="util.h">
+      <Filter>头文件\tool</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
