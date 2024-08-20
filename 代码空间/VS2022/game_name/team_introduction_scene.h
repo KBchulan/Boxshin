@@ -6,7 +6,7 @@
 #include"scene_manager.h"
 
 extern int flag;
-extern SceneManager* scene_manager;
+extern SceneManager scene_manager;
 
 class TeamIntroductionScene : public Scene {
 public:
@@ -65,4 +65,4 @@ private:
 
 };
 
-#endif // !__TEAM_INTRODUCTION_SCENE_H__
+#endif // !_TEAM_INTRODUCTION_SCENE_H_

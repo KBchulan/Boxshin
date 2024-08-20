@@ -6,7 +6,7 @@
 #include"scene_manager.h"
 
 extern int flag;
-extern SceneManager* scene_manager;
+extern SceneManager scene_manager;
 
 class GameIntroductionScene : public Scene {
 public:
