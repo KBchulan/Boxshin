@@ -22,7 +22,7 @@ public:
 		case WM_MOUSEMOVE:
 			if (status == Status::Idle && checkcursorhit(msg.x, msg.y)) {
 				status = Status::Hovered;
-				//mciSendString(_T("play hovered"), NULL, 0, NULL);
+				mciSendString(_T("play hovered"), NULL, 0, NULL);
 				std::cout << "55555" << std::endl;
 			}
 			else if (status == Status::Hovered && !checkcursorhit(msg.x, msg.y)) {

@@ -1,3 +1,4 @@
 ﻿  main.cpp
 E:\code\github\Boxshin\代码空间\VS2022\game_name\main.cpp(33,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+  LINK : 没有找到 E:\code\github\Boxshin\代码空间\VS2022\x64\Debug\game_name.exe 或上一个增量链接没有生成它；正在执行完全链接
   game_name.vcxproj -> E:\code\github\Boxshin\代码空间\VS2022\x64\Debug\game_name.exe
