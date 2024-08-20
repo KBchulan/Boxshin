@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "game_name\\set_scene.h",
               "ToolTip": "E:\\code\\github\\Boxshin\\\u4EE3\u7801\u7A7A\u95F4\\VS2022\\game_name\\set_scene.h",
               "RelativeToolTip": "game_name\\set_scene.h",
-              "ViewState": "AQIAAGMAAAAAAAAAAADwv3AAAAADAAAA",
+              "ViewState": "AQIAACoAAAAAAAAAAADwvzcAAAADAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
               "WhenOpened": "2024-08-20T08:41:55.442Z",
               "EditorCaption": ""
@@ -67,8 +67,7 @@
               "RelativeToolTip": "game_name\\game_pause_scene.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T08:31:09.155Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T08:31:09.155Z"
             },
             {
               "$type": "Document",
@@ -80,8 +79,7 @@
               "RelativeToolTip": "game_name\\game_concrete_scene.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T08:27:23.778Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T08:27:23.778Z"
             },
             {
               "$type": "Document",
@@ -93,8 +91,7 @@
               "RelativeToolTip": "game_name\\selector_scene.h",
               "ViewState": "AQIAAHIAAAAAAAAAAAAAADoAAAAIAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T06:07:42.011Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T06:07:42.011Z"
             },
             {
               "$type": "Document",
@@ -106,8 +103,7 @@
               "RelativeToolTip": "game_name\\scene.h",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T05:28:20.956Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T05:28:20.956Z"
             },
             {
               "$type": "Document",
@@ -119,8 +115,7 @@
               "RelativeToolTip": "game_name\\button.h",
               "ViewState": "AQIAAEUAAAAAAAAAAAAAAAkAAAAUAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T05:48:43.164Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T05:48:43.164Z"
             },
             {
               "$type": "Document",
@@ -132,8 +127,7 @@
               "RelativeToolTip": "game_name\\scene_manager.h",
               "ViewState": "AQIAACgAAAAAAAAAAAAAAD8AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-08-20T05:47:20.39Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T05:47:20.39Z"
             },
             {
               "$type": "Document",
@@ -145,8 +139,7 @@
               "RelativeToolTip": "game_name\\main.cpp",
               "ViewState": "AQIAABsAAAAAAAAAAAAAABsAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2024-08-20T05:15:29.514Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-08-20T05:15:29.514Z"
             }
           ]
         }
