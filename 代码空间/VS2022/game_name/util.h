@@ -31,6 +31,14 @@ inline void putimage_alpha(int dst_x, int dst_y, int width, int height, IMAGE* i
 	AlphaBlend(GetImageHDC(GetWorkingImage()), dst_x, dst_y, w, h, GetImageHDC(img), src_x, src_y, w, h, { AC_SRC_OVER,0,255,AC_SRC_ALPHA });
 }
 
+/*inline void putimage_alpha(IMAGE* dst, int x, int y, IMAGE* src, UINT transparentcolor) {
+	HDC dstDC = GetImageHDC(dst);
+	HDC srcDC = GetImageHDC(src);
+	int w = src->getwidth();
+	int h = src->getheight();
+	TransparentBlt(dstDC, x, y, w, h, srcDC, 0, 0, w, h, transparentcolor);
+}*/
+
 inline void sketch_image(IMAGE* src, IMAGE* dst) {
 	int w = src->getwidth();
 	int h = src->getheight();
