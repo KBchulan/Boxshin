@@ -13,7 +13,13 @@ class SetScene :public Scene {
 public:
 	SetScene() = default;
 	~SetScene() = default;
-
+	    
+	  	/*
+	负责人：
+	功能：按钮初始化，贴图
+	参数：void
+	返回值：void
+	*/
 	void scene_enter() {
 		//初始化按钮
 		Music_button.right = 300;
@@ -41,7 +47,12 @@ public:
 		teamintroduction = TeamIntroduction(TeamInt_button, _T("resources/teamintroduction_idle.png"), _T("resources/teamintroduction_hovered.png"), _T("resources/teamintroduction_pushed.png"), TeamInt_button_x, TeamInt_button_y);
 	}
 
-
+	/*
+  负责人：
+  功能：接受按钮信息
+  参数：用户鼠标的点击
+  返回值：void
+  */
 	void data_input(const ExMessage& msg) {
 		//处理输入数据
 		music.Button_input(msg);
@@ -49,14 +60,24 @@ public:
 		gameintroduction.Button_input(msg);
 		teamintroduction.Button_input(msg);
 	}
-
+	/*
+	负责人：
+	功能：根据flag的定义进行相关操作
+	参数：
+	返回值：void
+	*/
 	void data_update(int delta) {
 		//数据更新
 		if (flag != 5) {
 			scene_manager.switch_to(flag);
 		}
 	}
-
+	/*
+	负责人：
+	功能：按钮贴图渲染
+	参数：void
+	返回值：void
+	*/
 	void picture_draw() {
 		//渲染图片
 		putimage(0, 0, &img_set_background);
@@ -65,7 +86,12 @@ public:
 		gameintroduction.Button_draw();
 		teamintroduction.Button_draw();
 	}
-
+	/*
+负责人：
+功能：退出当前页面
+参数：void
+返回值：void
+*/
 	void scene_exit() {
 		//退出场景
 	}
@@ -81,6 +107,12 @@ private:
 			:Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
 
 	protected:
+		 	/*
+	负责人：
+	功能：改变flag的队友值，进行页面跳转
+	参数：void
+	返回值：void
+	*/
 		void OnClick() {
 			//
 		}

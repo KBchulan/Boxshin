@@ -13,7 +13,12 @@ class GameScene :public Scene {
 public:
 	GameScene() = default;
 	~GameScene() = default;
-
+		/*
+	负责人：
+	功能：初始化按钮位置
+	参数：void
+	返回值：void
+	*/
 	void scene_enter() {
 		//初始化
 		voice_button.right = 1280;
@@ -35,26 +40,46 @@ public:
 		reset_button.bottom = reset_button_y;
 		gamereset = GameReset(reset_button, _T("resources/reset_button_idle.png"), _T("resources/reset_button_hovered.png"), _T("resources/reset_button_pushed.png"), reset_button_x, reset_button_y);
 	}
-
+		/*
+	负责人：
+	功能：接受用户点击
+	参数：用户点击
+	返回值：void
+	*/
 	void data_input(const ExMessage& msg) {
 		//按钮输入
 		gamereset.Button_input(msg);
 		gamepause.Button_input(msg);
 		gamevoice.Button_input(msg);
 	}
-
+		/*
+	负责人：
+	功能：根据改变的flag值进行匹配并且进行相应操作
+	参数：
+	返回值：void
+	*/
 	void data_update(int delta) {
 		//更新数据
 		
 	}
-
+		/*
+	负责人：
+	功能：渲染按钮
+	参数：void
+	返回值：void
+	*/
 	void picture_draw() {
 		putimage(0, 0, &img_menu_background);
 		gamereset.Button_draw();
 		gamepause.Button_draw();
 		gamevoice.Button_draw();
 	}
-
+		/*
+	负责人：
+	功能：退出当前页面
+	参数：void
+	返回值：void
+	*/
 	void scene_exit() {
 		//退出场景，释放资源
 	}
@@ -68,6 +93,12 @@ private:
 		GameReset(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y) :
 			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
 
+	/*
+	负责人：
+	功能：点击按钮时改变flag的对应值
+	参数：void
+	返回值：void
+	*/
 	protected:
 		void OnClick() {
 			//
