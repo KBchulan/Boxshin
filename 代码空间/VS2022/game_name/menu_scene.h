@@ -25,13 +25,18 @@ class MenuScene :public Scene {
 public:
 	MenuScene() = default;
 	~MenuScene() = default;
-
+	/*
+	负责人：
+	功能：初始化按键位置，贴图,添加音乐
+	参数：void
+	返回值：void
+	*/
 	void scene_enter() {
 		//放个音乐
 		//初始化按钮一类的
-		start_button.left = 565;
+		start_button.left = 580;
 		start_button.right = start_button.left + start_button_x;
-		start_button.top = 380;
+		start_button.top = 400;
 		start_button.bottom = start_button.top + start_button_y;
 		startgame = StartGame(start_button, _T("resources/start_idle.png"), _T("resources/start_hovered.png"), _T("resources/start_pushed.png"), start_button_x, start_button_y);
 		
@@ -48,7 +53,12 @@ public:
 		exit = Exit(exit_button, _T("resources/exit_idle.png"), _T("resources/exit_hovered.png"), _T("resources/exit_pushed.png"), exit_button_x, exit_button_y);
 	
 	}
-
+	/*
+	负责人：
+	功能：接受按钮信息
+	参数：用户鼠标的点击
+	返回值：void
+	*/
 	void data_input(const ExMessage& msg) {
 		//按钮信息处理
 		set.Button_input(msg);
@@ -57,14 +67,24 @@ public:
 
 		//处理按键信息
 	}
-
+	/*
+	负责人：
+	功能：根据flag的定义进行相关操作
+	参数：
+	返回值：void
+	*/
 	void data_update(int delta) {
 		//数据更新
 		if (flag != 1) {
 			scene_manager.switch_to(flag);
 		}
 	}
-
+	/*
+	负责人：
+	功能：按钮贴图渲染
+	参数：void
+	返回值：void
+	*/
 	void picture_draw() {
 		putimage(0, 0, &img_menu_background);
 
@@ -74,7 +94,12 @@ public:
 		startgame.Button_draw();
 
 	}
-
+		/*
+	负责人：
+	功能：退出当前页面
+	参数：void
+	返回值：void
+	*/
 	void scene_exit() {
 		//退出逻辑，如恢复按钮状态机
 	}
@@ -128,18 +153,18 @@ private:
 	int distance = 30;								//不同按钮y间距
 
 	RECT start_button;								//定义开始游戏矩形
-	int start_button_x = 150,
-		start_button_y = 85;						//按钮的长宽
+	int start_button_x = 100,
+		start_button_y = 50;						//按钮的长宽
 	StartGame startgame;							//定义按钮
 
 	RECT set_button;								//定义设置矩形
-	int set_button_x = 150,
-		set_button_y = 85;							//矩形长宽
+	int set_button_x = 100,
+		set_button_y = 50;							//矩形长宽
 	Set set;										//定义按钮
 
 	RECT exit_button;								//定义退出游戏矩形
-	int exit_button_x = 150,
-		exit_button_y = 85;							//按钮长宽
+	int exit_button_x = 100,
+		exit_button_y = 50;							//按钮长宽
 	Exit exit;										//定义按钮
 
 
