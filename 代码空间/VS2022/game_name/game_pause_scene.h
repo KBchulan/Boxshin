@@ -8,9 +8,9 @@ public:
 	GamePauseScene() = default;
 	~GamePauseScene() = default;
 
-	//���볡��
+	//进入场景
 	void scene_enter() {
-		//��ť��ʼ��
+		//按钮初始化
 		continue_button.right = 1280;
 		continue_button.top = 0;
 		continue_button.left = continue_button.right - pause_button_x;
@@ -22,28 +22,36 @@ public:
 		menu_button.left = menu_button.right - pause_button_x;
 		menu_button.bottom = menu_button.top + pause_button_y;
 		pausemenu = PauseMenu(menu_button, _T("resources/pause_menu_idle.png"), _T("resources/pause_menu_hovered.png"), _T("resources/pause_menu_pushed.png"), pause_button_x, pause_button_y);
+	
+														/*
+														*按钮图片加载，按钮位置调整   
+														*负责人：
+														*/
 	}
 
-	//��������
+	//处理数据
 	void data_input(const ExMessage& msg) { 
 		pausecontinue.Button_input(msg);
 		pausemenu.Button_input(msg);
 	}
 
-	//���ݸ���
+	//数据更新
 	void data_update(int delta) {
 		if (flag != 9) {
 			scene_manager.switch_to(flag);
 		}
 	}
 
-	//ͼ�λ���
+	//图形绘制
 	void picture_draw() {
 		pausecontinue.Button_draw();
 		pausemenu.Button_draw();
-	}
+	}													/*
+														背景渲染   
+														负责人：
+														*/
 
-	//�˳�����
+	//退出场景
 	void scene_exit() { }
 
 
@@ -57,7 +65,10 @@ private:
 			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
 	protected:
 		void OnClick() {
-			//������Ϸ
+														/*
+														*跳转回关卡页面，读取原游戏进度   
+														*负责人：
+														*/
 		}
 	};
 	class PauseMenu :public Button {
@@ -74,7 +85,11 @@ private:
 	};
 private:
 	int pause_button_x = 50,
-		pause_button_y = 50;
+		pause_button_y = 50;							
+														/*
+														*按钮大小调整   
+														*负责人：
+														*/
 
 	RECT continue_button;
 	PauseContinue pausecontinue;

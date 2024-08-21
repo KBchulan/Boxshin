@@ -5,8 +5,8 @@
 #include"button.h"
 #include"scene_manager.h"
 
-int number;			//Íæ¼ÒĞòºÅ,ÎÒÃÇÑ¡ÓÃ´Ë½øĞĞ²»Í¬½ÇÉ«µÄÈ·ÈÏ
-int gamer_sum;		//Íæ¼ÒÖÖÀà×ÜÊı
+int number;			//ç©å®¶åºå·,æˆ‘ä»¬é€‰ç”¨æ­¤è¿›è¡Œä¸åŒè§’è‰²çš„ç¡®è®¤
+int gamer_sum;		//ç©å®¶ç§ç±»æ€»æ•°
 
 extern int flag;
 extern IMAGE img_selector_background;
@@ -18,7 +18,7 @@ public:
 	~SelectorScene() = default;
 
 	void scene_enter() {
-		//¸÷ÖÖ°´Å¥Î»ÖÃ³õÊ¼»¯
+		//å„ç§æŒ‰é’®ä½ç½®åˆå§‹åŒ–
 		last_button.right = 565;
 		last_button.left = last_button.right - last_button_x;
 		last_button.top = 450;
@@ -37,39 +37,45 @@ public:
 		enter_button.bottom = enter_button.top + enter_button_y;
 		entermap = EnterMap(enter_button, _T("resources/entermap_idle.png"), _T("resources/entermap_hovered.png"), _T("resources/entermap_pushed.png"), enter_button_x, enter_button_y);
 	}
+												/*
+												*æŒ‰é’®å›¾ç‰‡åŠ è½½ï¼ŒæŒ‰é’®ä½ç½®è°ƒæ•´
+												*è´Ÿè´£äººï¼š
+												*/
 
 	void data_input(const ExMessage& msg) {
-		//´¦ÀíÍæ¼ÒÊäÈë
+		//å¤„ç†ç©å®¶è¾“å…¥
 		entermap.Button_input(msg);
 		lastgamer.Button_input(msg);
 		nextgamer.Button_input(msg);
 	}
 
 	void data_update(int delta) {
-		//¸üĞÂ¸÷ÖÖĞÅÏ¢
+		//æ›´æ–°å„ç§ä¿¡æ¯
 		if (flag != 2) {
 			scene_manager.switch_to(flag);
 		}
 	}
 
 	void picture_draw() {
-		//»æÖÆÍ¼Æ¬
+		//ç»˜åˆ¶å›¾ç‰‡
 		putimage(0, 0, &img_selector_background);
 
 		entermap.Button_draw();
 		lastgamer.Button_draw();
 		nextgamer.Button_draw();
+													/*
+													*èƒŒæ™¯æ¸²æŸ“
+													*è´Ÿè´£äººï¼š
+													
 
-		/*
-		*¹¦ÄÜ1£º
-		* ¸ù¾İnumberäÖÈ¾²»Í¬µÄ½ÇÉ«ĞÎÏóºÍ½ÇÉ«ËµÃ÷½éÉÜ
-		*/
-
-
+													*åŠŸèƒ½1ï¼š
+													*æ ¹æ®numberæ¸²æŸ“ä¸åŒçš„è§’è‰²å½¢è±¡å’Œè§’è‰²è¯´æ˜ä»‹ç»							
+													*è´Ÿè´£äºº:
+													*/
 	}
 
 	void scene_exit() {
-		//ÍË³ö³¡¾°£¬ÊÍ·Å×ÊÔ´
+		//é€€å‡ºåœºæ™¯ï¼Œé‡Šæ”¾èµ„æº
 	}
 
 private:
@@ -115,7 +121,7 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 4;			//µØÍ¼½çÃæ
+			flag = 4;			//åœ°å›¾ç•Œé¢
 		}
 
 	};
@@ -136,6 +142,10 @@ private:
 		enter_button_y = 50;
 	EnterMap entermap;
 
+														/*
+														*æŒ‰é’®å¤§å°è°ƒæ•´   
+														*è´Ÿè´£äººï¼š
+														*/
 };
 
 
