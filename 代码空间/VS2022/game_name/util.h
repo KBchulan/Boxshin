@@ -31,6 +31,25 @@ inline void putimage_alpha(int dst_x, int dst_y, int width, int height, IMAGE* i
 	AlphaBlend(GetImageHDC(GetWorkingImage()), dst_x, dst_y, w, h, GetImageHDC(img), src_x, src_y, w, h, { AC_SRC_OVER,0,255,AC_SRC_ALPHA });
 }
 
+inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img, COLORREF backgroundColor) {
+	int w = img->getwidth();
+	int h = img->getheight();
+
+	DWORD* pSrc = GetImageBuffer(img);
+	DWORD* pDst = GetImageBuffer(GetWorkingImage());
+
+	for (int y = 0; y < h; y++) {
+		for (int x = 0; x < w; x++) {
+			int srcIndex = y * w + x;
+			COLORREF color = pSrc[srcIndex];
+
+			if (color != backgroundColor) {
+				pDst[(dst_y + y) * getwidth() + (dst_x + x)] = color;
+			}
+		}
+	}
+}
+
 /*inline void putimage_alpha(IMAGE* dst, int x, int y, IMAGE* src, UINT transparentcolor) {
 	HDC dstDC = GetImageHDC(dst);
 	HDC srcDC = GetImageHDC(src);
