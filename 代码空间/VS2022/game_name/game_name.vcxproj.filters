@@ -19,6 +19,9 @@
     <Filter Include="头文件\tool">
       <UniqueIdentifier>{9d445cbe-4848-4b61-86ef-b140e847f527}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\rend">
+      <UniqueIdentifier>{f564d38b-f372-4a61-9c39-d9d21ab2f993}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -73,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="util.h">
       <Filter>头文件\tool</Filter>
+    </ClInclude>
+    <ClInclude Include="atlas.h">
+      <Filter>头文件\rend</Filter>
+    </ClInclude>
+    <ClInclude Include="animation.h">
+      <Filter>头文件\rend</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

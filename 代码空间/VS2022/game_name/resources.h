@@ -35,7 +35,7 @@ IMAGE exit_pushed;
 
 void load_game_resources() {
 	//±≥æ∞Õº¿‡º”‘ÿ
-	loadimage(&img_menu_background, _T("resources/img_menu_background.png"));
+	loadimage(&img_menu_background, _T("resources/img_menu_background.png"), 1280, 720);
 	loadimage(&img_selector_background, _T("resources/img_selector_background.png"));
 	loadimage(&img_set_background, _T("resources/img_set_background.png"));
 	loadimage(&img_map_background, _T("resources/img_map_background.png"), 1280, 720);
