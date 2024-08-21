@@ -9,18 +9,6 @@ extern int flag;
 extern IMAGE img_menu_background;
 extern SceneManager scene_manager;
 
-extern IMAGE start_idle;
-extern IMAGE start_hovered;
-extern IMAGE start_pushed;
-
-extern IMAGE set_idle;
-extern IMAGE set_hovered;
-extern IMAGE set_pushed;
-
-extern IMAGE exit_idle;
-extern IMAGE exit_hovered;
-extern IMAGE exit_pushed;
-
 class MenuScene :public Scene {
 public:
 	MenuScene() = default;
@@ -34,9 +22,9 @@ public:
 	void scene_enter() {
 		//放个音乐
 		//初始化按钮一类的
-		start_button.left = 580;
+		start_button.left = 530;
 		start_button.right = start_button.left + start_button_x;
-		start_button.top = 400;
+		start_button.top = 350;
 		start_button.bottom = start_button.top + start_button_y;
 		startgame = StartGame(start_button, _T("resources/start_idle.png"), _T("resources/start_hovered.png"), _T("resources/start_pushed.png"), start_button_x, start_button_y);
 		
@@ -44,7 +32,7 @@ public:
 		set_button.right = set_button.left + set_button_x;
 		set_button.top = start_button.bottom + distance;
 		set_button.bottom = set_button.top + set_button_y;
-		set = Set(set_button, _T("resources/set_idle.jpg"), _T("resources/set_hovered.jpg"), _T("resources/set_pushed.jpg"), set_button_x, set_button_y);
+		set = Set(set_button, _T("resources/set_idle.png"), _T("resources/set_hovered.png"), _T("resources/set_pushed.png"), set_button_x, set_button_y);
 
 		exit_button.left = start_button.left;
 		exit_button.right= exit_button.left + exit_button_x;
@@ -89,9 +77,9 @@ public:
 		putimage(0, 0, &img_menu_background);
 
 		//按钮绘制
-		set.Button_draw();
-		exit.Button_draw();
-		startgame.Button_draw();
+		set.Button_draw(set_button.left,set_button.top);
+		exit.Button_draw(exit_button.left,exit_button.top);
+		startgame.Button_draw(start_button.left,start_button.top);
 
 	}
 		/*
@@ -153,18 +141,18 @@ private:
 	int distance = 30;								//不同按钮y间距
 
 	RECT start_button;								//定义开始游戏矩形
-	int start_button_x = 100,
-		start_button_y = 50;						//按钮的长宽
+	int start_button_x = 220,
+		start_button_y = 80;						//按钮的长宽
 	StartGame startgame;							//定义按钮
 
 	RECT set_button;								//定义设置矩形
-	int set_button_x = 100,
-		set_button_y = 50;							//矩形长宽
+	int set_button_x = 220,
+		set_button_y = 80;							//矩形长宽
 	Set set;										//定义按钮
 
 	RECT exit_button;								//定义退出游戏矩形
-	int exit_button_x = 100,
-		exit_button_y = 50;							//按钮长宽
+	int exit_button_x = 220,
+		exit_button_y = 80;							//按钮长宽
 	Exit exit;										//定义按钮
 
 

@@ -4,6 +4,8 @@
 #include<iostream>
 #include<easyx.h>
 
+#include"util.h"
+
 //按钮的属性包括矩形和三张图片
 class Button {
 public:
@@ -43,7 +45,7 @@ public:
 		}
 	}
 
-	void Button_draw() {
+	inline void Button_draw() {
 		switch (status) {
 		case Status::Idle:
 			putimage(region.left, region.top, &img_idle);
@@ -53,6 +55,20 @@ public:
 			break;
 		case Status::Pushed:
 			putimage(region.left, region.top, &img_pushed);
+			break;
+		}
+	}
+
+	inline void Button_draw(int x, int y) {
+		switch (status) {
+		case Status::Idle:
+			putimage_alpha(x, y, &img_idle);
+			break;
+		case Status::Hovered:
+			putimage_alpha(x, y, &img_hovered);
+			break;
+		case Status::Pushed:
+			putimage_alpha(x, y, &img_pushed);
 			break;
 		}
 	}

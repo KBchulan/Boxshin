@@ -15,21 +15,6 @@ IMAGE img_game_introduction_background;
 IMAGE img_team_introduction_background;
 IMAGE img_game_pause_background;
 
-
-
-//按钮图类
-IMAGE start_idle;
-IMAGE start_hovered;
-IMAGE start_pushed;
-
-IMAGE set_idle;
-IMAGE set_hovered;
-IMAGE set_pushed;
-
-IMAGE exit_idle;
-IMAGE exit_hovered;
-IMAGE exit_pushed;
-
 //角色类加载
 
 
@@ -49,20 +34,6 @@ void load_game_resources() {
 	loadimage(&img_game_introduction_background, _T("resources/img_game_introduction_background.png"), 1280, 720);
 	loadimage(&img_team_introduction_background, _T("resources/img_team_introduction_background.png"), 1280, 720);
 	loadimage(&img_game_pause_background, _T("resources/img_game_pause_background.png"), 1280, 720);
-	
-
-	//按钮图类加载
-	loadimage(&start_idle, _T("resources/start_idle.png"));
-	loadimage(&start_hovered, _T("resources/start_hovered.png"));
-	loadimage(&start_pushed, _T("resources/start_pushed.png"));
-
-	loadimage(&set_idle, _T("resources/set_idle.jpg"));
-	loadimage(&set_hovered, _T("resources/set_hovered.jpg"));
-	loadimage(&set_pushed, _T("resources/set_pushed.jpg"));
-	
-	loadimage(&exit_idle, _T("resources/exit_idle.png"));
-	loadimage(&exit_hovered, _T("resources/exit_hovered.png"));
-	loadimage(&exit_pushed, _T("resources/exit_pushed.png"));
 
 	//角色类加载
 

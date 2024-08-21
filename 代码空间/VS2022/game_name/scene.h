@@ -3,6 +3,8 @@
 
 #include<easyx.h>
 
+#include"util.h"
+
 class Scene {
 public:
 	Scene() = default;

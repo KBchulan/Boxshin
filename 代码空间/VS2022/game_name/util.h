@@ -3,6 +3,8 @@
 
 #include<easyx.h>
 
+#pragma comment(lib,"Msimg32.lib")
+
 //Í¼Æ¬Ëõ·Å
 void resizeImage(IMAGE* src, IMAGE* dst, int newWidth, int newHeight) {
     dst->Resize(newWidth, newHeight);
@@ -34,10 +36,8 @@ inline void putimage_alpha(int dst_x, int dst_y, int width, int height, IMAGE* i
 inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img, COLORREF backgroundColor) {
 	int w = img->getwidth();
 	int h = img->getheight();
-
 	DWORD* pSrc = GetImageBuffer(img);
 	DWORD* pDst = GetImageBuffer(GetWorkingImage());
-
 	for (int y = 0; y < h; y++) {
 		for (int x = 0; x < w; x++) {
 			int srcIndex = y * w + x;
@@ -50,13 +50,13 @@ inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img, COLORREF background
 	}
 }
 
-/*inline void putimage_alpha(IMAGE* dst, int x, int y, IMAGE* src, UINT transparentcolor) {
+inline void putimage_alpha(IMAGE* dst, int x, int y, IMAGE* src, UINT transparentcolor) {
 	HDC dstDC = GetImageHDC(dst);
 	HDC srcDC = GetImageHDC(src);
 	int w = src->getwidth();
 	int h = src->getheight();
 	TransparentBlt(dstDC, x, y, w, h, srcDC, 0, 0, w, h, transparentcolor);
-}*/
+}
 
 inline void sketch_image(IMAGE* src, IMAGE* dst) {
 	int w = src->getwidth();

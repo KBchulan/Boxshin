@@ -13,38 +13,38 @@ class SetScene :public Scene {
 public:
 	SetScene() = default;
 	~SetScene() = default;
-	    
-	  	/*
-	负责人：
-	功能：按钮初始化，贴图
-	参数：void
-	返回值：void
-	*/
+	 
 	void scene_enter() {
 		//初始化按钮
-		Music_button.right = 300;
+		Music_button.right = 540;
 		Music_button.left = Music_button.right - Music_button_x;
-		Music_button.top = 100;
+		Music_button.top = 180;
 		Music_button.bottom = Music_button.top + Music_button_y;
 		music = Music(Music_button, _T("resources/music_idle.png"), _T("resources/music_hovered.png"), _T("resources/music_pushed.png"), Music_button_x, Music_button_y);
 
-		Sound_button.left = 300;
-		Sound_button.right = Sound_button.left + Sound_button_x;
-		Sound_button.top = 200;
+		Sound_button.right = Music_button.right;
+		Sound_button.left = Sound_button.right - Sound_button_x;
+		Sound_button.top = Music_button.bottom + distance_y;
 		Sound_button.bottom = Sound_button.top + Sound_button_y;
 		soundeffects = SoundEffects(Sound_button, _T("resources/sound_idle.png"), _T("resources/sound_hovered.png"), _T("resources/sound_pushed.png"), Sound_button_x, Sound_button_y);
 
-		GameInt_button.left = 300;
-		GameInt_button.right = GameInt_button.left + GameInt_button_x;
-		GameInt_button.top = 300;
+		GameInt_button.right = Music_button.right;
+		GameInt_button.left = GameInt_button.right - GameInt_button_x;
+		GameInt_button.top = Sound_button.bottom + distance_y;
 		GameInt_button.bottom = GameInt_button.top + GameInt_button_y;
 		gameintroduction = GameIntroduction(GameInt_button, _T("resources/gameintroduction_idle.png"), _T("resources/gameintroduction_hovered.png"), _T("resources/gameintroduction_pushed.png"), GameInt_button_x, GameInt_button_y);
 
-		TeamInt_button.right = 500;
-		TeamInt_button.left = TeamInt_button.right - TeamInt_button_x;
-		TeamInt_button.top = 300;
+		TeamInt_button.left = GameInt_button.right + distance_x;
+		TeamInt_button.right = TeamInt_button.left + TeamInt_button_x;
+		TeamInt_button.top = GameInt_button.top;
 		TeamInt_button.bottom = TeamInt_button.top + TeamInt_button_y;
 		teamintroduction = TeamIntroduction(TeamInt_button, _T("resources/teamintroduction_idle.png"), _T("resources/teamintroduction_hovered.png"), _T("resources/teamintroduction_pushed.png"), TeamInt_button_x, TeamInt_button_y);
+	
+		menu_button.right = 1280;
+		menu_button.top = 0;
+		menu_button.left = menu_button.right - menu_button_x;
+		menu_button.bottom = menu_button_y;
+		menu = Menu(menu_button, _T("resources/menu_idle.png"), _T("resources/menu_hovered.png"), _T("resources/menu_pushed.png"), menu_button_x, menu_button_y);
 	}
 
 	/*
@@ -55,6 +55,7 @@ public:
   */
 	void data_input(const ExMessage& msg) {
 		//处理输入数据
+		menu.Button_input(msg);
 		music.Button_input(msg);
 		soundeffects.Button_input(msg);
 		gameintroduction.Button_input(msg);
@@ -81,10 +82,11 @@ public:
 	void picture_draw() {
 		//渲染图片
 		putimage(0, 0, &img_set_background);
-		music.Button_draw();
-		soundeffects.Button_draw();
-		gameintroduction.Button_draw();
-		teamintroduction.Button_draw();
+		menu.Button_draw(menu_button.left, menu_button.top);
+		music.Button_draw(Music_button.left, Music_button.top);
+		soundeffects.Button_draw(Sound_button.left, Sound_button.top);
+		gameintroduction.Button_draw(GameInt_button.left, GameInt_button.top);
+		teamintroduction.Button_draw(TeamInt_button.left, TeamInt_button.top);
 	}
 	/*
 负责人：
@@ -162,28 +164,49 @@ private:
 
 	};
 
+	class Menu :public Button {
+	public:
+		Menu() = default;
+		~Menu() = default;
+
+		Menu(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y)
+			:Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+
+	protected:
+		void OnClick() {
+			flag = 1;
+		}
+	};
 
 
 private:
+	int distance_x = 200,
+		distance_y = 50;
+
 	RECT Music_button;
-	int Music_button_x = 100,
-		Music_button_y = 50;
+	int Music_button_x = 220,
+		Music_button_y = 85;
 	Music music;
 
 	RECT Sound_button;
-	int Sound_button_x = 100,
-		Sound_button_y = 50;
+	int Sound_button_x = 220,
+		Sound_button_y = 85;
 	SoundEffects soundeffects;
 
 	RECT GameInt_button;
-	int GameInt_button_x = 100,
-		GameInt_button_y = 50;
+	int GameInt_button_x = 220,
+		GameInt_button_y = 85;
 	GameIntroduction gameintroduction;
 
 	RECT TeamInt_button;
-	int TeamInt_button_x = 100,
-		TeamInt_button_y = 50;
+	int TeamInt_button_x = 220,
+		TeamInt_button_y = 85;
 	TeamIntroduction teamintroduction;
+
+	RECT menu_button;
+	int menu_button_x = 75,
+		menu_button_y = 50;
+	Menu menu;
 };
 
 
