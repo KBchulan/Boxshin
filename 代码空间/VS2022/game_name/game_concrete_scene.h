@@ -10,28 +10,44 @@ public:
 	Map61() = default;
 	~Map61() = default;
 
+	/*
+	负责人:
+	功能: 进入关卡场景
+	*/
 	void scene_enter() {
-		//进入场景
 		game_background_scene = new GameScene();
+		game_background_scene->scene_enter();
 	}
 
+	/*
+	负责人:
+	功能: 输入关卡场景信息
+	*/
 	void data_input(const ExMessage& msg) {
-		//输入数据
 		game_background_scene->data_input(msg);
 	}
 
+	/*
+	负责人:
+	功能: 更新关卡数据
+	*/
 	void data_update(int delta) {
-		//更新数据
 		game_background_scene->data_update(delta);
 	}
 
+	/*
+	负责人:
+	功能: 绘制关卡场景
+	*/
 	void picture_draw() {
-		//绘制图片
 		game_background_scene->picture_draw();
 	}
 
+	/*
+	负责人:
+	功能: 退出关卡场景
+	*/
 	void scene_exit() {
-		//退出场景
 		game_background_scene->scene_exit();
 	}
 
@@ -45,28 +61,44 @@ public:
 	Map62() = default;
 	~Map62() = default;
 
+	/*
+	负责人:
+	功能: 进入关卡场景
+	*/
 	void scene_enter() {
-		//进入场景
 		game_background_scene = new GameScene();
+		game_background_scene->scene_enter();
 	}
 
+	/*
+	负责人:
+	功能: 输入关卡场景信息
+	*/
 	void data_input(const ExMessage& msg) {
-		//输入数据
 		game_background_scene->data_input(msg);
 	}
 
+	/*
+	负责人:
+	功能: 更新关卡数据
+	*/
 	void data_update(int delta) {
-		//更新数据
 		game_background_scene->data_update(delta);
 	}
 
+	/*
+	负责人:
+	功能: 绘制关卡场景
+	*/
 	void picture_draw() {
-		//绘制图片
 		game_background_scene->picture_draw();
 	}
 
+	/*
+	负责人:
+	功能: 退出关卡场景
+	*/
 	void scene_exit() {
-		//退出场景
 		game_background_scene->scene_exit();
 	}
 
@@ -80,28 +112,44 @@ public:
 	Map63() = default;
 	~Map63() = default;
 
+	/*
+	负责人:
+	功能: 进入关卡场景
+	*/
 	void scene_enter() {
-		//进入场景
 		game_background_scene = new GameScene();
+		game_background_scene->scene_enter();
 	}
 
+	/*
+	负责人:
+	功能: 输入关卡场景信息
+	*/
 	void data_input(const ExMessage& msg) {
-		//输入数据
 		game_background_scene->data_input(msg);
 	}
 
+	/*
+	负责人:
+	功能: 更新关卡数据
+	*/
 	void data_update(int delta) {
-		//更新数据
 		game_background_scene->data_update(delta);
 	}
 
+	/*
+	负责人:
+	功能: 绘制关卡场景
+	*/
 	void picture_draw() {
-		//绘制图片
 		game_background_scene->picture_draw();
 	}
 
+	/*
+	负责人:
+	功能: 退出关卡场景
+	*/
 	void scene_exit() {
-		//退出场景
 		game_background_scene->scene_exit();
 	}
 
@@ -115,28 +163,44 @@ public:
 	Map64() = default;
 	~Map64() = default;
 
+	/*
+	负责人:
+	功能: 进入关卡场景
+	*/
 	void scene_enter() {
-		//进入场景
 		game_background_scene = new GameScene();
+		game_background_scene->scene_enter();
 	}
 
+	/*
+	负责人:
+	功能: 输入关卡场景信息
+	*/
 	void data_input(const ExMessage& msg) {
-		//输入数据
 		game_background_scene->data_input(msg);
 	}
 
+	/*
+	负责人:
+	功能: 更新关卡数据
+	*/
 	void data_update(int delta) {
-		//更新数据
 		game_background_scene->data_update(delta);
 	}
 
+	/*
+	负责人:
+	功能: 绘制关卡场景
+	*/
 	void picture_draw() {
-		//绘制图片
 		game_background_scene->picture_draw();
 	}
 
+	/*
+	负责人:
+	功能: 退出关卡场景
+	*/
 	void scene_exit() {
-		//退出场景
 		game_background_scene->scene_exit();
 	}
 
@@ -150,28 +214,44 @@ public:
 	Map65() = default;
 	~Map65() = default;
 
+	/*
+	负责人:
+	功能: 进入关卡场景
+	*/
 	void scene_enter() {
-		//进入场景
 		game_background_scene = new GameScene();
+		game_background_scene->scene_enter();
 	}
 
+	/*
+	负责人:
+	功能: 输入关卡场景信息
+	*/
 	void data_input(const ExMessage& msg) {
-		//输入数据
 		game_background_scene->data_input(msg);
 	}
 
+	/*
+	负责人:
+	功能: 更新关卡数据
+	*/
 	void data_update(int delta) {
-		//更新数据
 		game_background_scene->data_update(delta);
 	}
 
+	/*
+	负责人:
+	功能: 绘制关卡场景
+	*/
 	void picture_draw() {
-		//绘制图片
 		game_background_scene->picture_draw();
 	}
 
+	/*
+	负责人:
+	功能: 退出关卡场景
+	*/
 	void scene_exit() {
-		//退出场景
 		game_background_scene->scene_exit();
 	}
 
@@ -185,28 +265,45 @@ public:
 	Map66() = default;
 	~Map66() = default;
 
+	/*
+	负责人:
+	功能: 进入关卡场景
+	*/
 	void scene_enter() {
-		//进入场景
 		game_background_scene = new GameScene();
+		game_background_scene->scene_enter();
 	}
 
+	/*
+	负责人:
+	功能: 输入关卡场景信息
+	*/
 	void data_input(const ExMessage& msg) {
-		//输入数据
+		game_background_scene->data_input(msg);
 		game_background_scene->data_input(msg);
 	}
 
+	/*
+	负责人:
+	功能: 更新关卡数据
+	*/
 	void data_update(int delta) {
-		//更新数据
 		game_background_scene->data_update(delta);
 	}
 
+	/*
+	负责人:
+	功能: 绘制关卡场景
+	*/
 	void picture_draw() {
-		//绘制图片
 		game_background_scene->picture_draw();
 	}
 
+	/*
+	负责人:
+	功能: 退出关卡场景
+	*/
 	void scene_exit() {
-		//退出场景
 		game_background_scene->scene_exit();
 	}
 
@@ -215,38 +312,55 @@ private:
 
 };
 
-class Map67:public Scene {
+class Map67 :public Scene {
 public:
 	Map67() = default;
 	~Map67() = default;
 
+	/*
+	负责人:
+	功能: 进入关卡场景
+	*/
 	void scene_enter() {
-		//进入场景
+		game_background_scene = new GameScene();
+		game_background_scene->scene_enter();
 	}
 
+	/*
+	负责人:
+	功能: 输入关卡场景信息
+	*/
 	void data_input(const ExMessage& msg) {
-		//输入数据
+		game_background_scene->data_input(msg);
 	}
 
+	/*
+	负责人:
+	功能: 更新关卡数据
+	*/
 	void data_update(int delta) {
-		//更新数据
+		game_background_scene->data_update(delta);
 	}
 
+	/*
+	负责人:
+	功能: 绘制关卡场景
+	*/
 	void picture_draw() {
-		//绘制图片
+		game_background_scene->picture_draw();
 	}
 
+	/*
+	负责人:
+	功能: 退出关卡场景
+	*/
 	void scene_exit() {
-		//退出场景
+		game_background_scene->scene_exit();
 	}
 
 private:
 
 
 };
-
-
-
-
 
 #endif // !_GAME_CONCRETE_SCENE_H_

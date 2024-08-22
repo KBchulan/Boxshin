@@ -31,6 +31,12 @@ public:
 		voice_button.bottom = pause_button_y;
 		gamevoice = GameVoice(voice_button, _T("resources/sound_idle.png"), _T("resources/sound_hovered.png"), _T("resources/sound_pushed.png"), voice_button_x, voice_button_y);
 
+		voice_open_button.right = 1180;
+		voice_open_button.top = 0;
+		voice_open_button.left = voice_open_button.right - voice_open_button_x;
+		voice_open_button.bottom = voice_open_button_y;
+		gamevoiceopen = GameVoiceOpen(voice_open_button, _T("resources/sound_off_idle.png"), _T("resources/sound_off_hovered.png"), _T("resources/sound_off_pushed.png"), voice_open_button_x, voice_open_button_y);
+		
 		pause_button.right = 1280;
 		pause_button.top = 0;
 		pause_button.left = pause_button.right - pause_button_x;
@@ -62,7 +68,10 @@ public:
 			gamepause.Button_input(msg);
 		else if (play_num == 0)
 			gamerestart.Button_input(msg);
-		gamevoice.Button_input(msg);
+		if (music_num == 1)
+			gamevoice.Button_input(msg);
+		else if (music_num == 0)
+			gamevoiceopen.Button_input(msg);
 	}
 		/*
 	负责人：
@@ -89,7 +98,10 @@ public:
 			gamepause.Button_draw();
 		else if (play_num == 0)
 			gamerestart.Button_draw();
-		gamevoice.Button_draw();
+		if (music_num == 1)
+			gamevoice.Button_draw();
+		else if (music_num == 0)
+			gamevoiceopen.Button_draw();
 	}
 		/*
 	负责人：
@@ -194,6 +206,11 @@ private:
 	int voice_button_x = 50,
 		voice_button_y = 50;
 	GameVoice gamevoice;
+
+	RECT voice_open_button;
+	int voice_open_button_x = 50,
+		voice_open_button_y = 50;
+	GameVoiceOpen gamevoiceopen;
 
 	int x_distance = 30;			//按钮间距
 
