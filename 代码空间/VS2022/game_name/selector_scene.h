@@ -23,15 +23,15 @@ public:
 		last_button.left = last_button.right - last_button_x;
 		last_button.top = 360;
 		last_button.bottom = last_button.top + last_button_y;
-		lastgamer = LastGamer(last_button, _T("resources/lastgamer_idle.png"), _T("resources/lastgamer_hovered.png"), _T("resources/lastgamer_pushed.png"), last_button_x, last_button_y);
+		lastgamer = LastGamer(last_button, _T("resources/prev_idle.png"), _T("resources/prev_hovered.png"), _T("resources/prev_pushed.png"), last_button_x, last_button_y);
 		
 		next_button.left = last_button.right + distance_x;
 		next_button.right = next_button.left + next_button_x;
 		next_button.top = last_button.top;
 		next_button.bottom = next_button.top + next_button_y;
-		nextgamer = NextGamer(next_button, _T("resources/nextgamer_idle.png"), _T("resources/nextgamer_hovered.png"), _T("resources/nextgamer_pushed.png"), next_button_x, next_button_y);
+		nextgamer = NextGamer(next_button, _T("resources/next_idle.png"), _T("resources/next_hovered.png"), _T("resources/next_pushed.png"), next_button_x, next_button_y);
 	
-		enter_button.left = 530;
+		enter_button.left = 515;
 		enter_button.right = enter_button.left + enter_button_x;
 		enter_button.top = last_button.bottom + distance_y;
 		enter_button.bottom = enter_button.top + enter_button_y;
@@ -148,17 +148,17 @@ private:
 	int distance_y = 60;
 
 	RECT last_button;
-	int last_button_x = 220,
-		last_button_y = 85;
+	int last_button_x = 130,
+		last_button_y = 50;
 	LastGamer lastgamer;
 	
 	RECT next_button;
-	int next_button_x = 220,
-		next_button_y = 85;
+	int next_button_x = 130,
+		next_button_y = 50;
 	NextGamer nextgamer;
 
 	RECT enter_button;
-	int enter_button_x = 220,
+	int enter_button_x = 250,
 		enter_button_y = 85;
 	EnterMap entermap;
 

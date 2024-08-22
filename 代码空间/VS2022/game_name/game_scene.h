@@ -54,6 +54,12 @@ public:
 		reset_button.left = reset_button.right - reset_button_x;
 		reset_button.bottom = reset_button_y;
 		gamereset = GameReset(reset_button, _T("resources/replay_idle.png"), _T("resources/replay_hovered.png"), _T("resources/replay_pushed.png"), reset_button_x, reset_button_y);
+	
+		replay_button.left = 0;
+		replay_button.right = replay_button.left + replay_button_x;
+		replay_button.top = 0;
+		replay_button.bottom = replay_button.top + replay_button_y;
+		replay = Replay(replay_button, _T("resources/replay_idle.png"), _T("resources/replay_hovered.png"), _T("resources/replay_pushed.png"), replay_button_x, replay_button_y);
 	}
 	/*
 	负责人：
@@ -64,6 +70,7 @@ public:
 	 void data_input(const ExMessage& msg) {
 		//按钮输入
 		gamereset.Button_input(msg);
+		replay.Button_input(msg);
 		if (play_num == 1)
 			gamepause.Button_input(msg);
 		else if (play_num == 0)
@@ -94,6 +101,7 @@ public:
 	 void picture_draw() {
 		putimage(0, 0, &img_game_background);
 		gamereset.Button_draw();
+		replay.Button_draw();
 		if (play_num == 1)
 			gamepause.Button_draw();
 		else if (play_num == 0)
@@ -185,6 +193,20 @@ private:
 		}
 	};
 
+	class Replay :public Button {
+	public:
+		Replay() = default;
+		~Replay() = default;
+
+		Replay(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y)
+			:Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+
+	protected:
+		void OnClick() {
+			flag = 4;			//地图界面
+		}
+	};
+
 private:
 
 	RECT reset_button;
@@ -211,6 +233,11 @@ private:
 	int voice_open_button_x = 50,
 		voice_open_button_y = 50;
 	GameVoiceOpen gamevoiceopen;
+
+	RECT replay_button;
+	int replay_button_x = 50,
+		replay_button_y = 50;
+	Replay replay;
 
 	int x_distance = 30;			//按钮间距
 

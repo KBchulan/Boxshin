@@ -16,7 +16,7 @@ public:
 	 
 	void scene_enter() {
 		//初始化按钮
-		Music_button.right = 540;
+		Music_button.right = 520;
 		Music_button.left = Music_button.right - Music_button_x;
 		Music_button.top = 180;
 		Music_button.bottom = Music_button.top + Music_button_y;
@@ -26,9 +26,9 @@ public:
 		Sound_button.left = Sound_button.right - Sound_button_x;
 		Sound_button.top = Music_button.bottom + distance_y;
 		Sound_button.bottom = Sound_button.top + Sound_button_y;
-		soundeffects = SoundEffects(Sound_button, _T("resources/sound_idle.png"), _T("resources/sound_hovered.png"), _T("resources/sound_pushed.png"), Sound_button_x, Sound_button_y);
+		soundeffects = SoundEffects(Sound_button, _T("resources/audio_idle.png"), _T("resources/audio_hovered.png"), _T("resources/audio_pushed.png"), Sound_button_x, Sound_button_y);
 
-		GameInt_button.right = Music_button.right;
+		GameInt_button.right = 540;
 		GameInt_button.left = GameInt_button.right - GameInt_button_x;
 		GameInt_button.top = Sound_button.bottom + distance_y;
 		GameInt_button.bottom = GameInt_button.top + GameInt_button_y;
@@ -184,13 +184,13 @@ private:
 		distance_y = 50;
 
 	RECT Music_button;
-	int Music_button_x = 220,
-		Music_button_y = 85;
+	int Music_button_x = 190,
+		Music_button_y = 70;
 	Music music;
 
 	RECT Sound_button;
-	int Sound_button_x = 220,
-		Sound_button_y = 85;
+	int Sound_button_x = 190,
+		Sound_button_y = 70;
 	SoundEffects soundeffects;
 
 	RECT GameInt_button;

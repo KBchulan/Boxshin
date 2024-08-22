@@ -56,6 +56,13 @@ public:
         seventh_button.top = fourth_button.bottom + distance_y;
         seventh_button.bottom = seventh_button.top + seventh_button_y;
         seventhMap = MapTo67(seventh_button, _T("resources/map67_idle.jpg"), _T("resources/map67_hovered.jpg"), _T("resources/map67_pushed.jpg"), seventh_button_x, seventh_button_y);
+        
+        replay_button.left = 0;
+        replay_button.right = replay_button.left + replay_button_x;
+        replay_button.top = 0;
+        replay_button.bottom = replay_button.top + replay_button_y;
+        replay = Replay(replay_button, _T("resources/replay_idle.png"), _T("resources/replay_hovered.png"), _T("resources/replay_pushed.png"), replay_button_x, replay_button_y);
+    
     }
 
     void data_input(const ExMessage& msg) {
@@ -66,6 +73,7 @@ public:
         fifthMap.Button_input(msg);
         sixthMap.Button_input(msg);
         seventhMap.Button_input(msg);
+        replay.Button_input(msg);
     }
 
 
@@ -85,6 +93,7 @@ public:
         fifthMap.Button_draw();
         sixthMap.Button_draw();
         seventhMap.Button_draw();
+        replay.Button_draw();
     }
 
     void scene_exit() {
@@ -191,6 +200,20 @@ private:
         }
     };
 
+    class Replay :public Button {
+    public:
+        Replay() = default;
+        ~Replay() = default;
+
+        Replay(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y)
+            :Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+
+    protected:
+        void OnClick() {
+            flag = 2;			//½ÇÉ«½çÃæ
+        }
+    };
+
 private:
     int distance_x = 220,
         distance_y = 100;
@@ -230,6 +253,11 @@ private:
     int seventh_button_x = 100,
         seventh_button_y = 100;
     MapTo67 seventhMap;   
+
+    RECT replay_button;
+    int replay_button_x = 50,
+        replay_button_y = 50;
+    Replay replay;
 
 };
 
