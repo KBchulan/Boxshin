@@ -6,6 +6,9 @@
 #include"button.h"
 #include"scene_manager.h"
 
+int play_num = 1;
+int music_num = 1;
+
 extern int flag;
 extern IMAGE img_game_background;
 extern SceneManager scene_manager;
@@ -14,7 +17,7 @@ class GameScene :public Scene {
 public:
 	GameScene() = default;
 	~GameScene() = default;
-		/*
+	/*
 	负责人：
 	功能：初始化按钮位置
 	参数：void
@@ -22,26 +25,31 @@ public:
 	*/
 	void scene_enter() {
 		//初始化
-		voice_button.right = 1280;
+		voice_button.right = 1180;
 		voice_button.top = 0;
 		voice_button.left = voice_button.right - voice_button_x;
 		voice_button.bottom = pause_button_y;
-		gamevoice = GameVoice(voice_button, _T("resources/voice_button_idle.png"), _T("resources/voice_button_hovered.png"), _T("resources/voice_button_pushed.png"), voice_button_x, voice_button_y);
+		gamevoice = GameVoice(voice_button, _T("resources/sound_idle.png"), _T("resources/sound_hovered.png"), _T("resources/sound_pushed.png"), voice_button_x, voice_button_y);
 
 		pause_button.right = 1280;
 		pause_button.top = 0;
 		pause_button.left = pause_button.right - pause_button_x;
 		pause_button.bottom = pause_button_y;
-		gamepause = GamePause(pause_button, _T("resources/pause_button_idle.png"), _T("resources/pause_button_hovered.png"), _T("resources/pause_button_pushed.png"), pause_button_x, pause_button_y);
+		gamepause = GamePause(pause_button, _T("resources/pause_idle.png"), _T("resources/pause_hovered.png"), _T("resources/pause_pushed.png"), pause_button_x, pause_button_y);
 
+		game_start_button.right = 1280;
+		game_start_button.top = 0;
+		game_start_button.left = game_start_button.right - game_start_button_x;
+		game_start_button.bottom = game_start_button_y;
+		gamerestart = GameStart(game_start_button, _T("resources/play_idle.png"), _T("resources/play_hovered.png"), _T("resources/play_pushed.png"), game_start_button_x, game_start_button_y);
 
-		reset_button.right = 1280;
+		reset_button.right = 1230;
 		reset_button.top = 0;
 		reset_button.left = reset_button.right - reset_button_x;
 		reset_button.bottom = reset_button_y;
-		gamereset = GameReset(reset_button, _T("resources/reset_button_idle.png"), _T("resources/reset_button_hovered.png"), _T("resources/reset_button_pushed.png"), reset_button_x, reset_button_y);
+		gamereset = GameReset(reset_button, _T("resources/replay_idle.png"), _T("resources/replay_hovered.png"), _T("resources/replay_pushed.png"), reset_button_x, reset_button_y);
 	}
-		/*
+	/*
 	负责人：
 	功能：接受用户点击
 	参数：用户点击
@@ -50,7 +58,10 @@ public:
 	 void data_input(const ExMessage& msg) {
 		//按钮输入
 		gamereset.Button_input(msg);
-		gamepause.Button_input(msg);
+		if (play_num == 1)
+			gamepause.Button_input(msg);
+		else if (play_num == 0)
+			gamerestart.Button_input(msg);
 		gamevoice.Button_input(msg);
 	}
 		/*
@@ -61,7 +72,9 @@ public:
 	*/
 	void data_update(int delta) {
 		//更新数据
-		
+		if (flag <= 60) {
+			scene_manager.switch_to(flag);
+		}
 	}
 		/*
 	负责人：
@@ -72,7 +85,10 @@ public:
 	 void picture_draw() {
 		putimage(0, 0, &img_game_background);
 		gamereset.Button_draw();
-		gamepause.Button_draw();
+		if (play_num == 1)
+			gamepause.Button_draw();
+		else if (play_num == 0)
+			gamerestart.Button_draw();
 		gamevoice.Button_draw();
 	}
 		/*
@@ -96,7 +112,7 @@ private:
 
 	protected:
 		void OnClick() {
-			//
+			flag = 0;
 		}
 
 	};
@@ -111,7 +127,21 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 9;						//跳转暂停场景game_scene_pause
+			play_num = 0;
+		}
+	};
+
+	class GameStart :public Button {
+	public:
+		GameStart() = default;
+		~GameStart() = default;
+
+		GameStart(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y) :
+			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+
+	protected:
+		void OnClick() {
+			play_num = 1;
 		}
 	};
 
@@ -125,11 +155,23 @@ private:
 
 	protected:
 		void OnClick() {
-			//
+			music_num = 0;
 		}
 	};
 
+	class GameVoiceOpen :public Button {
+	public:
+		GameVoiceOpen() = default;
+		~GameVoiceOpen() = default;
 
+		GameVoiceOpen(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y) :
+			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+
+	protected:
+		void OnClick() {
+			music_num = 1;
+		}
+	};
 
 private:
 
@@ -142,6 +184,11 @@ private:
 	int pause_button_x = 50,
 		pause_button_y = 50;
 	GamePause gamepause;
+
+	RECT game_start_button;
+	int game_start_button_x = 50,
+		game_start_button_y = 50;
+	GameStart gamerestart;
 
 	RECT voice_button;
 	int voice_button_x = 50,

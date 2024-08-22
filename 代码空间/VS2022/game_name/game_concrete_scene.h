@@ -3,32 +3,36 @@
 
 #include"game_scene.h"
 
-//extern IMAGE img_game_background;
+GameScene* game_background_scene;
 
-class Map61 :public GameScene {
+class Map61 :public Scene {
 public:
 	Map61() = default;
 	~Map61() = default;
 
 	void scene_enter() {
 		//进入场景
+		game_background_scene = new GameScene();
 	}
 
 	void data_input(const ExMessage& msg) {
 		//输入数据
+		game_background_scene->data_input(msg);
 	}
 
 	void data_update(int delta) {
 		//更新数据
+		game_background_scene->data_update(delta);
 	}
 
 	void picture_draw() {
 		//绘制图片
-		//putimage(0, 0, &img_game_background);
+		game_background_scene->picture_draw();
 	}
 
 	void scene_exit() {
 		//退出场景
+		game_background_scene->scene_exit();
 	}
 
 private:
@@ -36,29 +40,34 @@ private:
 
 };
 
-class Map62 :public GameScene {
+class Map62 :public Scene {
 public:
 	Map62() = default;
 	~Map62() = default;
 
 	void scene_enter() {
 		//进入场景
+		game_background_scene = new GameScene();
 	}
 
 	void data_input(const ExMessage& msg) {
 		//输入数据
+		game_background_scene->data_input(msg);
 	}
 
 	void data_update(int delta) {
 		//更新数据
+		game_background_scene->data_update(delta);
 	}
 
 	void picture_draw() {
 		//绘制图片
+		game_background_scene->picture_draw();
 	}
 
 	void scene_exit() {
 		//退出场景
+		game_background_scene->scene_exit();
 	}
 
 private:
@@ -66,29 +75,34 @@ private:
 
 };
 
-class Map63 :public GameScene {
+class Map63 :public Scene {
 public:
 	Map63() = default;
 	~Map63() = default;
 
 	void scene_enter() {
 		//进入场景
+		game_background_scene = new GameScene();
 	}
 
 	void data_input(const ExMessage& msg) {
 		//输入数据
+		game_background_scene->data_input(msg);
 	}
 
 	void data_update(int delta) {
 		//更新数据
+		game_background_scene->data_update(delta);
 	}
 
 	void picture_draw() {
 		//绘制图片
+		game_background_scene->picture_draw();
 	}
 
 	void scene_exit() {
 		//退出场景
+		game_background_scene->scene_exit();
 	}
 
 private:
@@ -96,29 +110,34 @@ private:
 
 };
 
-class Map64 :public GameScene {
+class Map64 :public Scene {
 public:
 	Map64() = default;
 	~Map64() = default;
 
 	void scene_enter() {
 		//进入场景
+		game_background_scene = new GameScene();
 	}
 
 	void data_input(const ExMessage& msg) {
 		//输入数据
+		game_background_scene->data_input(msg);
 	}
 
 	void data_update(int delta) {
 		//更新数据
+		game_background_scene->data_update(delta);
 	}
 
 	void picture_draw() {
 		//绘制图片
+		game_background_scene->picture_draw();
 	}
 
 	void scene_exit() {
 		//退出场景
+		game_background_scene->scene_exit();
 	}
 
 private:
@@ -126,29 +145,34 @@ private:
 
 };
 
-class Map65 :public GameScene {
+class Map65 :public Scene {
 public:
 	Map65() = default;
 	~Map65() = default;
 
 	void scene_enter() {
 		//进入场景
+		game_background_scene = new GameScene();
 	}
 
 	void data_input(const ExMessage& msg) {
 		//输入数据
+		game_background_scene->data_input(msg);
 	}
 
 	void data_update(int delta) {
 		//更新数据
+		game_background_scene->data_update(delta);
 	}
 
 	void picture_draw() {
 		//绘制图片
+		game_background_scene->picture_draw();
 	}
 
 	void scene_exit() {
 		//退出场景
+		game_background_scene->scene_exit();
 	}
 
 private:
@@ -156,29 +180,34 @@ private:
 
 };
 
-class Map66 :public GameScene {
+class Map66 :public Scene {
 public:
 	Map66() = default;
 	~Map66() = default;
 
 	void scene_enter() {
 		//进入场景
+		game_background_scene = new GameScene();
 	}
 
 	void data_input(const ExMessage& msg) {
 		//输入数据
+		game_background_scene->data_input(msg);
 	}
 
 	void data_update(int delta) {
 		//更新数据
+		game_background_scene->data_update(delta);
 	}
 
 	void picture_draw() {
 		//绘制图片
+		game_background_scene->picture_draw();
 	}
 
 	void scene_exit() {
 		//退出场景
+		game_background_scene->scene_exit();
 	}
 
 private:
@@ -186,7 +215,7 @@ private:
 
 };
 
-class Map67:public GameScene {
+class Map67:public Scene {
 public:
 	Map67() = default;
 	~Map67() = default;
