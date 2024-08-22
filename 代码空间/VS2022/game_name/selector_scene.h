@@ -29,7 +29,7 @@ public:
 		next_button.right = next_button.left + next_button_x;
 		next_button.top = last_button.top;
 		next_button.bottom = next_button.top + next_button_y;
-		nextgamer = NextGamer(last_button, _T("resources/nextgamer_idle.png"), _T("resources/nextgamer_hovered.png"), _T("resources/nextgamer_pushed.png"), next_button_x, next_button_y);
+		nextgamer = NextGamer(next_button, _T("resources/nextgamer_idle.png"), _T("resources/nextgamer_hovered.png"), _T("resources/nextgamer_pushed.png"), next_button_x, next_button_y);
 	
 		enter_button.left = 530;
 		enter_button.right = enter_button.left + enter_button_x;
@@ -66,8 +66,8 @@ public:
 		putimage(0, 0, &img_selector_background);
 		replay.Button_draw(replay_button.left,replay_button.top);
 		entermap.Button_draw(enter_button.left,enter_button.top);
-		lastgamer.Button_draw();
-		nextgamer.Button_draw();
+		nextgamer.Button_draw(next_button.left,next_button.top);
+		lastgamer.Button_draw(last_button.left,last_button.top);
 													/*
 													*背景渲染
 													*负责人：
@@ -113,7 +113,6 @@ private:
 			number++;
 			number = number >= gamer_sum ? number -= gamer_sum : number;
 		}
-
 	};
 
 	class EnterMap :public Button {

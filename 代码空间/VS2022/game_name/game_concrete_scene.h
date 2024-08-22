@@ -3,6 +3,8 @@
 
 #include"game_scene.h"
 
+//extern IMAGE img_game_background;
+
 class Map61 :public GameScene {
 public:
 	Map61() = default;
@@ -22,6 +24,7 @@ public:
 
 	void picture_draw() {
 		//ªÊ÷∆Õº∆¨
+		//putimage(0, 0, &img_game_background);
 	}
 
 	void scene_exit() {

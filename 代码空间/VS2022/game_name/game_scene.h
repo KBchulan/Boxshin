@@ -7,6 +7,7 @@
 #include"scene_manager.h"
 
 extern int flag;
+extern IMAGE img_game_background;
 extern SceneManager scene_manager;
 
 class GameScene :public Scene {
@@ -46,7 +47,7 @@ public:
 	参数：用户点击
 	返回值：void
 	*/
-	void data_input(const ExMessage& msg) {
+	 void data_input(const ExMessage& msg) {
 		//按钮输入
 		gamereset.Button_input(msg);
 		gamepause.Button_input(msg);
@@ -68,8 +69,8 @@ public:
 	参数：void
 	返回值：void
 	*/
-	void picture_draw() {
-		putimage(0, 0, &img_menu_background);
+	 void picture_draw() {
+		putimage(0, 0, &img_game_background);
 		gamereset.Button_draw();
 		gamepause.Button_draw();
 		gamevoice.Button_draw();
@@ -85,7 +86,7 @@ public:
 	}
 
 private:
-	class GameReset :public Button {
+	class GameReset:public Button {
 	public:
 		GameReset() = default;
 		~GameReset() = default;
@@ -93,12 +94,6 @@ private:
 		GameReset(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y) :
 			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
 
-	/*
-	负责人：
-	功能：点击按钮时改变flag的对应值
-	参数：void
-	返回值：void
-	*/
 	protected:
 		void OnClick() {
 			//

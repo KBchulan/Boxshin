@@ -6,14 +6,16 @@
 #pragma comment(lib,"Winmm.lib")
 
 //背景图类
-IMAGE img_menu_background;
-IMAGE img_selector_background;
 IMAGE img_map_background;
 IMAGE img_set_background;
+IMAGE img_menu_background;
+IMAGE img_game_background;
 IMAGE img_exit_background;
+IMAGE img_selector_background;
+IMAGE img_game_pause_background;
 IMAGE img_game_introduction_background;
 IMAGE img_team_introduction_background;
-IMAGE img_game_pause_background;
+
 
 //角色类加载
 
@@ -26,14 +28,16 @@ IMAGE img_game_pause_background;
 
 void load_game_resources() {
 	//背景图类加载
-	loadimage(&img_menu_background, _T("resources/img_menu_background.png"), 1280, 720);
-	loadimage(&img_selector_background, _T("resources/img_selector_background.png"), 1280, 720);
 	loadimage(&img_map_background, _T("resources/img_map_background.png"), 1280, 720);
 	loadimage(&img_set_background, _T("resources/img_set_background.png"), 1280, 720);
+	loadimage(&img_game_background, _T("resources/img_game_background.jpg"), 1280, 720);
+	loadimage(&img_menu_background, _T("resources/img_menu_background.png"), 1280, 720);
 	loadimage(&img_exit_background, _T("resources/img_exit_background.png"), 1280, 720);
+	loadimage(&img_selector_background, _T("resources/img_selector_background.png"), 1280, 720);
+	loadimage(&img_game_pause_background, _T("resources/img_game_pause_background.png"), 1280, 720);
 	loadimage(&img_game_introduction_background, _T("resources/img_game_introduction_background.png"), 1280, 720);
 	loadimage(&img_team_introduction_background, _T("resources/img_team_introduction_background.png"), 1280, 720);
-	loadimage(&img_game_pause_background, _T("resources/img_game_pause_background.png"), 1280, 720);
+	
 
 	//角色类加载
 

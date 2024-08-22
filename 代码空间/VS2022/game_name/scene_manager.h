@@ -15,6 +15,11 @@ extern Scene* team_introduction_scene;
 
 extern Scene* map01;
 extern Scene* map02;
+extern Scene* map03;
+extern Scene* map04;
+extern Scene* map05;
+extern Scene* map06;
+extern Scene* map07;
 
 class SceneManager {
 public:
@@ -61,6 +66,21 @@ public:
 			break;
 		case 62:
 			current_scene = map02;
+			break;
+		case 63:
+			current_scene = map03;
+			break;
+		case 64:
+			current_scene = map04;
+			break;
+		case 65:
+			current_scene = map05;
+			break;
+		case 66:
+			current_scene = map06;
+			break;
+		case 67:
+			current_scene = map07;
 			break;
 		default:
 			break;
