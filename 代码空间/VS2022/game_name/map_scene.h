@@ -86,13 +86,13 @@ public:
     void picture_draw() {
         //background_draw();
         putimage(0, 0, &img_map_background);
-        firstMap.Button_draw();
-        secondMap.Button_draw();
-        thirdMap.Button_draw();
-        fourthMap.Button_draw();
-        fifthMap.Button_draw();
-        sixthMap.Button_draw();
-        seventhMap.Button_draw();
+        firstMap.Button_draw(first_button.left, first_button.top);
+        secondMap.Button_draw(second_button.left, second_button.top);
+        thirdMap.Button_draw(third_button.left, third_button.top);
+        fourthMap.Button_draw(fourth_button.left, fourth_button.top);
+        fifthMap.Button_draw(fifth_button.left, fifth_button.top);
+        sixthMap.Button_draw(sixth_button.left, sixth_button.top);
+        seventhMap.Button_draw(seventh_button.left, seventh_button.top);
         replay.Button_draw();
     }
 

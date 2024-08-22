@@ -22,15 +22,15 @@ bool running = true;
 SceneManager scene_manager;
 
 //基本场景类如下
-Scene* map_scene = nullptr;
-Scene* set_scene = nullptr;
-Scene* exit_scene = nullptr;
-Scene* menu_scene = nullptr;
-Scene* game_scene = nullptr;
-Scene* selector_scene = nullptr;
-Scene* game_pause_scene = nullptr;
-Scene* game_introduction_scene = nullptr;
-Scene* team_introduction_scene = nullptr;
+Scene* map_scene = nullptr;							//左巴阳
+Scene* set_scene = nullptr;							//刘昊
+Scene* exit_scene = nullptr;						//米饭
+Scene* menu_scene = nullptr;						//极光
+Scene* game_scene = nullptr;						//王怀玺
+Scene* selector_scene = nullptr;					//林
+Scene* game_pause_scene = nullptr;					//黑子
+Scene* game_introduction_scene = nullptr;			//九州
+Scene* team_introduction_scene = nullptr;			//九州
 
 //关卡类如下
 Scene* map01 = nullptr;
