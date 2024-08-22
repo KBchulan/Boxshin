@@ -19,31 +19,36 @@ public:
 
 	void scene_enter() {
 		//各种按钮位置初始化
-		last_button.right = 565;
+		last_button.right = 590;
 		last_button.left = last_button.right - last_button_x;
-		last_button.top = 450;
+		last_button.top = 360;
 		last_button.bottom = last_button.top + last_button_y;
 		lastgamer = LastGamer(last_button, _T("resources/lastgamer_idle.png"), _T("resources/lastgamer_hovered.png"), _T("resources/lastgamer_pushed.png"), last_button_x, last_button_y);
 		
-		next_button.left = 715;
+		next_button.left = last_button.right + distance_x;
 		next_button.right = next_button.left + next_button_x;
-		next_button.top = 450;
+		next_button.top = last_button.top;
 		next_button.bottom = next_button.top + next_button_y;
 		nextgamer = NextGamer(last_button, _T("resources/nextgamer_idle.png"), _T("resources/nextgamer_hovered.png"), _T("resources/nextgamer_pushed.png"), next_button_x, next_button_y);
 	
-		enter_button.left = 590;
+		enter_button.left = 530;
 		enter_button.right = enter_button.left + enter_button_x;
-		enter_button.top = last_button.bottom + 50;
+		enter_button.top = last_button.bottom + distance_y;
 		enter_button.bottom = enter_button.top + enter_button_y;
-		entermap = EnterMap(enter_button, _T("resources/entermap_idle.png"), _T("resources/entermap_hovered.png"), _T("resources/entermap_pushed.png"), enter_button_x, enter_button_y);
+		entermap = EnterMap(enter_button, _T("resources/confirm_idle.png"), _T("resources/confirm_hovered.png"), _T("resources/confirm_pushed.png"), enter_button_x, enter_button_y);
+		
+		replay_button.left = 0;
+		replay_button.right = replay_button.left + replay_button_x;
+		replay_button.top = 0;
+		replay_button.bottom = replay_button.top + replay_button_y;
+		replay = Replay(replay_button, _T("resources/replay_idle.png"), _T("resources/replay_hovered.png"), _T("resources/replay_pushed.png"), replay_button_x, replay_button_y);
+	
+	
 	}
-												/*
-												*按钮图片加载，按钮位置调整
-												*负责人：
-												*/
 
 	void data_input(const ExMessage& msg) {
 		//处理玩家输入
+		replay.Button_input(msg);
 		entermap.Button_input(msg);
 		lastgamer.Button_input(msg);
 		nextgamer.Button_input(msg);
@@ -59,8 +64,8 @@ public:
 	void picture_draw() {
 		//绘制图片
 		putimage(0, 0, &img_selector_background);
-
-		entermap.Button_draw();
+		replay.Button_draw(replay_button.left,replay_button.top);
+		entermap.Button_draw(enter_button.left,enter_button.top);
 		lastgamer.Button_draw();
 		nextgamer.Button_draw();
 													/*
@@ -68,7 +73,7 @@ public:
 													*负责人：
 													
 
-													*功能1：
+													*功能：
 													*根据number渲染不同的角色形象和角色说明介绍							
 													*负责人:
 													*/
@@ -123,24 +128,45 @@ private:
 		void OnClick() {
 			flag = 4;			//地图界面
 		}
+	};
 
+	class Replay :public Button {
+	public:
+		Replay() = default;
+		~Replay() = default;
+
+		Replay(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y)
+			:Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+
+	protected:
+		void OnClick() {
+			flag = 1;			//地图界面
+		}
 	};
 
 private:
+	int distance_x = 100;
+	int distance_y = 60;
+
 	RECT last_button;
-	int last_button_x = 100,
-		last_button_y = 50;
+	int last_button_x = 220,
+		last_button_y = 85;
 	LastGamer lastgamer;
 	
 	RECT next_button;
-	int next_button_x = 100,
-		next_button_y = 50;
+	int next_button_x = 220,
+		next_button_y = 85;
 	NextGamer nextgamer;
 
 	RECT enter_button;
-	int enter_button_x = 100,
-		enter_button_y = 50;
+	int enter_button_x = 220,
+		enter_button_y = 85;
 	EnterMap entermap;
+
+	RECT replay_button;
+	int replay_button_x=50,
+		replay_button_y=50;
+	Replay replay;
 
 														/*
 														*按钮大小调整   

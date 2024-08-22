@@ -21,6 +21,7 @@ void resizeImage(IMAGE* src, IMAGE* dst, int newWidth, int newHeight) {
     }
 }
 
+//Í¼Æ¬äÖÈ¾
 inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img) {
 	int w = img->getwidth();
 	int h = img->getheight();
@@ -58,6 +59,7 @@ inline void putimage_alpha(IMAGE* dst, int x, int y, IMAGE* src, UINT transparen
 	TransparentBlt(dstDC, x, y, w, h, srcDC, 0, 0, w, h, transparentcolor);
 }
 
+//Í¼Æ¬Ä£ºý
 inline void sketch_image(IMAGE* src, IMAGE* dst) {
 	int w = src->getwidth();
 	int h = src->getheight();
@@ -72,6 +74,7 @@ inline void sketch_image(IMAGE* src, IMAGE* dst) {
 	}
 }
 
+//Í¼Æ¬·­×ª
 inline void flip_image(IMAGE* src, IMAGE* dst) {
 	int w = src->getwidth();
 	int h = src->getheight();

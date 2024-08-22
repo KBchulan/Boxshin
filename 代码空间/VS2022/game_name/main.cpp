@@ -35,6 +35,11 @@ Scene* team_introduction_scene = nullptr;
 //关卡类如下
 Scene* map01 = nullptr;
 Scene* map02 = nullptr;
+Scene* map03 = nullptr;
+Scene* map04 = nullptr;
+Scene* map05 = nullptr;
+Scene* map06 = nullptr;
+Scene* map07 = nullptr;
 
 
 int flag = 1;
@@ -53,6 +58,11 @@ int flag = 1;
 	   以下是game_concrete_scene的场景类型
 	   61:map01
 	   62:map02
+	   63:map03
+	   64:map04
+	   65:map05
+	   66:map06
+	   67:map07
 	*/
 
 int main() {
@@ -79,6 +89,11 @@ int main() {
 	//关卡类
 	map01 = new Map61();
 	map02 = new Map62();
+	map03 = new Map63();
+	map04 = new Map64();
+	map05 = new Map65();
+	map06 = new Map66();
+	map07 = new Map67();
 
 	scene_manager.set_start_scene(menu_scene);
 
