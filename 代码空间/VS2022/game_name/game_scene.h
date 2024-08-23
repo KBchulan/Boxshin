@@ -7,9 +7,9 @@
 #include"scene_manager.h"
 
 int play_num = 1;
-int music_num = 1;
 
 extern int flag;
+extern int music_num;
 extern IMAGE img_game_background;
 extern SceneManager scene_manager;
 
@@ -71,10 +71,12 @@ public:
 		//∞¥≈• ‰»Î
 		gamereset.Button_input(msg);
 		replay.Button_input(msg);
+
 		if (play_num == 1)
 			gamepause.Button_input(msg);
 		else if (play_num == 0)
 			gamerestart.Button_input(msg);
+
 		if (music_num == 1)
 			gamevoice.Button_input(msg);
 		else if (music_num == 0)

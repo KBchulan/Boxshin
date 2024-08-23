@@ -5,7 +5,9 @@
 #include"button.h"
 #include"scene_manager.h"
 
+
 extern int flag;
+extern int music_num;
 extern IMAGE img_menu_background;
 extern SceneManager scene_manager;
 
@@ -39,28 +41,35 @@ public:
 		exit_button.top = set_button.bottom + distance;
 		exit_button.bottom = exit_button.top + exit_button_y;
 		exit = Exit(exit_button, _T("resources/exit_idle.png"), _T("resources/exit_hovered.png"), _T("resources/exit_pushed.png"), exit_button_x, exit_button_y);
-	
+		
+		voice_button.right = 1280;
+		voice_button.top = 0;
+		voice_button.left = voice_button.right - voice_button_x;
+		voice_button.bottom = voice_button_y;
+		gamevoice = GameVoice(voice_button, _T("resources/sound_idle.png"), _T("resources/sound_hovered.png"), _T("resources/sound_pushed.png"), voice_button_x, voice_button_y);
+
+		voice_open_button.right = 1280;
+		voice_open_button.top = 0;
+		voice_open_button.left = voice_open_button.right - voice_open_button_x;
+		voice_open_button.bottom = voice_open_button_y;
+		gamevoiceopen = GameVoiceOpen(voice_open_button, _T("resources/sound_off_idle.png"), _T("resources/sound_off_hovered.png"), _T("resources/sound_off_pushed.png"), voice_open_button_x, voice_open_button_y);
+
 	}
-	/*
-	负责人：
-	功能：接受按钮信息
-	参数：用户鼠标的点击
-	返回值：void
-	*/
+
 	void data_input(const ExMessage& msg) {
 		//按钮信息处理
 		set.Button_input(msg);
 		exit.Button_input(msg);
 		startgame.Button_input(msg);
 
+		if (music_num == 1)
+			gamevoice.Button_input(msg);
+		else if (music_num == 0)
+			gamevoiceopen.Button_input(msg);
+
 		//处理按键信息
 	}
-	/*
-	负责人：
-	功能：根据flag的定义进行相关操作
-	参数：
-	返回值：void
-	*/
+	
 	void data_update(int delta) {
 		//数据更新
 		if (flag != 1) {
@@ -80,6 +89,11 @@ public:
 		set.Button_draw(set_button.left,set_button.top);
 		exit.Button_draw(exit_button.left,exit_button.top);
 		startgame.Button_draw(start_button.left,start_button.top);
+
+		if (music_num == 1)
+			gamevoice.Button_draw();
+		else if (music_num == 0)
+			gamevoiceopen.Button_draw();
 
 	}
 		/*
@@ -135,6 +149,34 @@ private:
 			flag = 6;			//退出游戏界面
 		}
 	};
+
+	class GameVoice :public Button {
+	public:
+		GameVoice() = default;
+		~GameVoice() = default;
+
+		GameVoice(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y) :
+			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+
+	protected:
+		void OnClick() {
+			music_num = 0;
+		}
+	};
+
+	class GameVoiceOpen :public Button {
+	public:
+		GameVoiceOpen() = default;
+		~GameVoiceOpen() = default;
+
+		GameVoiceOpen(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y) :
+			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+
+	protected:
+		void OnClick() {
+			music_num = 1;
+		}
+	};
 	
 	
 private:
@@ -154,6 +196,16 @@ private:
 	int exit_button_x = 220,
 		exit_button_y = 80;							//按钮长宽
 	Exit exit;										//定义按钮
+
+	RECT voice_button;
+	int voice_button_x = 50,
+		voice_button_y = 50;
+	GameVoice gamevoice;
+
+	RECT voice_open_button;
+	int voice_open_button_x = 50,
+		voice_open_button_y = 50;
+	GameVoiceOpen gamevoiceopen;
 
 
 };

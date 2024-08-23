@@ -8,5 +8,5 @@ E:\code\github\Boxshin\代码空间\VS2022\game_name\selector_scene.h(1,1): warn
 E:\code\github\Boxshin\代码空间\VS2022\game_name\game_pause_scene.h(1,1): warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
   (编译源文件“main.cpp”)
   
-E:\code\github\Boxshin\代码空间\VS2022\game_name\main.cpp(74,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+E:\code\github\Boxshin\代码空间\VS2022\game_name\main.cpp(75,12): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
   game_name.vcxproj -> E:\code\github\Boxshin\代码空间\VS2022\x64\Debug\game_name.exe

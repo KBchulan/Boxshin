@@ -69,6 +69,7 @@ int flag = 1;
 	   66:map06
 	   67:map07
 	*/
+int music_num = 1;					//øÿ÷∆“Ù¿÷ «∑Ò≤•∑≈
 
 int main() {
 	srand(time(NULL));
