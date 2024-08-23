@@ -8,6 +8,8 @@
 extern int flag;
 extern IMAGE img_set_background;
 extern SceneManager scene_manager;
+extern int music_num;
+extern int sound_num;
 
 class SetScene :public Scene {
 public:
@@ -16,9 +18,9 @@ public:
 	 
 	void scene_enter() {
 		//初始化按钮
-		Music_button.right = 520;
+		Music_button.right = 450;
 		Music_button.left = Music_button.right - Music_button_x;
-		Music_button.top = 180;
+		Music_button.top = 120;
 		Music_button.bottom = Music_button.top + Music_button_y;
 		music = Music(Music_button, _T("resources/music_idle.png"), _T("resources/music_hovered.png"), _T("resources/music_pushed.png"), Music_button_x, Music_button_y);
 
@@ -28,9 +30,9 @@ public:
 		Sound_button.bottom = Sound_button.top + Sound_button_y;
 		soundeffects = SoundEffects(Sound_button, _T("resources/audio_idle.png"), _T("resources/audio_hovered.png"), _T("resources/audio_pushed.png"), Sound_button_x, Sound_button_y);
 
-		GameInt_button.right = 540;
+		GameInt_button.right = 500;
 		GameInt_button.left = GameInt_button.right - GameInt_button_x;
-		GameInt_button.top = Sound_button.bottom + distance_y;
+		GameInt_button.top = Sound_button.bottom + distance_y+20;
 		GameInt_button.bottom = GameInt_button.top + GameInt_button_y;
 		gameintroduction = GameIntroduction(GameInt_button, _T("resources/gameintroduction_idle.png"), _T("resources/gameintroduction_hovered.png"), _T("resources/gameintroduction_pushed.png"), GameInt_button_x, GameInt_button_y);
 
@@ -116,7 +118,14 @@ private:
 	返回值：void
 	*/
 		void OnClick() {
-			//
+			if (music_num) {
+				mciSendString("stop menu_bgm", NULL, 0, NULL);
+				music_num = 0;
+			}
+			else {
+				mciSendString(_T("play menu_bgm repeat from 0"), NULL, 0, NULL);
+				music_num = 1;
+			}
 		}
 	};
 
@@ -130,7 +139,12 @@ private:
 
 	protected:
 		void OnClick() {
-			//
+			if (sound_num) {
+				sound_num = 0;
+			}
+			else {
+				sound_num = 1;
+			}
 		}
 
 	};
@@ -181,26 +195,26 @@ private:
 
 private:
 	int distance_x = 200,
-		distance_y = 50;
+		distance_y = 100;
 
 	RECT Music_button;
-	int Music_button_x = 190,
-		Music_button_y = 70;
+	int Music_button_x = 180,
+		Music_button_y = 80;
 	Music music;
 
 	RECT Sound_button;
-	int Sound_button_x = 190,
-		Sound_button_y = 70;
+	int Sound_button_x = 180,
+		Sound_button_y = 80;
 	SoundEffects soundeffects;
 
 	RECT GameInt_button;
-	int GameInt_button_x = 220,
-		GameInt_button_y = 85;
+	int GameInt_button_x = 250,
+		GameInt_button_y = 80;
 	GameIntroduction gameintroduction;
 
 	RECT TeamInt_button;
-	int TeamInt_button_x = 220,
-		TeamInt_button_y = 85;
+	int TeamInt_button_x = 250,
+		TeamInt_button_y = 80;
 	TeamIntroduction teamintroduction;
 
 	RECT menu_button;

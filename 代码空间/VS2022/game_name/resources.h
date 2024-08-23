@@ -7,7 +7,7 @@
 
 #pragma comment(lib,"Winmm.lib")
 
-//±³¾°Í¼Àà
+//èƒŒæ™¯å›¾ç±»
 IMAGE img_map_background;
 IMAGE img_set_background;
 IMAGE img_menu_background;
@@ -19,16 +19,16 @@ IMAGE img_game_introduction_background;
 IMAGE img_team_introduction_background;
 
 
-//½ÇÉ«Àà¼ÓÔØ
+//è§’è‰²ç±»åŠ è½½
 
 
-//×ÖÌåÀà¼ÓÔØ
+//å­—ä½“ç±»åŠ è½½
 
 
-//ËØ²ÄÀà¼ÓÔØ
+//ç´ æç±»åŠ è½½
 
 
-//Í¼¼¯Àà¼ÓÔØ
+//å›¾é›†ç±»åŠ è½½
 Atlas atlas_gamer_diver;
 Atlas atlas_gamer_lypo;
 
@@ -36,7 +36,7 @@ Atlas atlas_gamer_lypo;
 
 
 void load_game_resources() {
-	//±³¾°Í¼Àà¼ÓÔØ
+	//èƒŒæ™¯å›¾ç±»åŠ è½½
 	loadimage(&img_map_background, _T("resources/img_map_background.png"), 1280, 720);
 	loadimage(&img_set_background, _T("resources/img_set_background.png"), 1280, 720);
 	loadimage(&img_game_background, _T("resources/img_game_background.jpg"), 1280, 720);
@@ -48,23 +48,23 @@ void load_game_resources() {
 	loadimage(&img_team_introduction_background, _T("resources/img_team_introduction_background.png"), 1280, 720);
 	
 
-	//½ÇÉ«Àà¼ÓÔØ
+	//è§’è‰²ç±»åŠ è½½
 
 
-	//×ÖÌåÀà¼ÓÔØ
+	//å­—ä½“ç±»åŠ è½½
 
 
-	//ËØ²ÄÀà¼ÓÔØ
+	//ç´ æç±»åŠ è½½
 
 
-	//Í¼¼¯Àà¼ÓÔØ
+	//å›¾é›†ç±»åŠ è½½
 	atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 10);
 	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 6);
 
-	//ÒôĞ§Àà¼ÓÔØ
+	//éŸ³æ•ˆç±»åŠ è½½
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);
 	mciSendString(_T("open resources/hovered.mp3 alias hovered"), NULL, 0, NULL);
-	mciSendString(_T("open resources/Skyline.mp3 alias menu_bgm"), NULL, 0, NULL);
+	mciSendString(_T("open resources/test.mp3 alias menu_bgm"), NULL, 0, NULL);
 
 }
 

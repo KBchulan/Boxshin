@@ -16,14 +16,14 @@ public:
 	MenuScene() = default;
 	~MenuScene() = default;
 	/*
-	¸ºÔğÈË£º
-	¹¦ÄÜ£º³õÊ¼»¯°´¼üÎ»ÖÃ£¬ÌùÍ¼,Ìí¼ÓÒôÀÖ
-	²ÎÊı£ºvoid
-	·µ»ØÖµ£ºvoid
+	è´Ÿè´£äººï¼š
+	åŠŸèƒ½ï¼šåˆå§‹åŒ–æŒ‰é”®ä½ç½®ï¼Œè´´å›¾,æ·»åŠ éŸ³ä¹
+	å‚æ•°ï¼švoid
+	è¿”å›å€¼ï¼švoid
 	*/
 	void scene_enter() {
-		//·Å¸öÒôÀÖ
-		//³õÊ¼»¯°´Å¥Ò»ÀàµÄ
+		//æ”¾ä¸ªéŸ³ä¹
+		//åˆå§‹åŒ–æŒ‰é’®ä¸€ç±»çš„
 		start_button.left = 530;
 		start_button.right = start_button.left + start_button_x;
 		start_button.top = 350;
@@ -58,7 +58,7 @@ public:
 	}
 
 	void data_input(const ExMessage& msg) {
-		//°´Å¥ĞÅÏ¢´¦Àí
+		//æŒ‰é’®ä¿¡æ¯å¤„ç†
 		set.Button_input(msg);
 		exit.Button_input(msg);
 		startgame.Button_input(msg);
@@ -68,25 +68,25 @@ public:
 		else if (music_num == 0)
 			gamevoiceopen.Button_input(msg);
 
-		//´¦Àí°´¼üĞÅÏ¢
+		//å¤„ç†æŒ‰é”®ä¿¡æ¯
 	}
 	
 	void data_update(int delta) {
-		//Êı¾İ¸üĞÂ
+		//æ•°æ®æ›´æ–°
 		if (flag != 1) {
 			scene_manager.switch_to(flag);
 		}
 	}
 	/*
-	¸ºÔğÈË£º
-	¹¦ÄÜ£º°´Å¥ÌùÍ¼äÖÈ¾
-	²ÎÊı£ºvoid
-	·µ»ØÖµ£ºvoid
+	è´Ÿè´£äººï¼š
+	åŠŸèƒ½ï¼šæŒ‰é’®è´´å›¾æ¸²æŸ“
+	å‚æ•°ï¼švoid
+	è¿”å›å€¼ï¼švoid
 	*/
 	void picture_draw() {
 		putimage(0, 0, &img_menu_background);
 
-		//°´Å¥»æÖÆ
+		//æŒ‰é’®ç»˜åˆ¶
 		set.Button_draw(set_button.left,set_button.top);
 		exit.Button_draw(exit_button.left,exit_button.top);
 		startgame.Button_draw(start_button.left,start_button.top);
@@ -98,17 +98,17 @@ public:
 
 	}
 		/*
-	¸ºÔğÈË£º
-	¹¦ÄÜ£ºÍË³öµ±Ç°Ò³Ãæ
-	²ÎÊı£ºvoid
-	·µ»ØÖµ£ºvoid
+	è´Ÿè´£äººï¼š
+	åŠŸèƒ½ï¼šé€€å‡ºå½“å‰é¡µé¢
+	å‚æ•°ï¼švoid
+	è¿”å›å€¼ï¼švoid
 	*/
 	void scene_exit() {
-		//ÍË³öÂß¼­£¬Èç»Ö¸´°´Å¥×´Ì¬»ú
+		//é€€å‡ºé€»è¾‘ï¼Œå¦‚æ¢å¤æŒ‰é’®çŠ¶æ€æœº
 	}
 
 private:
-	//´Ë´¦¶¨Òå°´Å¥
+	//æ­¤å¤„å®šä¹‰æŒ‰é’®
 	class StartGame :public Button {
 	public:
 		StartGame() = default;
@@ -119,7 +119,7 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 2;			//½ÇÉ«Ñ¡Ôñ½çÃæ
+			flag = 2;			//è§’è‰²é€‰æ‹©ç•Œé¢
 		}
 	};
 
@@ -133,7 +133,7 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 5;			//ÉèÖÃ½çÃæ
+			flag = 5;			//è®¾ç½®ç•Œé¢
 		}
 	};
 
@@ -147,7 +147,7 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 6;			//ÍË³öÓÎÏ·½çÃæ
+			flag = 6;			//é€€å‡ºæ¸¸æˆç•Œé¢
 		}
 	};
 
@@ -181,22 +181,22 @@ private:
 	
 	
 private:
-	int distance = 30;								//²»Í¬°´Å¥y¼ä¾à
+	int distance = 30;								//ä¸åŒæŒ‰é’®yé—´è·
 
-	RECT start_button;								//¶¨Òå¿ªÊ¼ÓÎÏ·¾ØĞÎ
+	RECT start_button;								//å®šä¹‰å¼€å§‹æ¸¸æˆçŸ©å½¢
 	int start_button_x = 220,
-		start_button_y = 80;						//°´Å¥µÄ³¤¿í
-	StartGame startgame;							//¶¨Òå°´Å¥
+		start_button_y = 80;						//æŒ‰é’®çš„é•¿å®½
+	StartGame startgame;							//å®šä¹‰æŒ‰é’®
 
-	RECT set_button;								//¶¨ÒåÉèÖÃ¾ØĞÎ
+	RECT set_button;								//å®šä¹‰è®¾ç½®çŸ©å½¢
 	int set_button_x = 220,
-		set_button_y = 80;							//¾ØĞÎ³¤¿í
-	Set set;										//¶¨Òå°´Å¥
+		set_button_y = 80;							//çŸ©å½¢é•¿å®½
+	Set set;										//å®šä¹‰æŒ‰é’®
 
-	RECT exit_button;								//¶¨ÒåÍË³öÓÎÏ·¾ØĞÎ
+	RECT exit_button;								//å®šä¹‰é€€å‡ºæ¸¸æˆçŸ©å½¢
 	int exit_button_x = 220,
-		exit_button_y = 80;							//°´Å¥³¤¿í
-	Exit exit;										//¶¨Òå°´Å¥
+		exit_button_y = 80;							//æŒ‰é’®é•¿å®½
+	Exit exit;										//å®šä¹‰æŒ‰é’®
 
 	RECT voice_button;
 	int voice_button_x = 50,

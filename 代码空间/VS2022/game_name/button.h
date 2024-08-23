@@ -5,8 +5,9 @@
 #include<easyx.h>
 
 #include"util.h"
+extern int sound_num;
 
-//按钮的属性包括矩形和三张图片
+//鎸夐挳鐨勫睘鎬у寘鎷煩褰㈠拰涓夊紶鍥剧墖
 class Button {
 public:
 	Button() = default;
@@ -24,7 +25,7 @@ public:
 		case WM_MOUSEMOVE:
 			if (status == Status::Idle && checkcursorhit(msg.x, msg.y)) {
 				status = Status::Hovered;
-				//mciSendString(_T("play hovered"), NULL, 0, NULL);
+				if(sound_num)mciSendString(_T("play hovered from 0"), NULL, 0, NULL);
 			}
 			else if (status == Status::Hovered && !checkcursorhit(msg.x, msg.y)) {
 				status = Status::Idle;
@@ -32,7 +33,7 @@ public:
 			break;
 		case WM_LBUTTONDOWN:
 			if (status == Status::Hovered && checkcursorhit(msg.x, msg.y)) {
-				mciSendString(_T("play confirm from 0"), NULL, 0, NULL);
+				if (sound_num)mciSendString(_T("play confirm from 0"), NULL, 0, NULL);
 				status = Status::Pushed;
 			}
 			break;

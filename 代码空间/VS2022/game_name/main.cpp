@@ -26,18 +26,18 @@
 bool running = true;
 SceneManager scene_manager;
 
-//»ù±¾³¡¾°ÀàÈçÏÂ
-Scene* map_scene = nullptr;							//×ó°ÍÑô
-Scene* set_scene = nullptr;							//Áõê»
-Scene* exit_scene = nullptr;						//Ã×·¹
-Scene* menu_scene = nullptr;						//¼«¹â
-Scene* game_scene = nullptr;						//Íõ»³çô
-Scene* selector_scene = nullptr;					//ÁÖ
-Scene* game_pause_scene = nullptr;					//ºÚ×Ó
-Scene* game_introduction_scene = nullptr;			//¾ÅÖİ
-Scene* team_introduction_scene = nullptr;			//¾ÅÖİ
+//åŸºæœ¬åœºæ™¯ç±»å¦‚ä¸‹
+Scene* map_scene = nullptr;							//å·¦å·´é˜³
+Scene* set_scene = nullptr;							//åˆ˜æ˜Š
+Scene* exit_scene = nullptr;						//ç±³é¥­
+Scene* menu_scene = nullptr;						//æå…‰
+Scene* game_scene = nullptr;						//ç‹æ€€çº
+Scene* selector_scene = nullptr;					//æ—
+Scene* game_pause_scene = nullptr;					//é»‘å­
+Scene* game_introduction_scene = nullptr;			//ä¹å·
+Scene* team_introduction_scene = nullptr;			//ä¹å·
 
-//¹Ø¿¨ÀàÈçÏÂ
+//å…³å¡ç±»å¦‚ä¸‹
 Scene* map01 = nullptr;
 Scene* map02 = nullptr;
 Scene* map03 = nullptr;
@@ -49,7 +49,7 @@ Scene* map07 = nullptr;
 
 int flag = 1;
 	/*
-	   flagÓÃÓÚÅĞ¶¨³¡¾°ÀàĞÍ
+	   flagç”¨äºåˆ¤å®šåœºæ™¯ç±»å‹
 	   1:menu_scene
 	   2:selector_scene
 	   3:game_scene
@@ -60,7 +60,7 @@ int flag = 1;
 	   8:team_introduction_scene
 	   9:game_pause_scene
 
-	   ÒÔÏÂÊÇgame_concrete_sceneµÄ³¡¾°ÀàĞÍ
+	   ä»¥ä¸‹æ˜¯game_concrete_sceneçš„åœºæ™¯ç±»å‹
 	   61:map01
 	   62:map02
 	   63:map03
@@ -69,7 +69,8 @@ int flag = 1;
 	   66:map06
 	   67:map07
 	*/
-int music_num = 1;					//¿ØÖÆÒôÀÖÊÇ·ñ²¥·Å,1Îª²¥·Å£¬0ÎªÍ£Ö¹
+int music_num = 1;					//æ§åˆ¶éŸ³ä¹æ˜¯å¦æ’­æ”¾,1ä¸ºæ’­æ”¾ï¼Œ0ä¸ºåœæ­¢
+int sound_num = 1;					//æ§åˆ¶éŸ³æ•ˆæ˜¯å¦æ’­æ”¾,1ä¸ºæ’­æ”¾ï¼Œ0ä¸ºåœæ­¢
 
 int main() {
 	srand(time(NULL));
@@ -81,7 +82,7 @@ int main() {
 
 	BeginBatchDraw();
 
-	//´´½¨³¡¾°Àà
+	//åˆ›å»ºåœºæ™¯ç±»
 	map_scene = new MapScene();
 	set_scene = new SetScene();
 	exit_scene = new ExitScene();
@@ -92,7 +93,7 @@ int main() {
 	game_introduction_scene = new GameIntroductionScene();
 	team_introduction_scene = new TeamIntroductionScene();
 
-	//¹Ø¿¨Àà
+	//å…³å¡ç±»
 	map01 = new Map61();
 	map02 = new Map62();
 	map03 = new Map63();
@@ -107,25 +108,25 @@ int main() {
 	{
 		DWORD frame_start = GetTickCount();
 
-		//´¦ÀíÊäÈë
+		//å¤„ç†è¾“å…¥
 		while (peekmessage(&msg))
 		{
 			scene_manager.data_input(msg);
 		}
 
-		//¸üĞÂÊı¾İ
+		//æ›´æ–°æ•°æ®
 		static DWORD last_tick_time = GetTickCount();
 		DWORD current_tick_time = GetTickCount();
 		DWORD delta = current_tick_time - last_tick_time;
 		scene_manager.data_update(delta);
 		last_tick_time = current_tick_time;
 
-		//»æÍ¼
+		//ç»˜å›¾
 		cleardevice();
 		scene_manager.picture_draw();
 		FlushBatchDraw();
 
-		//¶¯Ì¬ÑÓÊ±
+		//åŠ¨æ€å»¶æ—¶
 		DWORD frame_end = GetTickCount();
 		DWORD frame_delta = frame_end - frame_start;
 		if (frame_delta < 1000 / FPS) {
