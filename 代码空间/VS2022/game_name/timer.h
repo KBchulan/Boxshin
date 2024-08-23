@@ -26,12 +26,6 @@ public:
 		one_shot = flag;
 	}
 
-	//利用lambda设置回调函数,eg:
-	/*
-	timer_shake.set_callback([&]() {
-			is_shaking = false;
-			});
-	*/
 	void set_callback(std::function<void()> callback) {
 		this->callback = callback;
 	}
@@ -47,7 +41,7 @@ public:
 	}
 
 	//数据更新
-	void on_update(int delta) {
+	void data_update(int delta) {
 		if (paused)
 			return;
 		pass_time += delta;

@@ -28,6 +28,10 @@ public:
 		interval = ms;
 	}
 
+	void set_callback(std::function<void()> callback) {
+		this->callback = callback;
+	}
+
 	int get_idx_frame() {
 		return idx_frame;
 	}
@@ -41,7 +45,7 @@ public:
 		return (idx_frame == atlas->get_size() - 1);
 	}
 
-	void on_update(int delta) {
+	void data_update(int delta) {
 		timer += delta;
 		if (timer >= interval) {
 			timer = 0;
@@ -59,15 +63,11 @@ public:
 		putimage_alpha( x, y, atlas->get_image(idx_frame));
 	}
 
-	void set_callback(std::function<void()> callback) {
-		this->callback = callback;
-	}
-
 private:
-	int timer = 0;
-	int interval = 0;
-	int idx_frame = 0;
-	bool is_loop = true;
+	int timer = 0;						//计时器
+	int interval = 0;					//帧间隔
+	int idx_frame = 0;					//帧索引
+	bool is_loop = true;				//是否循环
 	Atlas* atlas = nullptr;
 	std::function<void()> callback;
 

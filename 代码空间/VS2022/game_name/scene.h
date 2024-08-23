@@ -3,7 +3,8 @@
 
 #include<easyx.h>
 
-#include"util.h"
+#include"timer.h"
+#include"animation.h"
 
 class Scene {
 public:

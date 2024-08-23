@@ -15,7 +15,7 @@ public:
 
 		TCHAR path_file[256];
 		for (auto i = 0; i < num; i++) {
-			_stprintf_s(path_file, path_template, i + 1);
+			_stprintf_s(path_file, path_template, i);
 			loadimage(&img_list[i], path_file);
 		}
 	}

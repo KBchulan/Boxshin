@@ -3,6 +3,11 @@
 #include<conio.h>
 #include<time.h>
 
+#include"util.h"
+#include"timer.h"
+#include"atlas.h"
+#include"animation.h"
+
 #include"scene.h"
 #include"button.h"
 #include"resources.h"

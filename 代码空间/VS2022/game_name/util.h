@@ -2,6 +2,7 @@
 #define _UTIL_H
 
 #include<easyx.h>
+#include"atlas.h"
 
 #pragma comment(lib,"Msimg32.lib")
 
@@ -28,12 +29,14 @@ inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img) {
 	AlphaBlend(GetImageHDC(GetWorkingImage()), dst_x, dst_y, w, h, GetImageHDC(img), 0, 0, w, h, { AC_SRC_OVER,0,255,AC_SRC_ALPHA });
 }
 
+//图片渲染(指定大小)
 inline void putimage_alpha(int dst_x, int dst_y, int width, int height, IMAGE* img, int src_x, int src_y) {
 	int w = width > 0 ? width : img->getwidth();
 	int h = height > 0 ? height : img->getheight();
 	AlphaBlend(GetImageHDC(GetWorkingImage()), dst_x, dst_y, w, h, GetImageHDC(img), src_x, src_y, w, h, { AC_SRC_OVER,0,255,AC_SRC_ALPHA });
 }
 
+//图片渲染(指定大小,指定背景色)
 inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img, COLORREF backgroundColor) {
 	int w = img->getwidth();
 	int h = img->getheight();
@@ -51,6 +54,7 @@ inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img, COLORREF background
 	}
 }
 
+//图片渲染(指定大小,指定背景色)
 inline void putimage_alpha(IMAGE* dst, int x, int y, IMAGE* src, UINT transparentcolor) {
 	HDC dstDC = GetImageHDC(dst);
 	HDC srcDC = GetImageHDC(src);
@@ -60,7 +64,7 @@ inline void putimage_alpha(IMAGE* dst, int x, int y, IMAGE* src, UINT transparen
 }
 
 //图片模糊
-inline void sketch_image(IMAGE* src, IMAGE* dst) {
+void sketch_image(IMAGE* src, IMAGE* dst) {
 	int w = src->getwidth();
 	int h = src->getheight();
 	Resize(dst, w, h);
@@ -75,7 +79,7 @@ inline void sketch_image(IMAGE* src, IMAGE* dst) {
 }
 
 //图片翻转
-inline void flip_image(IMAGE* src, IMAGE* dst) {
+void flip_image(IMAGE* src, IMAGE* dst) {
 	int w = src->getwidth();
 	int h = src->getheight();
 	Resize(dst, w, h);
@@ -89,6 +93,18 @@ inline void flip_image(IMAGE* src, IMAGE* dst) {
 		}
 	}
 }
+
+//图集翻转
+void flip_atlas(Atlas& src, Atlas& dst) {
+	dst.clear();
+	for (int i = 0; i < src.get_size(); i++) {
+		IMAGE img_flippend;
+		flip_image(src.get_image(i), &img_flippend);
+		dst.add_image(img_flippend);
+	}
+}
+
+
 
 
 #endif // _GAME_NAME_UTIL_H
