@@ -19,44 +19,44 @@ public:
         first_button.right = first_button.left + first_button_x;
         first_button.top = 100;
         first_button.bottom = first_button.top + first_button_y;
-        firstMap = MapTo61(first_button, _T("resources/map61_idle.png.png"), _T("resources/map61_hovered.png"), _T("resources/map61_pushed.png"), first_button_x, first_button_y);
+        firstMap = MapTo61(first_button, _T("resources/map61_idle.png"), _T("resources/map61_hovered.png"), _T("resources/map61_pushed.png"), first_button_x, first_button_y);
 
         second_button.left = first_button.right + distance_x;
         second_button.right = second_button.left + second_button_x;
         second_button.top = first_button.top;
         second_button.bottom = second_button.top + second_button_y;
-        secondMap = MapTo62(second_button, _T("resources/map62_idle.jpg"), _T("resources/map62_hovered.jpg"), _T("resources/map62_pushed.jpg"), second_button_x, second_button_y);
+        secondMap = MapTo62(second_button, _T("resources/map62_idle.png"), _T("resources/map62_hovered.png"), _T("resources/map62_pushed.png"), second_button_x, second_button_y);
 
         third_button.left = second_button.right + distance_x;
         third_button.right = third_button.left + third_button_x;
         third_button.top = second_button.top;
         third_button.bottom = third_button.top + third_button_y;
-        thirdMap = MapTo63(third_button, _T("resources/map63_idle.jpg"), _T("resources/map63_hovered.jpg"), _T("resources/map63_pushed.jpg"), third_button_x, third_button_y);
+        thirdMap = MapTo63(third_button, _T("resources/map63_idle.png"), _T("resources/map63_hovered.png"), _T("resources/map63_pushed.png"), third_button_x, third_button_y);
 
         fourth_button.left = first_button.left;
         fourth_button.right = fourth_button.left + fourth_button_x;
         fourth_button.top = third_button.bottom + distance_y;
         fourth_button.bottom = fourth_button.top + fourth_button_y;
-        fourthMap = MapTo64(fourth_button, _T("resources/map64_idle.jpg"), _T("resources/map64_hovered.jpg"), _T("resources/map64_pushed.jpg"), fourth_button_x, fourth_button_y);
+        fourthMap = MapTo64(fourth_button, _T("resources/map64_idle.png"), _T("resources/map64_hovered.png"), _T("resources/map64_pushed.png"), fourth_button_x, fourth_button_y);
 
         fifth_button.left = fourth_button.right + distance_x;
         fifth_button.right = fifth_button.left + fifth_button_x;
         fifth_button.top = fourth_button.top;
         fifth_button.bottom = fifth_button.top + fifth_button_y;
-        fifthMap = MapTo65(fifth_button, _T("resources/map65_idle.jpg"), _T("resources/map65_hovered.jpg"), _T("resources/map65_pushed.jpg"), fifth_button_x, fifth_button_y);
+        fifthMap = MapTo65(fifth_button, _T("resources/map65_idle.png"), _T("resources/map65_hovered.png"), _T("resources/map65_pushed.png"), fifth_button_x, fifth_button_y);
 
         sixth_button.left = fifth_button.right + distance_x;
         sixth_button.right = sixth_button.left + sixth_button_x;
         sixth_button.top = fifth_button.top;
         sixth_button.bottom = sixth_button.top + sixth_button_y;
-        sixthMap = MapTo66(sixth_button, _T("resources/map66_idle.jpg"), _T("resources/map66_hovered.jpg"), _T("resources/map66_pushed.jpg"), sixth_button_x, sixth_button_y);
+        sixthMap = MapTo66(sixth_button, _T("resources/map66_idle.png"), _T("resources/map66_hovered.png"), _T("resources/map66_pushed.png"), sixth_button_x, sixth_button_y);
 
         seventh_button.left = fourth_button.left;
         seventh_button.right = seventh_button.left + seventh_button_x;
         seventh_button.top = fourth_button.bottom + distance_y;
         seventh_button.bottom = seventh_button.top + seventh_button_y;
-        seventhMap = MapTo67(seventh_button, _T("resources/map67_idle.jpg"), _T("resources/map67_hovered.jpg"), _T("resources/map67_pushed.jpg"), seventh_button_x, seventh_button_y);
-        
+        seventhMap = MapTo67(seventh_button, _T("resources/map67_idle.png"), _T("resources/map67_hovered.png"), _T("resources/map67_pushed.png"), seventh_button_x, seventh_button_y);
+
         replay_button.left = 0;
         replay_button.right = replay_button.left + replay_button_x;
         replay_button.top = 0;

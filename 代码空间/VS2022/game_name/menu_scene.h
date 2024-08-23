@@ -5,7 +5,6 @@
 #include"button.h"
 #include"scene_manager.h"
 
-
 extern int flag;
 extern int music_num;
 extern IMAGE img_menu_background;
@@ -15,12 +14,7 @@ class MenuScene :public Scene {
 public:
 	MenuScene() = default;
 	~MenuScene() = default;
-	/*
-	负责人：
-	功能：初始化按键位置，贴图,添加音乐
-	参数：void
-	返回值：void
-	*/
+	
 	void scene_enter() {
 		//放个音乐
 		//初始化按钮一类的
@@ -54,10 +48,12 @@ public:
 		voice_open_button.bottom = voice_open_button_y;
 		gamevoiceopen = GameVoiceOpen(voice_open_button, _T("resources/sound_off_idle.png"), _T("resources/sound_off_hovered.png"), _T("resources/sound_off_pushed.png"), voice_open_button_x, voice_open_button_y);
 
-		mciSendString(_T("play menu_bgm repeat from 0"), NULL, 0, NULL);
+		mciSendString(_T("play menu_bgm repeat"), NULL, 0, NULL);
+		
 	}
 
 	void data_input(const ExMessage& msg) {
+		//处理按键信息
 		//按钮信息处理
 		set.Button_input(msg);
 		exit.Button_input(msg);
@@ -67,8 +63,6 @@ public:
 			gamevoice.Button_input(msg);
 		else if (music_num == 0)
 			gamevoiceopen.Button_input(msg);
-
-		//处理按键信息
 	}
 	
 	void data_update(int delta) {
@@ -76,13 +70,13 @@ public:
 		if (flag != 1) {
 			scene_manager.switch_to(flag);
 		}
+
+		if (music_num == 1)
+			mciSendString(_T("play menu_bgm repeat"), NULL, 0, NULL);
+		else
+			mciSendString(_T("stop menu_bgm"), NULL, 0, NULL);
 	}
-	/*
-	负责人：
-	功能：按钮贴图渲染
-	参数：void
-	返回值：void
-	*/
+	
 	void picture_draw() {
 		putimage(0, 0, &img_menu_background);
 
@@ -97,12 +91,7 @@ public:
 			gamevoiceopen.Button_draw();
 
 	}
-		/*
-	负责人：
-	功能：退出当前页面
-	参数：void
-	返回值：void
-	*/
+	
 	void scene_exit() {
 		//退出逻辑，如恢复按钮状态机
 	}

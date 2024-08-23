@@ -6,10 +6,10 @@
 #include"scene_manager.h"
 
 extern int flag;
-extern IMAGE img_set_background;
-extern SceneManager scene_manager;
 extern int music_num;
 extern int sound_num;
+extern IMAGE img_set_background;
+extern SceneManager scene_manager;
 
 class SetScene :public Scene {
 public:
@@ -49,12 +49,6 @@ public:
 		menu = Menu(menu_button, _T("resources/menu_idle.png"), _T("resources/menu_hovered.png"), _T("resources/menu_pushed.png"), menu_button_x, menu_button_y);
 	}
 
-	/*
-  负责人：
-  功能：接受按钮信息
-  参数：用户鼠标的点击
-  返回值：void
-  */
 	void data_input(const ExMessage& msg) {
 		//处理输入数据
 		menu.Button_input(msg);
@@ -63,24 +57,14 @@ public:
 		gameintroduction.Button_input(msg);
 		teamintroduction.Button_input(msg);
 	}
-	/*
-	负责人：
-	功能：根据flag的定义进行相关操作
-	参数：
-	返回值：void
-	*/
+	
 	void data_update(int delta) {
 		//数据更新
 		if (flag != 5) {
 			scene_manager.switch_to(flag);
 		}
 	}
-	/*
-	负责人：
-	功能：按钮贴图渲染
-	参数：void
-	返回值：void
-	*/
+	
 	void picture_draw() {
 		//渲染图片
 		putimage(0, 0, &img_set_background);
@@ -90,12 +74,7 @@ public:
 		gameintroduction.Button_draw(GameInt_button.left, GameInt_button.top);
 		teamintroduction.Button_draw(TeamInt_button.left, TeamInt_button.top);
 	}
-	/*
-负责人：
-功能：退出当前页面
-参数：void
-返回值：void
-*/
+	
 	void scene_exit() {
 		//退出场景
 	}
@@ -111,19 +90,11 @@ private:
 			:Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
 
 	protected:
-		 	/*
-	负责人：
-	功能：改变flag的队友值，进行页面跳转
-	参数：void
-	返回值：void
-	*/
 		void OnClick() {
 			if (music_num) {
-				mciSendString("stop menu_bgm", NULL, 0, NULL);
 				music_num = 0;
 			}
 			else {
-				mciSendString(_T("play menu_bgm repeat from 0"), NULL, 0, NULL);
 				music_num = 1;
 			}
 		}

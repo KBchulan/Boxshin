@@ -25,7 +25,7 @@ public:
 		case WM_MOUSEMOVE:
 			if (status == Status::Idle && checkcursorhit(msg.x, msg.y)) {
 				status = Status::Hovered;
-				if(sound_num)mciSendString(_T("play hovered from 0"), NULL, 0, NULL);
+				//mciSendString(_T("play hovered from 0"), NULL, 0, NULL);
 			}
 			else if (status == Status::Hovered && !checkcursorhit(msg.x, msg.y)) {
 				status = Status::Idle;
@@ -33,7 +33,8 @@ public:
 			break;
 		case WM_LBUTTONDOWN:
 			if (status == Status::Hovered && checkcursorhit(msg.x, msg.y)) {
-				if (sound_num)mciSendString(_T("play confirm from 0"), NULL, 0, NULL);
+				if (sound_num)
+					mciSendString(_T("play confirm from 0"), NULL, 0, NULL);
 				status = Status::Pushed;
 			}
 			break;
@@ -74,8 +75,9 @@ public:
 		}
 	}
 
-public:
+protected:
 	virtual void OnClick() = 0;
+	
 
 private:
 	enum class Status {

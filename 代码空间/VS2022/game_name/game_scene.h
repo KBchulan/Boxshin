@@ -6,7 +6,7 @@
 #include"button.h"
 #include"scene_manager.h"
 
-int play_num = 1;
+int play_num = 1;			//控制游戏开始和暂停
 
 extern int flag;
 extern int music_num;
@@ -17,12 +17,7 @@ class GameScene :public Scene {
 public:
 	GameScene() = default;
 	~GameScene() = default;
-	/*
-	负责人：
-	功能：初始化按钮位置
-	参数：void
-	返回值：void
-	*/
+	
 	void scene_enter() {
 		//初始化
 		voice_button.right = 1180;
@@ -61,12 +56,7 @@ public:
 		replay_button.bottom = replay_button.top + replay_button_y;
 		replay = Replay(replay_button, _T("resources/replay_idle.png"), _T("resources/replay_hovered.png"), _T("resources/replay_pushed.png"), replay_button_x, replay_button_y);
 	}
-	/*
-	负责人：
-	功能：接受用户点击
-	参数：用户点击
-	返回值：void
-	*/
+	
 	 void data_input(const ExMessage& msg) {
 		//按钮输入
 		gamereset.Button_input(msg);
@@ -82,43 +72,35 @@ public:
 		else if (music_num == 0)
 			gamevoiceopen.Button_input(msg);
 	}
-		/*
-	负责人：
-	功能：根据改变的flag值进行匹配并且进行相应操作
-	参数：
-	返回值：void
-	*/
+	
 	void data_update(int delta) {
 		//更新数据
 		if (flag <= 60) {
 			scene_manager.switch_to(flag);
 		}
+
+		if (music_num == 1)
+			mciSendString(_T("play menu_bgm repeat"), NULL, 0, NULL);
+		else
+			mciSendString(_T("stop menu_bgm"), NULL, 0, NULL);
 	}
-		/*
-	负责人：
-	功能：渲染按钮
-	参数：void
-	返回值：void
-	*/
+	
 	 void picture_draw() {
 		putimage(0, 0, &img_game_background);
 		gamereset.Button_draw();
 		replay.Button_draw();
+
 		if (play_num == 1)
 			gamepause.Button_draw();
 		else if (play_num == 0)
 			gamerestart.Button_draw();
+
 		if (music_num == 1)
 			gamevoice.Button_draw();
 		else if (music_num == 0)
 			gamevoiceopen.Button_draw();
 	}
-		/*
-	负责人：
-	功能：退出当前页面
-	参数：void
-	返回值：void
-	*/
+	
 	void scene_exit() {
 		//退出场景，释放资源
 	}
@@ -134,7 +116,7 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 0;
+			scene_manager.switch_to(flag);
 		}
 
 	};
