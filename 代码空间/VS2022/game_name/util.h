@@ -4,7 +4,7 @@
 #include<easyx.h>
 #include"atlas.h"
 
-#pragma comment(lib,"Msimg32.lib")
+#pragma comment(lib,"MSIMG32.lib")
 
 //Í¼Æ¬Ëõ·Å
 void resizeImage(IMAGE* src, IMAGE* dst, int newWidth, int newHeight) {

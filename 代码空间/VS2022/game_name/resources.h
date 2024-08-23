@@ -64,6 +64,7 @@ void load_game_resources() {
 	//“Ù–ß¿‡º”‘ÿ
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);
 	mciSendString(_T("open resources/hovered.mp3 alias hovered"), NULL, 0, NULL);
+	mciSendString(_T("open resources/Skyline.mp3 alias menu_bgm"), NULL, 0, NULL);
 
 }
 

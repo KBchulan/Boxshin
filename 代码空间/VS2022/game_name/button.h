@@ -32,7 +32,7 @@ public:
 			break;
 		case WM_LBUTTONDOWN:
 			if (status == Status::Hovered && checkcursorhit(msg.x, msg.y)) {
-				mciSendString(_T("play confirm"), NULL, 0, NULL);
+				mciSendString(_T("play confirm from 0"), NULL, 0, NULL);
 				status = Status::Pushed;
 			}
 			break;
