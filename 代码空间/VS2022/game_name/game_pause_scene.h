@@ -3,6 +3,9 @@
 
 #include"game_scene.h"
 
+extern int play_num;
+extern int previous_flag;
+
 class GamePauseScene :public Scene {
 public:
 	GamePauseScene() = default;
@@ -11,28 +14,30 @@ public:
 	//进入场景
 	void scene_enter() {
 		//按钮初始化
-		continue_button.right = 1280;
-		continue_button.top = 0;
+		continue_button.right = 760;
+		continue_button.top = 240;
 		continue_button.left = continue_button.right - pause_button_x;
-		continue_button.bottom = pause_button_y;
+		continue_button.bottom = continue_button.top + pause_button_y;
 		pausecontinue = PauseContinue(continue_button, _T("resources/pause_continue_idle.png"), _T("resources/pause_continue_hovered.png"), _T("resources/pause_continue_pushed.png"), pause_button_x, pause_button_y);
 
-		menu_button.right = 1280;
-		menu_button.top = pause_button_y;
-		menu_button.left = menu_button.right - pause_button_x;
-		menu_button.bottom = menu_button.top + pause_button_y;
-		pausemenu = PauseMenu(menu_button, _T("resources/pause_menu_idle.png"), _T("resources/pause_menu_hovered.png"), _T("resources/pause_menu_pushed.png"), pause_button_x, pause_button_y);
-	
-														/*
-														*按钮图片加载，按钮位置调整   
-														*负责人：
-														*/
+		map_button.right = 760;
+		map_button.top = 360;
+		map_button.left = map_button.right - map_button_x;
+		map_button.bottom = map_button.top + map_button_y;
+		pausemap = PauseMap(map_button, _T("resources/map_idle.png"), _T("resources/map_hovered.png"), _T("resources/map_pushed.png"), map_button_x, map_button_y);
+
+		menu_button.right = 760;
+		menu_button.top = 480;
+		menu_button.left = menu_button.right - menu_button_x;
+		menu_button.bottom = menu_button.top + menu_button_y;
+		pausemenu = PauseMenu(menu_button, _T("resources/pause_menu_idle.png"), _T("resources/pause_menu_hovered.png"), _T("resources/pause_menu_pushed.png"), menu_button_x, menu_button_y);
 	}
 
 	//处理数据
 	void data_input(const ExMessage& msg) { 
 		pausecontinue.Button_input(msg);
 		pausemenu.Button_input(msg);
+		pausemap.Button_input(msg);
 	}
 
 	//数据更新
@@ -44,12 +49,14 @@ public:
 
 	//图形绘制
 	void picture_draw() {
-		pausecontinue.Button_draw();
-		pausemenu.Button_draw();
-	}													/*
-														背景渲染   
-														负责人：
-														*/
+    putimage(0, 0, &img_game_pause_background);
+    putimage(120, 67.5, &img_game_pause_box);
+		//pausecontinue.Button_draw();
+		//pausemenu.Button_draw();
+		pausecontinue.Button_draw(continue_button.left, continue_button.top);
+		pausemenu.Button_draw(menu_button.left, menu_button.top);
+		pausemap.Button_draw(map_button.left, map_button.top);
+	}
 
 	//退出场景
 	void scene_exit() { }
@@ -65,10 +72,21 @@ private:
 			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
 	protected:
 		void OnClick() {
-														/*
-														*跳转回关卡页面，读取原游戏进度   
-														*负责人：
-														*/
+			play_num = 1;
+			flag = previous_flag;
+		}
+	};
+	class PauseMap :public Button {
+	public:
+		PauseMap() = default;
+		~PauseMap() = default;
+
+		PauseMap(RECT rect, LPCTSTR path_img_idle, LPCTSTR path_img_hovered, LPCTSTR path_img_pushed, int x, int y) :
+			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
+	protected:
+		void OnClick() {
+			play_num = 1;
+			flag = 4;
 		}
 	};
 	class PauseMenu :public Button {
@@ -80,22 +98,23 @@ private:
 			Button(rect, path_img_idle, path_img_hovered, path_img_pushed, x, y) {}
 	protected:
 		void OnClick() {
+			play_num = 1;
 			flag = 1;
 		}
 	};
 private:
-	int pause_button_x = 50,
-		pause_button_y = 50;							
-														/*
-														*按钮大小调整   
-														*负责人：
-														*/
+	int pause_button_x = 240, pause_button_y = 75;
+	int menu_button_x = 240, menu_button_y = 75;
+	int map_button_x = 240, map_button_y = 75;
 
 	RECT continue_button;
 	PauseContinue pausecontinue;
 
 	RECT menu_button;
 	PauseMenu pausemenu;
+
+	RECT map_button;
+	PauseMap pausemap;
 };
 
-#endif // !__GAME_SCENE_PAUSE_H__
+#endif // !__GAME_PAUSE_SCENE_H__

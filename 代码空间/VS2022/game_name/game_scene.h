@@ -8,6 +8,8 @@
 
 int play_num = 1;			//控制游戏开始和暂停
 
+int previous_flag;		// 保持暂停时的关卡信息
+
 extern int flag;
 extern int music_num;
 extern IMAGE img_game_background;
@@ -132,6 +134,8 @@ private:
 	protected:
 		void OnClick() {
 			play_num = 0;
+			previous_flag = flag;
+			flag = 9;
 		}
 	};
 

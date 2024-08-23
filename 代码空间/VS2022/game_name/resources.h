@@ -15,6 +15,7 @@ IMAGE img_game_background;
 IMAGE img_exit_background;
 IMAGE img_selector_background;
 IMAGE img_game_pause_background;
+IMAGE img_game_pause_box;
 IMAGE img_game_introduction_background;
 IMAGE img_team_introduction_background;
 
@@ -44,6 +45,7 @@ void load_game_resources() {
 	loadimage(&img_exit_background, _T("resources/img_exit_background.png"), 1045, 585);
 	loadimage(&img_selector_background, _T("resources/img_selector_background.png"), 1280, 720);
 	loadimage(&img_game_pause_background, _T("resources/img_game_pause_background.png"), 1280, 720);
+	loadimage(&img_game_pause_box, _T("resources/img_game_pause_box.png"), 1045, 585);
 	loadimage(&img_game_introduction_background, _T("resources/img_game_introduction_background.png"), 1280, 720);
 	loadimage(&img_team_introduction_background, _T("resources/img_team_introduction_background.png"), 1280, 720);
 	
