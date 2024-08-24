@@ -23,6 +23,7 @@
 #include"game_introduction_scene.h"
 #include"team_introduction_scene.h"
 
+ExMessage msg;
 bool running = true;
 SceneManager scene_manager;
 
@@ -74,7 +75,6 @@ int sound_num = 1;					//控制音效是否播放,1为播放，0为停止
 
 int main() {
 	srand(time(NULL));
-	ExMessage msg;
 	const int FPS = 165;
 
 	load_game_resources();

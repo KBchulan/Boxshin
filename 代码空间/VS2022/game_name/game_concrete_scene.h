@@ -9,44 +9,24 @@ class Map61 :public Scene {
 public:
 	Map61() = default;
 	~Map61() = default;
-
-	/*
-	负责人:
-	功能: 进入关卡场景
-	*/
+	
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
 	}
 
-	/*
-	负责人:
-	功能: 输入关卡场景信息
-	*/
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 	}
 
-	/*
-	负责人:
-	功能: 更新关卡数据
-	*/
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
 	}
 
-	/*
-	负责人:
-	功能: 绘制关卡场景
-	*/
 	void picture_draw() {
 		game_background_scene->picture_draw();
 	}
 
-	/*
-	负责人:
-	功能: 退出关卡场景
-	*/
 	void scene_exit() {
 		game_background_scene->scene_exit();
 	}

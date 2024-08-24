@@ -20,8 +20,8 @@ public:
 		continue_button.bottom = continue_button.top + pause_button_y;
 		pausecontinue = PauseContinue(continue_button, _T("resources/pause_continue_idle.png"), _T("resources/pause_continue_hovered.png"), _T("resources/pause_continue_pushed.png"), pause_button_x, pause_button_y);
 
-		map_button.right = 760;
-		map_button.top = 360;
+		map_button.right = 730;
+		map_button.top = 369;
 		map_button.left = map_button.right - map_button_x;
 		map_button.bottom = map_button.top + map_button_y;
 		pausemap = PauseMap(map_button, _T("resources/map_idle.png"), _T("resources/map_hovered.png"), _T("resources/map_pushed.png"), map_button_x, map_button_y);
@@ -51,11 +51,9 @@ public:
 	void picture_draw() {
     putimage(0, 0, &img_game_pause_background);
     putimage(120, 67.5, &img_game_pause_box);
-		//pausecontinue.Button_draw();
-		//pausemenu.Button_draw();
-		pausecontinue.Button_draw(continue_button.left, continue_button.top);
-		pausemenu.Button_draw(menu_button.left, menu_button.top);
-		pausemap.Button_draw(map_button.left, map_button.top);
+	pausecontinue.Button_draw(continue_button.left, continue_button.top);
+	pausemenu.Button_draw(menu_button.left, menu_button.top);
+	pausemap.Button_draw(map_button.left, map_button.top);
 	}
 
 	//退出场景
@@ -76,6 +74,7 @@ private:
 			flag = previous_flag;
 		}
 	};
+
 	class PauseMap :public Button {
 	public:
 		PauseMap() = default;
@@ -102,10 +101,12 @@ private:
 			flag = 1;
 		}
 	};
+
+
 private:
 	int pause_button_x = 240, pause_button_y = 75;
 	int menu_button_x = 240, menu_button_y = 75;
-	int map_button_x = 240, map_button_y = 75;
+	int map_button_x = 180, map_button_y = 57;
 
 	RECT continue_button;
 	PauseContinue pausecontinue;

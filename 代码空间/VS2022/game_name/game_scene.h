@@ -7,8 +7,7 @@
 #include"scene_manager.h"
 
 int play_num = 1;			//控制游戏开始和暂停
-
-int previous_flag;		// 保持暂停时的关卡信息
+int previous_flag;			//保持暂停时的关卡信息
 
 extern int flag;
 extern int music_num;
@@ -57,6 +56,8 @@ public:
 		replay_button.top = 0;
 		replay_button.bottom = replay_button.top + replay_button_y;
 		replay = Replay(replay_button, _T("resources/replay_idle.png"), _T("resources/replay_hovered.png"), _T("resources/replay_pushed.png"), replay_button_x, replay_button_y);
+	
+	
 	}
 	
 	 void data_input(const ExMessage& msg) {
