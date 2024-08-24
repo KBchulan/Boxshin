@@ -22,6 +22,9 @@
     <Filter Include="头文件\rend">
       <UniqueIdentifier>{f564d38b-f372-4a61-9c39-d9d21ab2f993}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\live">
+      <UniqueIdentifier>{fb52c681-1f43-491a-8d06-e3e897ac5239}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -82,6 +85,15 @@
     </ClInclude>
     <ClInclude Include="animation.h">
       <Filter>头文件\rend</Filter>
+    </ClInclude>
+    <ClInclude Include="player.h">
+      <Filter>头文件\live</Filter>
+    </ClInclude>
+    <ClInclude Include="enemy.h">
+      <Filter>头文件\live</Filter>
+    </ClInclude>
+    <ClInclude Include="item.h">
+      <Filter>头文件\live</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

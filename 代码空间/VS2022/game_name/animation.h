@@ -60,7 +60,7 @@ public:
 	}
 
 	void picture_draw(int x, int y)const {
-		putimage_alpha(x, y, atlas->get_image(idx_frame + 1));
+		putimage_alpha(x, y, atlas->get_image(idx_frame));
 	}
 
 private:

@@ -6,9 +6,9 @@
 #include"scene_manager.h"
 
 extern int flag;
-extern int music_num;
 extern int sound_num;
 extern ExMessage msg;
+extern int music_num;
 extern IMAGE img_set_background;
 extern SceneManager scene_manager;
 
@@ -54,18 +54,19 @@ public:
 		menu_button.bottom = menu_button_y;
 		menu = Menu(menu_button, _T("resources/menu_idle.png"), _T("resources/menu_hovered.png"), _T("resources/menu_pushed.png"), menu_button_x, menu_button_y);
 		
-		MusicControl_button.right = 900 - 2;
+		MusicControl_button.right = 898;
 		MusicControl_button.left = MusicControl_button.right - MusicControl_button_x;
 		MusicControl_button.top = 150;
 		MusicControl_button.bottom = MusicControl_button.top + MusicControl_button_y;
 		musiccontrol = MusicControl(MusicControl_button, _T("resources/music_control_line.png"), _T("resources/music_control_line.png"), _T("resources/music_control_line.png"), MusicControl_button_x, MusicControl_button_y);
 
-		SoundControl_button.right = 900 - 2;
+		SoundControl_button.right = 898;
 		SoundControl_button.left = SoundControl_button.right - SoundControl_button_x;
 		SoundControl_button.top = 335;
 		SoundControl_button.bottom = SoundControl_button.top + SoundControl_button_y;
 		soundcontrol = SoundControl(SoundControl_button, _T("resources/music_control_line.png"), _T("resources/music_control_line.png"), _T("resources/music_control_line.png"), SoundControl_button_x, SoundControl_button_y);
-	
+		
+
 	}
 
 	void data_input(const ExMessage& msg) {
@@ -116,12 +117,10 @@ private:
 
 	protected:
 		void OnClick() {
-			if (music_num) {
+			if (music_num)
 				music_num = 0;
-			}
-			else {
+			else 
 				music_num = 1;
-			}
 		}
 	};
 
@@ -135,12 +134,10 @@ private:
 
 	protected:
 		void OnClick() {
-			if (sound_num) {
+			if (sound_num)
 				sound_num = 0;
-			}
-			else {
+			else 
 				sound_num = 1;
-			}
 		}
 
 	};

@@ -25,18 +25,24 @@
 
 ExMessage msg;
 bool running = true;
+POINT player_position;
 SceneManager scene_manager;
 
+//player 王怀玺 极光 刘昊
+//enemy 左巴阳	林 	米饭
+//item	黑子 九州
+//26晚前提交
+
 //基本场景类如下
-Scene* map_scene = nullptr;							//左巴阳   完成
-Scene* set_scene = nullptr;							//刘昊	   完成一部分
-Scene* exit_scene = nullptr;						//米饭	   完成
-Scene* menu_scene = nullptr;						//极光	   完成
-Scene* game_scene = nullptr;						//王怀玺   完成
-Scene* selector_scene = nullptr;					//林	   完成一部分
-Scene* game_pause_scene = nullptr;					//黑子	   未提交
-Scene* game_introduction_scene = nullptr;			//九州	   完成一部分
-Scene* team_introduction_scene = nullptr;			//九州	   完成一部分
+Scene* map_scene = nullptr;	
+Scene* set_scene = nullptr;	
+Scene* exit_scene = nullptr;
+Scene* menu_scene = nullptr;
+Scene* game_scene = nullptr;
+Scene* selector_scene = nullptr;
+Scene* game_pause_scene = nullptr;
+Scene* game_introduction_scene = nullptr;
+Scene* team_introduction_scene = nullptr;
 
 //关卡类如下
 Scene* map01 = nullptr;

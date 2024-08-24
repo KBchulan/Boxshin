@@ -81,11 +81,6 @@ public:
 		if (flag <= 60) {
 			scene_manager.switch_to(flag);
 		}
-
-		if (music_num == 1)
-			mciSendString(_T("play menu_bgm repeat"), NULL, 0, NULL);
-		else
-			mciSendString(_T("stop menu_bgm"), NULL, 0, NULL);
 	}
 	
 	 void picture_draw() {

@@ -21,6 +21,8 @@ extern Scene* map05;
 extern Scene* map06;
 extern Scene* map07;
 
+extern int music_num;
+
 class SceneManager {
 public:
 	SceneManager() = default;
@@ -94,6 +96,10 @@ public:
 	}
 
 	void data_update(int delta) {
+		if (music_num == 1)
+			mciSendString(_T("play menu_bgm repeat"), NULL, 0, NULL);
+		else
+			mciSendString(_T("stop menu_bgm"), NULL, 0, NULL);
 		current_scene->data_update(delta);
 	}
 

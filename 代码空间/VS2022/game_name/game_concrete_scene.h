@@ -13,6 +13,7 @@ public:
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
+
 	}
 
 	void data_input(const ExMessage& msg) {
@@ -32,6 +33,7 @@ public:
 	}
 
 private:
+
 
 
 };
