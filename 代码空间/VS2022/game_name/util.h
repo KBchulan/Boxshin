@@ -46,7 +46,6 @@ inline void putimage_alpha(int dst_x, int dst_y, IMAGE* img, COLORREF background
 		for (int x = 0; x < w; x++) {
 			int srcIndex = y * w + x;
 			COLORREF color = pSrc[srcIndex];
-
 			if (color != backgroundColor) {
 				pDst[(dst_y + y) * getwidth() + (dst_x + x)] = color;
 			}

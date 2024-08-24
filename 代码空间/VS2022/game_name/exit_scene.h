@@ -67,6 +67,7 @@ private:
 
     protected:
         void OnClick() {
+            flag = 1;
             running = false;
             mciSendString(_T("stop all"), NULL, 0, NULL);
         }

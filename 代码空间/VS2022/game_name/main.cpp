@@ -70,6 +70,7 @@ int flag = 1;
 	   66:map06
 	   67:map07
 	*/
+
 int music_num = 1;					//控制音乐是否播放,1为播放，0为停止
 int sound_num = 1;					//控制音效是否播放,1为播放，0为停止
 

@@ -60,7 +60,7 @@ void load_game_resources() {
 
 
 	//图集类加载
-	atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 10);
+	atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9);
 	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 6);
 
 	//音效类加载
