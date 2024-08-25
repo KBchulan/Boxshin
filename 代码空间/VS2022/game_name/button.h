@@ -75,6 +75,20 @@ public:
 		}
 	}
 
+	inline void Button_draw(int x, int y, UINT transparentcolor) {
+		switch (status) {
+		case Status::Idle:
+			putimage_alpha(NULL, x, y, &img_idle, WHITE);
+			break;
+		case Status::Hovered:
+			putimage_alpha(NULL, x, y, &img_hovered, WHITE);
+			break;
+		case Status::Pushed:
+			putimage_alpha(NULL, x, y, &img_pushed, WHITE);
+			break;
+		}
+	}
+
 protected:
 	virtual void OnClick() = 0;
 	

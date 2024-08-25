@@ -7,6 +7,7 @@
 
 extern int flag;
 extern SceneManager scene_manager;
+extern IMAGE img_game_introduction;
 
 class GameIntroductionScene : public Scene {
 public:
@@ -35,8 +36,9 @@ public:
     }
 
     void picture_draw() {
+        putimage(0, 0, &img_game_introduction);
         //ªÊ÷∆∞¥≈•
-        menu.Button_draw();
+        menu.Button_draw(menu_button.left,menu_button.top);
     }
 
     void scene_exit() {
