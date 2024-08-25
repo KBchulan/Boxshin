@@ -16,8 +16,17 @@ public:
 
 	~Player() = default;
 
+	void set_position(int x, int y) {
+		this->x = x;
+		this->y = y;
+	}
+
 	void set_atlas(Atlas* atlas) {
 		this->atlas_player_idle = atlas;
+	}
+
+	void set_animation(Animation* animation) {
+		this->animation_player_idle = animation;
 	}
 
 	virtual void data_input(const ExMessage& msg) {
@@ -59,11 +68,13 @@ public:
 	}
 
 	virtual void data_update(int delta) {
+		player_position.x = 120 + x * 40;
+		player_position.y = 40 + y * 40;
 
 	}
 
 	virtual void picture_draw() {
-
+		animation_player_idle->picture_draw(player_position.x, player_position.y);
 	}
 
 protected:
@@ -72,8 +83,12 @@ protected:
 	}
 
 private:
+	int x, y;			//标定map[x][y]的位置
+
+
+private:
 	Atlas* atlas_player_idle;
-	Animation animation_player_idle;
+	Animation* animation_player_idle;
 
 
 private:

@@ -7,15 +7,10 @@
 
 extern int flag;
 extern int sound_num;
-extern ExMessage msg;
 extern int music_num;
+extern ExMessage msg;
 extern IMAGE img_set_background;
 extern SceneManager scene_manager;
-
-int music_drawflag = 0;
-int sound_drawflag = 0;
-int music_drawx;
-int sound_drawx;
 
 class SetScene :public Scene {
 public:
@@ -85,8 +80,6 @@ public:
 		if (flag != 5) {
 			scene_manager.switch_to(flag);
 		}
-		music_control();
-		sound_control();
 	}
 	
 	void picture_draw() {
@@ -97,8 +90,7 @@ public:
 		soundeffects.Button_draw(Sound_button.left, Sound_button.top);
 		gameintroduction.Button_draw(GameInt_button.left, GameInt_button.top);
 		teamintroduction.Button_draw(TeamInt_button.left, TeamInt_button.top);
-		music_control_draw();
-		sound_control_draw();
+		ms_draw();
 	}
 	
 	void scene_exit() {
@@ -195,8 +187,10 @@ private:
 
 	protected:
 		void OnClick() {
-			music_drawflag = 1;
-			music_drawx = msg.x;
+			drawflag = 1;
+			drawx = msg.x;
+			ms_volume = (msg.x - 600) * 65535 / 300;
+			ms_control(ms_volume);
 		}
 	};
 
@@ -210,50 +204,47 @@ private:
 
 	protected:
 		void OnClick() {
-			sound_drawflag = 1;
-			sound_drawx = msg.x;
+			drawflag = 1;
+			drawx = msg.x;
+			ms_volume = (msg.x - 600) * 65535 / 300;
+			ms_control(ms_volume);
 		}
 	};
 
 private:
-		void music_control_draw() {
-			setlinecolor(BLACK);				//设置线的颜色
-			setfillcolor(RGB(0, 0, 230));
-			fillroundrect(600, 150, 900, 170, 10, 10);
-			setfillcolor(WHITE);
-			if (music_drawflag == 1)
-				fillroundrect(music_drawx - 10, 150, music_drawx + 10, 170, 20, 20);
-			else 
-				fillroundrect(740, 150, 760, 170, 20, 20);
-		}
+	void ms_draw() {
+		setlinecolor(BLACK);				//设置线的颜色
+		setfillcolor(RGB(0, 0, 230));
+		fillroundrect(600, 150, 900, 170, 10, 10);
+		setfillcolor(WHITE);
 
-		void sound_control_draw() {
-			setlinecolor(BLACK);				//设置线的颜色
-			setfillcolor(RGB(0, 0, 230));
-			fillroundrect(600, 335, 900, 355, 10, 10);
-			setfillcolor(WHITE);
-			if (sound_drawflag == 1)
-				fillroundrect(sound_drawx - 10, 335, sound_drawx + 10, 355, 20, 20);
-			else 
-				fillroundrect(740, 335, 760, 355, 20, 20);
-		}
+		setlinecolor(BLACK);				//设置线的颜色
+		setfillcolor(RGB(0, 0, 230));
+		fillroundrect(600, 335, 900, 355, 10, 10);
+		setfillcolor(WHITE);
 
-		void music_control() {
-			DWORD control;
-			control = ((music_drawx - 600) * 65535) / 300;
-			char command[256];
-			sprintf_s(command, sizeof(command), "setaudio menu_bgm volume to %u", control);
-			wchar_t wcommand[256];
-			MultiByteToWideChar(CP_ACP, 0, command, -1, wcommand, 256);
-			mciSendStringW(wcommand, NULL, 0, NULL);
+		if (drawflag == 1) {
+			fillroundrect(drawx - 10, 150, drawx + 10, 170, 20, 20);
+			fillroundrect(drawx - 10, 335, drawx + 10, 355, 20, 20);
 		}
-
-		void sound_control() {
-
+		else {
+			fillroundrect(740, 150, 760, 170, 20, 20);
+			fillroundrect(740, 335, 760, 355, 20, 20);
 		}
+	}
+
+	static void ms_control(int volume) {
+		DWORD dwVolume = MAKELONG(volume, volume);
+		// 设置音量
+		waveOutSetVolume(0, dwVolume);
+	}
 
 
 private:
+	static int drawflag;		//初始音量调节滑块渲染flag，flag=0则渲染到中间，flag=1则跟随鼠标渲染
+	static int drawx;			//调节滑块渲染x坐标
+	static int ms_volume;		//音量大小
+
 	int distance_x = 200,
 		distance_y = 100;
 
@@ -293,6 +284,10 @@ private:
 	MusicControl musiccontrol;
 
 };
+
+int SetScene::drawflag = 0; 
+int SetScene::drawx = 0;    
+int SetScene::ms_volume = 0;
 
 
 #endif // !_SET_SCENE_H_
