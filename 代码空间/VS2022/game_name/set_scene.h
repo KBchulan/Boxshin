@@ -291,6 +291,7 @@ private:
 	int MusicControl_button_x = 295,
 		MusicControl_button_y = 20;
 	MusicControl musiccontrol;
+
 };
 
 
