@@ -13,6 +13,7 @@ extern int flag;
 extern Player* player;
 extern Atlas atlas_gamer_lypo;
 extern Atlas atlas_gamer_diver;
+extern IMAGE img_game_selector_box;
 extern SceneManager scene_manager;
 extern IMAGE img_selector_background;
 
@@ -89,10 +90,11 @@ public:
 			scene_manager.switch_to(flag);
 		}
 	}
-
+	
 	void picture_draw() {
 		//绘制图片
 		putimage(0, 0, &img_selector_background);
+		putimage(500,160，250, 250, &img_game_selector_box);
 		//绘制按钮
 		replay.Button_draw(replay_button.left,replay_button.top);
 		entermap.Button_draw(enter_button.left,enter_button.top);
@@ -101,7 +103,7 @@ public:
 		//绘制角色动画
 		switch (number) {
 		case 1:
-			animation_gamer_diver.picture_draw(520, 150);
+			animation_gamer_diver.picture_draw(525, 225);
 			break;
 		case 2:
 			animation_gamer_lypo.picture_draw(525, 170);
