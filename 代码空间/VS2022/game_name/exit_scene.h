@@ -22,7 +22,7 @@ public:
         confirm_button.top = 550;
         confirm_button.left = confirm_button.right - confirm_button_x;
         confirm_button.bottom = confirm_button.top + confirm_button_y;
-        confirm = Confirm(confirm_button, _T("resources/confirm_idle.png"), _T("resources/confirm_hovered.png"), _T("resources/UI/menu/confirm_pushed.png"), confirm_button_x, confirm_button_y);
+        confirm = Confirm(confirm_button, _T("resources/confirm_idle.png"), _T("resources/confirm_hovered.png"), _T("resources/confirm_pushed.png"), confirm_button_x, confirm_button_y);
 
         concel_button.left = 720;
         concel_button.top = 550;
