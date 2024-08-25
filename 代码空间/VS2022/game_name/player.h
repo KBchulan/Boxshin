@@ -4,8 +4,9 @@
 #include<easyx.h>
 #include<vector>
 
-#include"animation.h"
+#include"animation.h" 
 
+extern int game_map[26][16];
 extern POINT player_position;
 extern Atlas atlas_gamer_diver;
 
@@ -57,7 +58,7 @@ public:
 		}
 	}
 
-	virtual void data_update() {
+	virtual void data_update(int delta) {
 
 	}
 
