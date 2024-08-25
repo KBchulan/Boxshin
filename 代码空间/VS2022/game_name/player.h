@@ -11,9 +11,7 @@ extern Atlas atlas_gamer_diver;
 
 class Player {
 public:
-	Player() {
-		animation_player_idle.set_atlas(&atlas_gamer_diver);
-	}
+	Player() = default;
 
 	~Player() = default;
 

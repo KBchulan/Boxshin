@@ -10,6 +10,7 @@
 
 #include"scene.h"
 #include"button.h"
+#include"player.h"
 #include"resources.h"
 #include"set_scene.h"
 #include"map_scene.h"
@@ -27,6 +28,15 @@ ExMessage msg;
 bool running = true;
 POINT player_position;
 SceneManager scene_manager;
+
+Player* player;
+
+//游戏地图
+int game_map[26][16] = { 0 };
+//0：空地
+//1：玩家
+//2：敌人
+//3：非生命物
 
 //player 王怀玺 极光 刘昊
 //enemy 左巴阳	林 	米饭

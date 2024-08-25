@@ -9,13 +9,13 @@ public:
 	Atlas() = default;
 	~Atlas() = default;
 
-	void load_from_file(LPCTSTR path_template, int num) {
+	void load_from_file(LPCTSTR path_template, int num, int x, int y) {
 		img_list.clear();
 		img_list.resize(num);
 		TCHAR path_file[256];
 		for (auto i = 0; i < num; i++) {
 			_stprintf_s(path_file, path_template, i + 1);
-			loadimage(&img_list[i], path_file);
+			loadimage(&img_list[i], path_file, x, y);
 		}
 	}
 

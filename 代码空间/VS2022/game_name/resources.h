@@ -60,13 +60,13 @@ void load_game_resources() {
 
 
 	//图集类加载
-	atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9);
-	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 6);
+	atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9,200,100);
+	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9,220,100);
 
 	//音效类加载
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);
 	mciSendString(_T("open resources/hovered.mp3 alias hovered"), NULL, 0, NULL);
-	mciSendString(_T("open resources/test.mp3 alias menu_bgm"), NULL, 0, NULL);
+	mciSendString(_T("open resources/Skyine.mp3 alias menu_bgm"), NULL, 0, NULL);
 
 }
 

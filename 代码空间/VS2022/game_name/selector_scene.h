@@ -3,17 +3,18 @@
 
 #include"scene.h"
 #include"button.h"
+#include"player_diver.h"
 #include"scene_manager.h"
 
 int number;					//玩家序号,我们选用此进行不同角色的确认
 int gamer_sum;				//角色总数
 
 extern int flag;
+extern Player* player;
 extern Atlas atlas_gamer_lypo;
 extern Atlas atlas_gamer_diver;
 extern SceneManager scene_manager;
 extern IMAGE img_selector_background;
-
 
 class SelectorScene :public Scene {
 public:
@@ -100,10 +101,10 @@ public:
 		//绘制角色动画
 		switch (number) {
 		case 1:
-			animation_gamer_diver.picture_draw(100, 100);
+			animation_gamer_diver.picture_draw(520, 150);
 			break;
 		case 2:
-			animation_gamer_lypo.picture_draw(100, 100);
+			animation_gamer_lypo.picture_draw(525, 170);
 			break;
 		default:
 			break;
@@ -114,6 +115,16 @@ public:
 
 	void scene_exit() {
 		//退出场景，释放资源
+		switch (number) {
+		case 1:
+			player = new PlayerDive();
+			break;
+		case 2:
+			
+			break;
+		default:
+			break;
+		}
 	}
 
 private:
