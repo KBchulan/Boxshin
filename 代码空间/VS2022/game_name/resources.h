@@ -55,7 +55,7 @@ void load_game_resources() {
 	loadimage(&img_game_pause_box, _T("resources/img_game_pause_box.png"), 1045, 585);
 	loadimage(&img_menu_background, _T("resources/img_menu_background.png"), 1280, 720);
 	loadimage(&img_exit_background, _T("resources/img_exit_background.png"), 1045, 585);
-	loadimage(&img_game_introduction, _T("resources/game_introduction.jpg"), 1280, 720);
+	loadimage(&img_game_introduction, _T("resources/game_interdoction.png"), 1280, 720);
 	loadimage(&img_selector_background, _T("resources/img_selector_background.png"), 1280, 720);
 	loadimage(&img_game_pause_background, _T("resources/img_game_pause_background.png"), 1280, 720);	
 	loadimage(&img_game_introduction_background, _T("resources/img_game_introduction_background.png"), 1280, 720);

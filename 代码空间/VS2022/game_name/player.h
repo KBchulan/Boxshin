@@ -33,6 +33,10 @@ public:
 		this->animation_player_idle = animation;
 	}
 
+	void set_big(bool is_big){
+		this->is_big = is_big;
+	}
+
 	virtual void data_input(const ExMessage& msg) {
 		switch (msg.message) {
 		case WM_KEYDOWN:
@@ -59,29 +63,34 @@ public:
 
 	virtual void data_update(int delta) {
 		//更新input内容的映射
-		if (move_direction != Direction::NONE) {
+		if (move_direction != Direction::NONE && game_map[x][y] != 3) {
 			target_x = x;
 			target_y = y;
 			switch (move_direction) {
 			case Direction::UP:
-				if (y > 0) target_y--;
+				target_y--;
 				break;
 			case Direction::DOWN:
-				if (y < 15) target_y++;
+				target_y++;
 				break;
 			case Direction::LEFT:
-				if (x > 0) target_x--;
+				target_x--;
 				break;
 			case Direction::RIGHT:
-				if (x < 25) target_x++;
+				target_x++;
 				break;
 			}
 			move_direction = Direction::NONE;
 			is_moving = true;
-			game_map[x][y] = 0;					 //重置原来位置
+			game_map[x][y] = 0;		//重置原来位置
 		}
-		//更新player位置
-		if (is_moving) {
+
+		if (game_map[x][y] == 2) {
+			is_live = false;
+		}
+
+		// 更新player位置
+		if (is_moving && is_live) {
 			int target_position_x = 120 + target_x * 40;
 			int target_position_y = 40 + target_y * 40;
 			if (player_position.x < target_position_x) {
@@ -100,19 +109,26 @@ public:
 				player_position.y -= speed * delta;
 				if (player_position.y < target_position_y) player_position.y = target_position_y;
 			}
+
 			//如果到达目标位置，停止移动
 			if (player_position.x == target_position_x && player_position.y == target_position_y) {
 				is_moving = false;
 				x = target_x;
 				y = target_y;
-				game_map[x][y] = 1;					//更新新位置
+				game_map[x][y] = 1;			//更新新位置
 			}
 		}
 
 	}
 
 	virtual void picture_draw() {
-		animation_player_idle->picture_draw(player_position.x, player_position.y);
+		if (is_live) {
+			if (is_big)
+				animation_player_big->picture_draw(player_position.x, player_position.y);
+			else
+				animation_player_idle->picture_draw(player_position.x, player_position.y);
+		}
+
 	}
 
 private:
@@ -128,7 +144,10 @@ private:
 	int x, y;					//标定map[x][y]的位置
 	int speed = 15;				//标定移动速度
 	int target_x, target_y;		//目标位置
-	bool is_moving = false;		//标定是否在移动`
+
+	bool is_moving = false;		//标定是否在移动
+	bool is_big = false;		//标定是否为无敌状态
+	bool is_live = true;		//标定是否存活
 
 	Direction move_direction = Direction::NONE;
 
@@ -136,6 +155,8 @@ private:
 private:
 	Atlas* atlas_player_idle;
 	Animation* animation_player_idle;
+	Atlas* atlas_player_big;
+	Animation* animation_player_big;
 
 };
 
