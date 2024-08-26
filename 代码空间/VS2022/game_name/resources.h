@@ -38,12 +38,12 @@ IMAGE img_team_introduction_background;
 
 Atlas atlas_bubble;					//气泡
 Atlas atlas_flow;					//水流
+Atlas atlas_star;					//胜利星
+Atlas atlas_coral;					//珊瑚
 IMAGE img_wall;						//墙
 IMAGE img_penetration_wall;			//穿透墙
-Atlas atlas_coral;					//珊瑚
 IMAGE img_mechanics_0;				//
 IMAGE img_mechanics_1;				//
-Atlas atlas_star;						//胜利星
 
 
 //图集类加载

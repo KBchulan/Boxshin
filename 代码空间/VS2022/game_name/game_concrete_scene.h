@@ -1,17 +1,23 @@
 #ifndef _GAME_CONCRETE_SCENE_H_
 #define _GAME_CONCRETE_SCENE_H_
 
+#include"item.h"
 #include"game_scene.h"
 #include"player_lypo.h"
 #include"player_diver.h"
-#include"item.h"
+
+extern int flag;
 //玩家信息
 extern Player* player;
 extern POINT player_position;
+
+
 //敌人信息
 
 
 //地图信息
+extern int game_map[14][12];
+
 
 GameScene* game_background_scene;
 
@@ -40,9 +46,12 @@ public:
 		game_map[6][5] = 3;
 		game_map[7][5] = 3;
 		game_map[8][5] = 3;
+
+
 		game_map[7][4] = 4;
 
 		player->set_position(5, 5);
+
 	}
 
 	void data_input(const ExMessage& msg) {
@@ -94,19 +103,12 @@ public:
 	Map62() = default;
 	~Map62() = default;
 
-	/*
-	负责人:
-	功能: 进入关卡场景
-	*/
+	
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
 	}
 
-	/*
-	负责人:
-	功能: 输入关卡场景信息
-	*/
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 	}

@@ -24,6 +24,7 @@ public:
 		this->target_y = y;
 		player_position.x = 80 + x * 80;
 		player_position.y = 60 + y * 50;
+		pre_flag = flag;
 	}
 
 	void set_big(bool is_big){
@@ -62,11 +63,9 @@ public:
 		animation_player_idle_right.data_update(delta);
 
 		if (flag != pre_flag) {
+			pre_flag = flag;
 			scene_manager.switch_to(flag);
 		}
-
-		//标定上一帧
-		pre_flag = flag;
 
 		//更新input内容的映射
 		if (move_direction != Direction::NONE ) {
@@ -86,11 +85,10 @@ public:
 				target_x++;
 				break;
 			}
-
+			move_direction = Direction::NONE;
 		}
 
 		if (game_map[target_x][target_y] != 3) {
-			move_direction = Direction::NONE;
 			is_moving = true;
 			game_map[x][y] = 0;		//重置原来位置
 		}
@@ -130,6 +128,9 @@ public:
 				is_moving = false;
 				x = target_x;
 				y = target_y;
+				if (game_map[x][y] == 4) {
+					is_win = true;
+				}
 				game_map[x][y] = 1;			//更新新位置
 			}
 
@@ -137,11 +138,6 @@ public:
 
 		if (game_map[x][y] == 2) {
 			is_live = false;
-		}
-		//std::cout << x << " " << y << std::endl;
-		if (game_map[x][y] == 4) {
-			is_win = true;
-			flag++;
 		}
 		
 	}
@@ -161,11 +157,12 @@ public:
 		}
 
 		if (is_win) {
-			animation_player_win.picture_draw(player_position.x, player_position.y);
+			//animation_player_win.picture_draw(player_position.x, player_position.y);
 			is_win = false;
-
+			flag++;
 		}
-		//std::cout << flag << " " << pre_flag;
+
+		std::cout << is_win << std::endl;
 
 	}
 

@@ -1,8 +1,11 @@
 #ifndef _ITEM_H_
 #define _ITEM_H_
+
 #include <easyx.h>
-#include "animation.h"
+
 #include "util.h"
+#include "animation.h"
+
 //根据map绘图
 extern int game_map[14][12];
 extern Atlas atlas_coral;
