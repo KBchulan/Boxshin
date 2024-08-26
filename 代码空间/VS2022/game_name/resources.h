@@ -47,6 +47,7 @@ IMAGE img_star;						//胜利星
 Atlas atlas_gamer_diver;
 Atlas atlas_gamer_lypo;
 Atlas atlas_enemy_fish;
+Atlas atlas_enemy_crab;
 
 Atlas game_atlas_gamer_diver_left;
 Atlas game_atlas_gamer_diver_right;
