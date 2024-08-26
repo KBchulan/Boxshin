@@ -1,5 +1,5 @@
-#ifndef __ENEMY_CRAB_H__
-#define __ENEMY_CRAB_H__
+#ifndef _ENEMY_CRAB_H_
+#define _ENEMY_CRAB_H_
 #include"enemy.h"
 #include"player.h"
 
@@ -130,9 +130,4 @@ private:
 };
 
 
-
-
-
-
-
-#endif // _ENEMY_CRAB_H__
+#endif // _ENEMY_CRAB_H_

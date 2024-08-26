@@ -24,6 +24,7 @@ public:
 	}
 
 	void data_update(int delta) {
+		animation_player_idle.data_update(delta);
 		Player::data_update(delta);
 
 	}

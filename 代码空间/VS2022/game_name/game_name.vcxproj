@@ -135,6 +135,7 @@
     <ClInclude Include="button.h" />
     <ClInclude Include="enemy.h" />
     <ClInclude Include="enemy_crab.h" />
+    <ClInclude Include="enemy_fish.h" />
     <ClInclude Include="exit_scene.h" />
     <ClInclude Include="game_concrete_scene.h" />
     <ClInclude Include="game_introduction_scene.h" />

@@ -49,15 +49,17 @@ public:
 
 	//图形绘制
 	void picture_draw() {
-    putimage(0, 0, &img_game_pause_background);
-    putimage(120, 67.5, &img_game_pause_box);
-	pausecontinue.Button_draw(continue_button.left, continue_button.top);
-	pausemenu.Button_draw(menu_button.left, menu_button.top);
-	pausemap.Button_draw(map_button.left, map_button.top);
+		putimage(0, 0, &img_game_pause_background);
+		putimage(120, 67.5, &img_game_pause_box);
+		pausecontinue.Button_draw(continue_button.left, continue_button.top);
+		pausemenu.Button_draw(menu_button.left, menu_button.top);
+		pausemap.Button_draw(map_button.left, map_button.top);
 	}
 
 	//退出场景
-	void scene_exit() { }
+	void scene_exit() { 
+	
+	}
 
 
 private:

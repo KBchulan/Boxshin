@@ -6,8 +6,8 @@
 #include"button.h"
 #include"scene_manager.h"
 
-int play_num = 1;			//控制游戏开始和暂停
-int previous_flag;			//保持暂停时的关卡信息
+int play_num = 1;			//控制游戏开始和暂停,1未开始,0暂停
+int previous_flag;			//保持暂停前的关卡信息
 
 extern int flag;
 extern int music_num;

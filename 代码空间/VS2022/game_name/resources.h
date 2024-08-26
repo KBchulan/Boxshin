@@ -13,6 +13,7 @@ IMAGE img_team_two;
 IMAGE img_team_three;
 IMAGE img_team_four;
 IMAGE img_team_five;
+IMAGE img_selector_box;
 IMAGE img_game_pause_box;
 IMAGE img_map_background;
 IMAGE img_set_background;
@@ -44,6 +45,7 @@ IMAGE img_star;
 //图集类加载
 Atlas atlas_gamer_diver;
 Atlas atlas_gamer_lypo;
+Atlas atlas_enemy_fish;
 
 Atlas game_atlas_gamer_diver;
 Atlas game_atlas_gamer_lypo;
@@ -61,10 +63,11 @@ void load_game_resources() {
 	loadimage(&img_team_four, _T("resources/team_four.png"), 1280, 720);
 	loadimage(&img_team_five, _T("resources/team_five.png"), 1280, 720);
 	loadimage(&img_team_three, _T("resources/team_three.png"), 1280, 720);
-	loadimage(&img_game_background, _T("resources/img_game_background.jpg"), 1280, 720);
-	loadimage(&img_map_background, _T("resources/img_map_background.png"), 1280, 720);
+	loadimage(&img_selector_box, _T("resources/img_game_pause_box.png"), 400, 220);
+	loadimage(&img_map_background, _T("resources/game_introduction.jpg"), 1280, 720);
 	loadimage(&img_set_background, _T("resources/img_set_background.png"), 1280, 720);
 	loadimage(&img_game_pause_box, _T("resources/img_game_pause_box.png"), 1045, 585);
+	loadimage(&img_game_background, _T("resources/img_game_background.jpg"), 1280, 720);
 	loadimage(&img_menu_background, _T("resources/img_menu_background.png"), 1280, 720);
 	loadimage(&img_exit_background, _T("resources/img_exit_background.png"), 1045, 585);
 	loadimage(&img_game_introduction, _T("resources/game_interdoction.png"), 1280, 720);
@@ -94,7 +97,7 @@ void load_game_resources() {
 	game_atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 40, 40);
 	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 220, 100);
 	game_atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 40, 40);
-
+	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"),9,40, 40);//敌方鱼的图集
 	//音效类加载
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);
 	mciSendString(_T("open resources/hovered.mp3 alias hovered"), NULL, 0, NULL);
