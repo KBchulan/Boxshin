@@ -5,8 +5,15 @@
 #include"player_lypo.h"
 #include"player_diver.h"
 
+//玩家信息
 extern Player* player;
 extern POINT player_position;
+
+//敌人信息
+
+
+//地图信息
+
 GameScene* game_background_scene;
 
 class Map61 :public Scene {
@@ -32,6 +39,7 @@ public:
 	}
 
 	void picture_draw() {
+		//std::cout << flag << std::endl;
 		game_background_scene->picture_draw();
 		player->picture_draw();
 	}
