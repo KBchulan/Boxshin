@@ -101,5 +101,8 @@
     <ClInclude Include="player_lypo.h">
       <Filter>头文件\live</Filter>
     </ClInclude>
+    <ClInclude Include="enemy_crab.h">
+      <Filter>头文件\live</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
