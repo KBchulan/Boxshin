@@ -53,8 +53,8 @@ public:
 		int time = 3;
 		while(time--) {
 			if (game_map[x + 1][y] != 3) {
-				enemy_fish_position.x++;
-				x += 1;
+				x++;
+				
 				game_map[x + 1][y] = 2;//去到的地方有怪
 				game_map[x][y] = 0;//离开的地方没怪
 			}
@@ -62,8 +62,8 @@ public:
 		time += 6;
 		while (time--) {
 			if (game_map[x-1][y] != 3) {
-				enemy_fish_position.x--;
-				x -= 1;
+				x--;
+				
 				game_map[x-1][y] = 2;//去到的地方有怪
 				game_map[x][y] = 0;//离开的地方没怪
 			}
