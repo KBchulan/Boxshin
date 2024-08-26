@@ -59,8 +59,12 @@ public:
 		}
 	}
 
-	void picture_draw(int x, int y)const {
+	inline void picture_draw(int x, int y)const {
 		putimage_alpha(x, y, atlas->get_image(idx_frame));
+	}
+
+	inline void picture_draw(int x, int y, UINT alpha)const {
+		putimage_alpha(x, y, atlas->get_image(idx_frame), alpha);
 	}
 
 private:

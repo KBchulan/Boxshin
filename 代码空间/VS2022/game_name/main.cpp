@@ -31,7 +31,11 @@ SceneManager scene_manager;
 
 Player* player = nullptr;
 
-//游戏地图
+//游戏地图：
+//一个格子80*50
+//地图大小14*12
+//x=80+80*i;y=60+50*j;
+
 int game_map[14][12] = { 0 };
 //0：空地
 //1：玩家

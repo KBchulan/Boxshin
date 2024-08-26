@@ -1,13 +1,13 @@
 #ifndef _GAME_SCENE_H_
 #define _GAME_SCENE_H_
-//´Ë´¦ÎªÖ÷ÒªÄÚÈİ
+//æ­¤å¤„ä¸ºä¸»è¦å†…å®¹
 
 #include"scene.h"
 #include"button.h"
 #include"scene_manager.h"
 
-int play_num = 1;			//¿ØÖÆÓÎÏ·¿ªÊ¼ºÍÔİÍ£,1Î´¿ªÊ¼,0ÔİÍ£
-int previous_flag;			//±£³ÖÔİÍ£Ç°µÄ¹Ø¿¨ĞÅÏ¢
+int play_num = 1;			//æ§åˆ¶æ¸¸æˆå¼€å§‹å’Œæš‚åœ,1æœªå¼€å§‹,0æš‚åœ
+int previous_flag;			//ä¿æŒæš‚åœå‰çš„å…³å¡ä¿¡æ¯
 
 extern int flag;
 extern int music_num;
@@ -20,7 +20,7 @@ public:
 	~GameScene() = default;
 	
 	void scene_enter() {
-		//³õÊ¼»¯
+		//åˆå§‹åŒ–
 		voice_button.right = 1180;
 		voice_button.top = 0;
 		voice_button.left = voice_button.right - voice_button_x;
@@ -61,7 +61,7 @@ public:
 	}
 	
 	 void data_input(const ExMessage& msg) {
-		//°´Å¥ÊäÈë
+		//æŒ‰é’®è¾“å…¥
 		gamereset.Button_input(msg);
 		replay.Button_input(msg);
 
@@ -77,7 +77,7 @@ public:
 	}
 	
 	void data_update(int delta) {
-		//¸üĞÂÊı¾İ
+		//æ›´æ–°æ•°æ®
 		if (flag <= 60) {
 			scene_manager.switch_to(flag);
 		}
@@ -100,7 +100,9 @@ public:
 	}
 	
 	void scene_exit() {
-		//ÍË³ö³¡¾°£¬ÊÍ·Å×ÊÔ´
+		//é€€å‡ºåœºæ™¯ï¼Œé‡Šæ”¾èµ„æº
+
+
 	}
 
 private:
@@ -187,7 +189,7 @@ private:
 
 	protected:
 		void OnClick() {
-			flag = 4;			//µØÍ¼½çÃæ
+			flag = 4;			//åœ°å›¾ç•Œé¢
 		}
 	};
 
@@ -223,7 +225,7 @@ private:
 		replay_button_y = 50;
 	Replay replay;
 
-	int x_distance = 30;			//°´Å¥¼ä¾à
+	int x_distance = 30;			//æŒ‰é’®é—´è·
 
 };
 
