@@ -33,6 +33,12 @@ IMAGE img_team_introduction_background;
 
 
 //素材类加载
+IMAGE img_wall;
+IMAGE img_penetration_wall;
+IMAGE img_coral;
+IMAGE img_mechanics_0;
+IMAGE img_mechanics_1;
+IMAGE img_star;
 
 
 //图集类加载
@@ -41,6 +47,9 @@ Atlas atlas_gamer_lypo;
 
 Atlas game_atlas_gamer_diver;
 Atlas game_atlas_gamer_lypo;
+
+Atlas atlas_bubble;
+Atlas atlas_flow;
 
 
 
@@ -72,6 +81,12 @@ void load_game_resources() {
 
 
 	//素材类加载
+	loadimage(&img_wall, _T("resources/img_wall"), 40, 40);
+	loadimage(&img_penetration_wall, _T("img_penetration_wall"), 40, 40);
+	loadimage(&img_coral, _T("img_coral"), 40, 40);
+	loadimage(&img_mechanics_0, _T("img_mechanics_0"), 40, 40);
+	loadimage(&img_mechanics_1, _T("img_mechanics_1"), 40, 40);
+	loadimage(&img_star, _T("img_star"), 40, 40);
 
 
 	//图集类加载
