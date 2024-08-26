@@ -2,7 +2,11 @@
 #define _GAME_CONCRETE_SCENE_H_
 
 #include"game_scene.h"
+#include"player_lypo.h"
+#include"player_diver.h"
 
+extern Player* player;
+extern POINT player_position;
 GameScene* game_background_scene;
 
 class Map61 :public Scene {
@@ -14,18 +18,22 @@ public:
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
 
+		player->set_position(1, 1);
 	}
 
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
+		player->data_input(msg);
 	}
 
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
+		player->data_update(delta);
 	}
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
+		player->picture_draw();
 	}
 
 	void scene_exit() {

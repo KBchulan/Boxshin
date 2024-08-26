@@ -29,7 +29,7 @@ bool running = true;
 POINT player_position;
 SceneManager scene_manager;
 
-Player* player;
+Player* player = nullptr;
 
 //游戏地图
 int game_map[26][16] = { 0 };
@@ -37,6 +37,7 @@ int game_map[26][16] = { 0 };
 //1：玩家
 //2：敌人
 //3：非生命物
+//4：胜利星星
 
 //player 王怀玺 极光 刘昊
 //enemy 左巴阳	林 	米饭

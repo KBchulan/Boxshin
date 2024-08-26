@@ -14,6 +14,8 @@ extern int flag;
 extern Player* player;
 extern Atlas atlas_gamer_lypo;
 extern Atlas atlas_gamer_diver;
+extern Atlas game_atlas_gamer_lypo;
+extern Atlas game_atlas_gamer_diver;
 extern SceneManager scene_manager;
 extern IMAGE img_selector_background;
 
@@ -116,13 +118,9 @@ public:
 		switch (number) {
 		case 1:
 			player = new PlayerDive();
-			player->set_atlas(&atlas_gamer_diver);
-			player->set_animation(&animation_gamer_diver);
 			break;
 		case 2:
 			player = new PlayerLypo();
-			player->set_atlas(&atlas_gamer_lypo);
-			player->set_animation(&animation_gamer_lypo);
 			break;
 		default:
 			break;

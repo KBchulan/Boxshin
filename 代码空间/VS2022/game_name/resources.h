@@ -39,6 +39,9 @@ IMAGE img_team_introduction_background;
 Atlas atlas_gamer_diver;
 Atlas atlas_gamer_lypo;
 
+Atlas game_atlas_gamer_diver;
+Atlas game_atlas_gamer_lypo;
+
 
 
 
@@ -49,7 +52,7 @@ void load_game_resources() {
 	loadimage(&img_team_four, _T("resources/team_four.png"), 1280, 720);
 	loadimage(&img_team_five, _T("resources/team_five.png"), 1280, 720);
 	loadimage(&img_team_three, _T("resources/team_three.png"), 1280, 720);
-	loadimage(&img_game_background, _T("resources/game_background.jpg"), 1280, 720);
+	loadimage(&img_game_background, _T("resources/img_game_background.jpg"), 1280, 720);
 	loadimage(&img_map_background, _T("resources/img_map_background.png"), 1280, 720);
 	loadimage(&img_set_background, _T("resources/img_set_background.png"), 1280, 720);
 	loadimage(&img_game_pause_box, _T("resources/img_game_pause_box.png"), 1045, 585);
@@ -72,8 +75,10 @@ void load_game_resources() {
 
 
 	//图集类加载
-	atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9,200,100);
-	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9,220,100);
+	atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 200, 100);
+	game_atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 40, 40);
+	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 220, 100);
+	game_atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 40, 40);
 
 	//音效类加载
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);
