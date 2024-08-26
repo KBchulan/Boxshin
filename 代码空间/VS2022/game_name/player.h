@@ -15,7 +15,6 @@ extern SceneManager scene_manager;
 class Player {
 public:
 	Player() = default;
-
 	~Player() = default;
 
 	void set_position(int x, int y) {
@@ -23,8 +22,8 @@ public:
 		this->y = y;
 		this->target_x = x;
 		this->target_y = y;
-		player_position.x = 120 + x * 40;
-		player_position.y = 40 + y * 40;
+		player_position.x = 80 + x * 80;
+		player_position.y = 80 + y * 40;
 	}
 
 	void set_big(bool is_big){
@@ -43,9 +42,11 @@ public:
 				break;
 			case VK_LEFT:
 				move_direction = Direction::LEFT;
+				is_facing_right = false;
 				break;
 			case VK_RIGHT:
 				move_direction = Direction::RIGHT;
+				is_facing_right = true;
 				break;
 			}
 			break;
@@ -56,7 +57,13 @@ public:
 	}
 
 	virtual void data_update(int delta) {
+		//动画类更新
+		animation_player_idle_left.data_update(delta);
+		animation_player_idle_right.data_update(delta);
+
+		//标定上一帧
 		pre_flag = flag;
+
 		//更新input内容的映射
 		if (move_direction != Direction::NONE && game_map[x][y] != 3) {
 			target_x = x;
@@ -122,15 +129,20 @@ public:
 			is_win = true;
 			flag++;
 		}
-
 	}
 
 	virtual void picture_draw() {
 		if (is_live) {
 			if (is_big)
-				animation_player_big.picture_draw(player_position.x, player_position.y);
+				if (is_facing_right)
+					animation_player_big_right.picture_draw(player_position.x, player_position.y);
+				else
+					animation_player_big_left.picture_draw(player_position.x, player_position.y);
 			else
-				animation_player_idle.picture_draw(player_position.x, player_position.y);
+				if (is_facing_right)
+					animation_player_idle_right.picture_draw(player_position.x, player_position.y);
+				else
+					animation_player_idle_left.picture_draw(player_position.x, player_position.y);
 		}
 
 		if (flag != pre_flag && is_win) {
@@ -151,24 +163,28 @@ private:
 	};
 
 protected:
-	int x, y;					//标定map[x][y]的位置
-	int speed = 15;				//标定移动速度
-	int target_x, target_y;		//目标位置
-	int pre_flag;				//标定上一帧的flag
+	int x, y;						//标定map[x][y]的位置
+	int speed = 15;					//标定移动速度
+	int target_x, target_y;			//目标位置
+	int pre_flag;					//标定上一帧的flag
 
-	bool is_moving = false;		//标定是否在移动
-	bool is_big = false;		//标定是否为无敌状态
-	bool is_live = true;		//标定是否存活
-	bool is_win = false;		//标定是否胜利
+	bool is_moving = false;			//标定是否在移动
+	bool is_big = false;			//标定是否为无敌状态
+	bool is_live = true;			//标定是否存活
+	bool is_win = false;			//标定是否胜利
+	bool is_facing_right = true;	//标定是否朝右
 
 	Direction move_direction = Direction::NONE;
 
 protected:
-	Animation animation_player_idle;
-	Animation animation_player_big;
+	Animation animation_player_idle_left;
+	Animation animation_player_idle_right;
+	Animation animation_player_big_left;
+	Animation animation_player_big_right;
+
+
 	Animation animation_player_win;
 	Animation animation_player_die;
-	Animation animation_player_water;
 
 };
 

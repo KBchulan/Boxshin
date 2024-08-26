@@ -4,6 +4,7 @@
 #include<easyx.h>
 
 #include"atlas.h"
+#include"util.h"
 
 #pragma comment(lib,"Winmm.lib")
 
@@ -34,12 +35,12 @@ IMAGE img_team_introduction_background;
 
 
 //素材类加载
-IMAGE img_wall;
-IMAGE img_penetration_wall;
-IMAGE img_coral;
-IMAGE img_mechanics_0;
-IMAGE img_mechanics_1;
-IMAGE img_star;
+IMAGE img_wall;						//墙
+IMAGE img_penetration_wall;			//穿透墙
+IMAGE img_coral;					//珊瑚
+IMAGE img_mechanics_0;				//
+IMAGE img_mechanics_1;				//
+IMAGE img_star;						//胜利星
 
 
 //图集类加载
@@ -47,8 +48,10 @@ Atlas atlas_gamer_diver;
 Atlas atlas_gamer_lypo;
 Atlas atlas_enemy_fish;
 
-Atlas game_atlas_gamer_diver;
-Atlas game_atlas_gamer_lypo;
+Atlas game_atlas_gamer_diver_left;
+Atlas game_atlas_gamer_diver_right;
+Atlas game_atlas_gamer_lypo_left;
+Atlas game_atlas_gamer_lypo_right;
 
 Atlas atlas_bubble;
 Atlas atlas_flow;
@@ -94,10 +97,15 @@ void load_game_resources() {
 
 	//图集类加载
 	atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 200, 100);
-	game_atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 40, 40);
 	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 220, 100);
-	game_atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 40, 40);
-	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"),9,40, 40);//敌方鱼的图集
+	
+	//游戏内图集
+	game_atlas_gamer_diver_right.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 40, 40);
+	flip_atlas(game_atlas_gamer_diver_right, game_atlas_gamer_diver_left);
+	game_atlas_gamer_lypo_right.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 40, 40);
+	flip_atlas(game_atlas_gamer_lypo_right, game_atlas_gamer_lypo_left);
+	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"),9,40, 40);
+
 	//音效类加载
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);
 	mciSendString(_T("open resources/hovered.mp3 alias hovered"), NULL, 0, NULL);

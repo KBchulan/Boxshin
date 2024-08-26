@@ -31,6 +31,7 @@ public:
 			}
 		);
 	}
+
 	//ÉèÖÃ³õÊ¼Î»ÖÃ
 	void set_position(int x, int y) {
 		this->x = x;

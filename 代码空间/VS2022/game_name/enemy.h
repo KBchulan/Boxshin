@@ -4,14 +4,9 @@
 #include"animation.h"
 
 class Enemy {
-
 public:
 	Enemy() = default;
 	~Enemy() = default;
-
-	void set_atlas(Atlas* atlas) {
-		this->atlas_enemy_idle = atlas;
-	}
 
 	void set_position(POINT position) {
 		this->enemy_position = position;
@@ -37,15 +32,27 @@ public:
 		return this->enemy_position;
 	}
 
-
-
 private:
 	Animation animation_enemy_idle;
-	Atlas* atlas_enemy_idle;
 	POINT enemy_position;
 	bool is_alive = true;
+
+
 };
 
 
 
 #endif // _ENEMTY_H_
+
+
+
+/*
+1.位置
+2.input
+3.update
+4.draw
+5.	bool is_can_bemove = true;	//是否可以被移动
+	bool is_can_move = true;	//是否可以移动
+	
+
+*/

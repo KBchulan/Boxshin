@@ -112,16 +112,16 @@ private:
 				game_map[x][y] = 2;			//更新新位置
 			}
 		}
-
 	}
-private:
-	int target_x, target_y;//目标位置
-	int x, y;//当前位置
-	int speed = 15;				//标定移动速度
-	bool is_moving=false;//标定是否在移动
-	bool pushed_moving = false;//标定被推动
 
-	Direction move_direction;//设定初始位移方向为下
+private:
+	int target_x, target_y;				//目标位置
+	int x, y;							//当前位置
+	int speed = 15;						//标定移动速度
+	bool is_moving=false;				//标定是否在移动
+	bool pushed_moving = false;			//标定被推动
+
+	Direction move_direction;			//设定初始位移方向为下
 
 private:
 	Animation animation_enemy_idle;
