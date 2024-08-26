@@ -39,6 +39,7 @@ IMAGE img_team_introduction_background;
 //图集类加载
 Atlas atlas_gamer_diver;
 Atlas atlas_gamer_lypo;
+Atlas atlas_enemy_fish;
 
 Atlas game_atlas_gamer_diver;
 Atlas game_atlas_gamer_lypo;
@@ -81,7 +82,7 @@ void load_game_resources() {
 	game_atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 40, 40);
 	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 220, 100);
 	game_atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 40, 40);
-
+	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"),9,40, 40);//敌方鱼的图集
 	//音效类加载
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);
 	mciSendString(_T("open resources/hovered.mp3 alias hovered"), NULL, 0, NULL);
