@@ -1,18 +1,23 @@
 #ifndef _GAME_CONCRETE_SCENE_H_
 #define _GAME_CONCRETE_SCENE_H_
 
+#include"item.h"
 #include"game_scene.h"
 #include"player_lypo.h"
 #include"player_diver.h"
 
-//Íæ¼ÒÐÅÏ¢
+extern int flag;
+//çŽ©å®¶ä¿¡æ¯
 extern Player* player;
 extern POINT player_position;
 
-//µÐÈËÐÅÏ¢
+
+//æ•Œäººä¿¡æ¯
 
 
-//µØÍ¼ÐÅÏ¢
+//åœ°å›¾ä¿¡æ¯
+extern int game_map[14][12];
+
 
 GameScene* game_background_scene;
 
@@ -25,7 +30,28 @@ public:
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
 
-		player->set_position(1, 1);
+		coral = new Coral();
+		star = new Star();
+		
+		for (int i = 0; i < 14; i++) {
+			game_map[i][2] = 3;
+			game_map[i][9] = 3;
+		}
+		for (int i = 0; i < 12; i++) {
+			game_map[3][i] = 3;
+			game_map[10][i] = 3;
+		}
+		game_map[6][3] = 3;
+		game_map[6][4] = 3;
+		game_map[6][5] = 3;
+		game_map[7][5] = 3;
+		game_map[8][5] = 3;
+
+
+		game_map[7][4] = 4;
+
+		player->set_position(5, 5);
+
 	}
 
 	void data_input(const ExMessage& msg) {
@@ -39,17 +65,35 @@ public:
 	}
 
 	void picture_draw() {
-		//std::cout << flag << std::endl;
 		game_background_scene->picture_draw();
 		player->picture_draw();
+
+
+		for (int i = 0; i < 14; i++) {
+			for (int j = 0; j < 12; j++) {
+				switch (game_map[i][j]) {
+				case 3:
+					coral->picture_draw(i, j);
+					break;
+				case 4:
+					star->picture_draw(i, j);
+				default:
+					break;
+				}
+			}
+		}
 	}
 
 	void scene_exit() {
 		game_background_scene->scene_exit();
+		memset(game_map, 0, sizeof(game_map));
+		delete coral;
+		delete star;
 	}
 
 private:
-
+	Coral* coral;
+	Star* star;
 
 
 };
@@ -59,42 +103,35 @@ public:
 	Map62() = default;
 	~Map62() = default;
 
-	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ½øÈë¹Ø¿¨³¡¾°
-	*/
+	
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
 	}
 
-	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÊäÈë¹Ø¿¨³¡¾°ÐÅÏ¢
-	*/
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ¸üÐÂ¹Ø¿¨Êý¾Ý
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: æ›´æ–°å…³å¡æ•°æ®
 	*/
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: »æÖÆ¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: ç»˜åˆ¶å…³å¡åœºæ™¯
 	*/
 	void picture_draw() {
 		game_background_scene->picture_draw();
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÍË³ö¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: é€€å‡ºå…³å¡åœºæ™¯
 	*/
 	void scene_exit() {
 		game_background_scene->scene_exit();
@@ -111,8 +148,8 @@ public:
 	~Map63() = default;
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ½øÈë¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: è¿›å…¥å…³å¡åœºæ™¯
 	*/
 	void scene_enter() {
 		game_background_scene = new GameScene();
@@ -120,32 +157,32 @@ public:
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÊäÈë¹Ø¿¨³¡¾°ÐÅÏ¢
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: è¾“å…¥å…³å¡åœºæ™¯ä¿¡æ¯
 	*/
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ¸üÐÂ¹Ø¿¨Êý¾Ý
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: æ›´æ–°å…³å¡æ•°æ®
 	*/
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: »æÖÆ¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: ç»˜åˆ¶å…³å¡åœºæ™¯
 	*/
 	void picture_draw() {
 		game_background_scene->picture_draw();
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÍË³ö¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: é€€å‡ºå…³å¡åœºæ™¯
 	*/
 	void scene_exit() {
 		game_background_scene->scene_exit();
@@ -162,8 +199,8 @@ public:
 	~Map64() = default;
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ½øÈë¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: è¿›å…¥å…³å¡åœºæ™¯
 	*/
 	void scene_enter() {
 		game_background_scene = new GameScene();
@@ -171,32 +208,32 @@ public:
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÊäÈë¹Ø¿¨³¡¾°ÐÅÏ¢
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: è¾“å…¥å…³å¡åœºæ™¯ä¿¡æ¯
 	*/
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ¸üÐÂ¹Ø¿¨Êý¾Ý
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: æ›´æ–°å…³å¡æ•°æ®
 	*/
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: »æÖÆ¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: ç»˜åˆ¶å…³å¡åœºæ™¯
 	*/
 	void picture_draw() {
 		game_background_scene->picture_draw();
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÍË³ö¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: é€€å‡ºå…³å¡åœºæ™¯
 	*/
 	void scene_exit() {
 		game_background_scene->scene_exit();
@@ -213,8 +250,8 @@ public:
 	~Map65() = default;
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ½øÈë¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: è¿›å…¥å…³å¡åœºæ™¯
 	*/
 	void scene_enter() {
 		game_background_scene = new GameScene();
@@ -222,32 +259,32 @@ public:
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÊäÈë¹Ø¿¨³¡¾°ÐÅÏ¢
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: è¾“å…¥å…³å¡åœºæ™¯ä¿¡æ¯
 	*/
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ¸üÐÂ¹Ø¿¨Êý¾Ý
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: æ›´æ–°å…³å¡æ•°æ®
 	*/
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: »æÖÆ¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: ç»˜åˆ¶å…³å¡åœºæ™¯
 	*/
 	void picture_draw() {
 		game_background_scene->picture_draw();
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÍË³ö¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: é€€å‡ºå…³å¡åœºæ™¯
 	*/
 	void scene_exit() {
 		game_background_scene->scene_exit();
@@ -264,8 +301,8 @@ public:
 	~Map66() = default;
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ½øÈë¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: è¿›å…¥å…³å¡åœºæ™¯
 	*/
 	void scene_enter() {
 		game_background_scene = new GameScene();
@@ -273,8 +310,8 @@ public:
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÊäÈë¹Ø¿¨³¡¾°ÐÅÏ¢
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: è¾“å…¥å…³å¡åœºæ™¯ä¿¡æ¯
 	*/
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
@@ -282,24 +319,24 @@ public:
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ¸üÐÂ¹Ø¿¨Êý¾Ý
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: æ›´æ–°å…³å¡æ•°æ®
 	*/
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: »æÖÆ¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: ç»˜åˆ¶å…³å¡åœºæ™¯
 	*/
 	void picture_draw() {
 		game_background_scene->picture_draw();
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÍË³ö¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: é€€å‡ºå…³å¡åœºæ™¯
 	*/
 	void scene_exit() {
 		game_background_scene->scene_exit();
@@ -316,8 +353,8 @@ public:
 	~Map67() = default;
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ½øÈë¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: è¿›å…¥å…³å¡åœºæ™¯
 	*/
 	void scene_enter() {
 		game_background_scene = new GameScene();
@@ -325,32 +362,32 @@ public:
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÊäÈë¹Ø¿¨³¡¾°ÐÅÏ¢
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: è¾“å…¥å…³å¡åœºæ™¯ä¿¡æ¯
 	*/
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ¸üÐÂ¹Ø¿¨Êý¾Ý
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: æ›´æ–°å…³å¡æ•°æ®
 	*/
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: »æÖÆ¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: ç»˜åˆ¶å…³å¡åœºæ™¯
 	*/
 	void picture_draw() {
 		game_background_scene->picture_draw();
 	}
 
 	/*
-	¸ºÔðÈË:
-	¹¦ÄÜ: ÍË³ö¹Ø¿¨³¡¾°
+	è´Ÿè´£äºº:
+	åŠŸèƒ½: é€€å‡ºå…³å¡åœºæ™¯
 	*/
 	void scene_exit() {
 		game_background_scene->scene_exit();

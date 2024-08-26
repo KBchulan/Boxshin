@@ -35,12 +35,15 @@ IMAGE img_team_introduction_background;
 
 
 //素材类加载
+
+Atlas atlas_bubble;					//气泡
+Atlas atlas_flow;					//水流
+Atlas atlas_star;					//胜利星
+Atlas atlas_coral;					//珊瑚
 IMAGE img_wall;						//墙
 IMAGE img_penetration_wall;			//穿透墙
-IMAGE img_coral;					//珊瑚
 IMAGE img_mechanics_0;				//
 IMAGE img_mechanics_1;				//
-IMAGE img_star;						//胜利星
 
 
 //图集类加载
@@ -54,8 +57,6 @@ Atlas game_atlas_gamer_diver_right;
 Atlas game_atlas_gamer_lypo_left;
 Atlas game_atlas_gamer_lypo_right;
 
-Atlas atlas_bubble;
-Atlas atlas_flow;
 
 
 
@@ -89,11 +90,11 @@ void load_game_resources() {
 
 	//素材类加载
 	loadimage(&img_wall, _T("resources/img_wall"), 40, 40);
-	loadimage(&img_penetration_wall, _T("img_penetration_wall"), 40, 40);
-	loadimage(&img_coral, _T("img_coral"), 40, 40);
+	loadimage(&img_penetration_wall, _T("resources/img_penetration_wall"), 40, 40);
+	atlas_coral.load_from_file(_T("resources/img_coral.png"), 1, 76, 48);
 	loadimage(&img_mechanics_0, _T("img_mechanics_0"), 40, 40);
 	loadimage(&img_mechanics_1, _T("img_mechanics_1"), 40, 40);
-	loadimage(&img_star, _T("img_star"), 40, 40);
+	atlas_star.load_from_file(_T("resources/img_star.png"), 1, 45, 45);
 
 
 	//图集类加载
@@ -101,9 +102,9 @@ void load_game_resources() {
 	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 220, 100);
 	
 	//游戏内图集
-	game_atlas_gamer_diver_right.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 40, 40);
+	game_atlas_gamer_diver_right.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 80, 50);
 	flip_atlas(game_atlas_gamer_diver_right, game_atlas_gamer_diver_left);
-	game_atlas_gamer_lypo_right.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 40, 40);
+	game_atlas_gamer_lypo_right.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 80, 50);
 	flip_atlas(game_atlas_gamer_lypo_right, game_atlas_gamer_lypo_left);
 	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"),9,40, 40);
 

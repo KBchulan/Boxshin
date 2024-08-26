@@ -8,7 +8,7 @@
 #include"scene_manager.h"
 
 extern int flag;
-extern int game_map[26][16];
+extern int game_map[14][12];
 extern POINT player_position;
 extern SceneManager scene_manager;
 
@@ -23,7 +23,8 @@ public:
 		this->target_x = x;
 		this->target_y = y;
 		player_position.x = 80 + x * 80;
-		player_position.y = 80 + y * 40;
+		player_position.y = 60 + y * 50;
+		pre_flag = flag;
 	}
 
 	void set_big(bool is_big){
@@ -57,15 +58,17 @@ public:
 	}
 
 	virtual void data_update(int delta) {
-		//¶¯»­Àà¸üĞÂ
+		//åŠ¨ç”»ç±»æ›´æ–°
 		animation_player_idle_left.data_update(delta);
 		animation_player_idle_right.data_update(delta);
 
-		//±ê¶¨ÉÏÒ»Ö¡
-		pre_flag = flag;
+		if (flag != pre_flag) {
+			pre_flag = flag;
+			scene_manager.switch_to(flag);
+		}
 
-		//¸üĞÂinputÄÚÈİµÄÓ³Éä
-		if (move_direction != Direction::NONE && game_map[x][y] != 3) {
+		//æ›´æ–°inputå†…å®¹çš„æ˜ å°„
+		if (move_direction != Direction::NONE ) {
 			target_x = x;
 			target_y = y;
 			switch (move_direction) {
@@ -83,14 +86,22 @@ public:
 				break;
 			}
 			move_direction = Direction::NONE;
-			is_moving = true;
-			game_map[x][y] = 0;		//ÖØÖÃÔ­À´Î»ÖÃ
 		}
 
-		// ¸üĞÂplayerÎ»ÖÃ
+		if (game_map[target_x][target_y] != 3) {
+			is_moving = true;
+			game_map[x][y] = 0;		//é‡ç½®åŸæ¥ä½ç½®
+		}
+		else {
+			is_moving = false;
+			target_x = x;
+			target_y = y;
+		}
+
+		// æ›´æ–°playerä½ç½®
 		if (is_moving && is_live) {
-			int target_position_x = 120 + target_x * 40;
-			int target_position_y = 40 + target_y * 40;
+			int target_position_x = 80 + target_x * 80;
+			int target_position_y = 60 + target_y * 50;
 			if (player_position.x < target_position_x) {
 				player_position.x += speed * delta;
 				if (player_position.x > target_position_x)
@@ -112,23 +123,23 @@ public:
 					player_position.y = target_position_y;
 			}
 
-			//Èç¹ûµ½´ïÄ¿±êÎ»ÖÃ£¬Í£Ö¹ÒÆ¶¯
+			//å¦‚æœåˆ°è¾¾ç›®æ ‡ä½ç½®ï¼Œåœæ­¢ç§»åŠ¨
 			if (player_position.x == target_position_x && player_position.y == target_position_y) {
 				is_moving = false;
 				x = target_x;
 				y = target_y;
-				game_map[x][y] = 1;			//¸üĞÂĞÂÎ»ÖÃ
+				if (game_map[x][y] == 4) {
+					is_win = true;
+				}
+				game_map[x][y] = 1;			//æ›´æ–°æ–°ä½ç½®
 			}
+
 		}
 
 		if (game_map[x][y] == 2) {
 			is_live = false;
 		}
-
-		if (game_map[x][y] == 4) {
-			is_win = true;
-			flag++;
-		}
+		
 	}
 
 	virtual void picture_draw() {
@@ -145,11 +156,13 @@ public:
 					animation_player_idle_left.picture_draw(player_position.x, player_position.y);
 		}
 
-		if (flag != pre_flag && is_win) {
-			animation_player_win.picture_draw(player_position.x, player_position.y);
+		if (is_win) {
+			//animation_player_win.picture_draw(player_position.x, player_position.y);
 			is_win = false;
-			scene_manager.switch_to(flag);
+			flag++;
 		}
+
+		std::cout << is_win << std::endl;
 
 	}
 
@@ -163,16 +176,16 @@ private:
 	};
 
 protected:
-	int x, y;						//±ê¶¨map[x][y]µÄÎ»ÖÃ
-	int speed = 15;					//±ê¶¨ÒÆ¶¯ËÙ¶È
-	int target_x, target_y;			//Ä¿±êÎ»ÖÃ
-	int pre_flag;					//±ê¶¨ÉÏÒ»Ö¡µÄflag
+	int x, y;						//æ ‡å®šmap[x][y]çš„ä½ç½®
+	int speed = 15;					//æ ‡å®šç§»åŠ¨é€Ÿåº¦
+	int target_x, target_y;			//ç›®æ ‡ä½ç½®
+	int pre_flag;					//æ ‡å®šä¸Šä¸€å¸§çš„flag
 
-	bool is_moving = false;			//±ê¶¨ÊÇ·ñÔÚÒÆ¶¯
-	bool is_big = false;			//±ê¶¨ÊÇ·ñÎªÎŞµĞ×´Ì¬
-	bool is_live = true;			//±ê¶¨ÊÇ·ñ´æ»î
-	bool is_win = false;			//±ê¶¨ÊÇ·ñÊ¤Àû
-	bool is_facing_right = true;	//±ê¶¨ÊÇ·ñ³¯ÓÒ
+	bool is_moving = false;			//æ ‡å®šæ˜¯å¦åœ¨ç§»åŠ¨
+	bool is_big = false;			//æ ‡å®šæ˜¯å¦ä¸ºæ— æ•ŒçŠ¶æ€
+	bool is_live = true;			//æ ‡å®šæ˜¯å¦å­˜æ´»
+	bool is_win = false;			//æ ‡å®šæ˜¯å¦èƒœåˆ©
+	bool is_facing_right = true;	//æ ‡å®šæ˜¯å¦æœå³
 
 	Direction move_direction = Direction::NONE;
 
