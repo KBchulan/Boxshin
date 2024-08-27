@@ -53,8 +53,8 @@ Atlas atlas_bubble;					//气泡
 Atlas atlas_flow;					//水流
 Atlas atlas_star;					//胜利星
 Atlas atlas_coral;					//珊瑚
-Atlas atlas_machanic_trigger; // 机关触发器
-Atlas atlas_machanic_gate; // 机关门
+Atlas atlas_mechanic_trigger; // 机关触发器
+Atlas atlas_mechanic_gate; // 机关门
 Atlas atlas_penetration_wall; // 可穿越墙壁
 
 
@@ -88,7 +88,7 @@ void load_game_resources() {
   atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 220, 100);
 
   //游戏玩家图集
-  game_atlas_gamer_diver_right.load_from_file(_T("resources/diver_gamer_%d.png"), 10, 80, 50);
+  game_atlas_gamer_diver_right.load_from_file(_T("resources/diver_gamer_%d.png"), 10, 80, 29);
   flip_atlas(game_atlas_gamer_diver_right, game_atlas_gamer_diver_left);
   game_atlas_gamer_lypo_right.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 80, 50);
   flip_atlas(game_atlas_gamer_lypo_right, game_atlas_gamer_lypo_left);
@@ -101,6 +101,10 @@ void load_game_resources() {
   //游戏非生物素材类加载
   atlas_coral.load_from_file(_T("resources/img_coral.png"), 1, 76, 48);
   atlas_star.load_from_file(_T("resources/img_star.png"), 1, 45, 45);
+  atlas_bubble.load_from_file(_T("resources/bubble_%d.png"), 3, 80, 80);
+  atlas_penetration_wall.load_from_file(_T("resources/img_penetrationwall.png"), 1, 64, 64);
+  atlas_mechanic_trigger.load_from_file(_T("resources/trigger_%d.png"), 2, 64, 64);
+  //atlas_coral.load_from_file(_T("resources/coral_%d.png"), 2, 64, 64);
 
   //音效类加载
   mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);

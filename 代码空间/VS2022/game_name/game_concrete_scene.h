@@ -32,6 +32,10 @@ public:
 		POINT dummy_point{ 0, 0 };
 		coral = new Coral(dummy_point);
 		star = new Star(dummy_point);
+		bubble = new Bubble(POINT{9, 8});
+		penetration_wall = new Penetration_wall(POINT{8, 8});
+		mechanic_trigger = new Mechanic_trigger(POINT{7, 8});
+
 
 		for (int i = 0; i < 14; i++) {
 			game_map[i][2] = 3;
@@ -46,6 +50,10 @@ public:
 		game_map[6][5] = 3;
 		game_map[7][5] = 3;
 		game_map[8][5] = 3;
+
+		game_map[9][8] = 6; // 测试泡泡
+		game_map[8][8] = 7; // 测试可穿越墙壁
+		game_map[7][8] = 8; // 测试机关触发器
 
 
 		game_map[7][4] = 4;
@@ -62,6 +70,8 @@ public:
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
 		player->data_update(delta);
+		bubble->data_update(delta);
+		mechanic_trigger->data_update(delta);
 	}
 
 	void picture_draw() {
@@ -77,6 +87,16 @@ public:
 					break;
 				case 4:
 					star->picture_draw(i, j);
+					break;
+				case 6:
+					bubble->picture_draw(i, j);
+					break;
+				case 7:
+					penetration_wall->picture_draw(i, j);
+					break;
+				case 8:
+					mechanic_trigger->picture_draw(i, j);
+					break;
 				default:
 					break;
 				}
@@ -94,6 +114,9 @@ public:
 private:
 	Coral* coral;
 	Star* star;
+	Bubble* bubble;
+	Penetration_wall* penetration_wall;
+	Mechanic_trigger* mechanic_trigger;
 
 
 };
