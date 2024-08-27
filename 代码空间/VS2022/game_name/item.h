@@ -22,6 +22,12 @@ extern int player_map_x, player_map_y;					//标定玩家在map[player_map_x][pl
 extern bool is_big;							//标定是否为无敌状态,用于传入enemy使用
 extern bool is_moving;							//标定是否在移动,用于传入item中
 
+bool flow_move = false;
+bool flow_move_up = false;
+bool flow_move_lr = false; // 左右移动
+
+bool mechanic_gate_visible = true;
+
 bool operator==(POINT A, POINT B) {
   return A.x == B.x && A.y == B.y;
 }
@@ -119,7 +125,7 @@ public:
     animation_item_idle.picture_draw(80 * x + 80, 50 * y + 40);
   }
 
-  
+
 
 };
 
@@ -148,9 +154,12 @@ public:
     if (map_position.x == player_map_x && map_position.y == player_map_y) {
       animation_item_idle.set_idx_frame(1);
       // 机制
+      mechanic_gate_visible = false;
+
     }
     else {
       animation_item_idle.set_idx_frame(0);
+      mechanic_gate_visible = true;
     }
   }
 
@@ -159,9 +168,49 @@ public:
   }
 };
 
-class Mechanic_gate :public Item {};
+class Mechanic_gate :public Item {
+public:
+  Mechanic_gate(POINT map_position) {
+    this->map_position = map_position;
+    animation_item_idle.set_atlas(&atlas_mechanic_gate);
+  }
+  ~Mechanic_gate() = default;
 
-class Flow :public Item {};
+  void data_update(int delta) {
+  }
+
+  void picture_draw(int x, int y) {
+    if (mechanic_gate_visible)
+      animation_item_idle.picture_draw(80 * x + 80, 50 * y + 80);
+  }
+};
+
+class Flow :public Item {
+public:
+  Flow(POINT map_position) {
+    this->map_position = map_position;
+    animation_item_idle.set_atlas(&atlas_flow);
+  }
+  ~Flow() = default;
+
+  void data_update(int delta) {
+    if (player_map_x == this->map_position.x && player_map_y == this->map_position.y && is_moving) {
+      flow_move = true;
+      if (player_map_y - 1 >= 0 && game_map[player_map_x][player_map_y - 1] != 3) {
+        // 上方未遮挡
+        flow_move_up = true;
+        flow_move_lr = false;
+      }
+      else {
+        flow_move_up = false;
+        flow_move_lr = true;
+      }
+    }
+    else {
+      flow_move = false;
+    }
+  }
+};
 
 
 

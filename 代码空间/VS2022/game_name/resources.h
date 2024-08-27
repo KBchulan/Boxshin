@@ -109,6 +109,8 @@ void load_game_resources() {
   atlas_bubble.load_from_file(_T("resources/bubble_%d.png"), 3, 80, 80);
   atlas_penetration_wall.load_from_file(_T("resources/img_penetrationwall.png"), 1, 64, 64);
   atlas_mechanic_trigger.load_from_file(_T("resources/trigger_%d.png"), 2, 64, 64);
+	atlas_mechanic_gate.load_from_file(_T("resources/mechanic_gate.png"), 1, 80, 18); // 横向
+	atlas_flow.load_from_file(_T("resources/water_flow_%d.png"), 2, 50, 50);
   //atlas_coral.load_from_file(_T("resources/coral_%d.png"), 2, 64, 64);
 
 	//音效类加载

@@ -38,6 +38,7 @@ public:
 		bubble = new Bubble(POINT{9, 8});
 		penetration_wall = new Penetration_wall(POINT{8, 8});
 		mechanic_trigger = new Mechanic_trigger(POINT{7, 8});
+		mechanic_gate = new Mechanic_gate(dummy_point);
 
 
 		for (int i = 0; i < 14; i++) {
@@ -57,6 +58,7 @@ public:
 		game_map[9][8] = 6; // 测试泡泡
 		game_map[8][8] = 7; // 测试可穿越墙壁
 		game_map[7][8] = 8; // 测试机关触发器
+		game_map[9][5] = 9; // 测试机关门
 
 
 		game_map[7][4] = 4;
@@ -100,6 +102,9 @@ public:
 				case 8:
 					mechanic_trigger->picture_draw(i, j);
 					break;
+				case 9:
+					mechanic_gate->picture_draw(i, j);
+					break;
 				default:
 					break;
 				}
@@ -120,6 +125,7 @@ private:
 	Bubble* bubble;
 	Penetration_wall* penetration_wall;
 	Mechanic_trigger* mechanic_trigger;
+	Mechanic_gate* mechanic_gate;
 
 
 };
