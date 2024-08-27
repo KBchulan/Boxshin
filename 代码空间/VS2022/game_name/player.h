@@ -12,23 +12,32 @@ extern int game_map[14][12];
 extern POINT player_position;
 extern SceneManager scene_manager;
 
+enum class Direction {
+	NONE,
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT
+};
+
+Direction move_direction = Direction::NONE;     //标定移动方向，用于传入enemy和item中使用
+int player_map_x, player_map_y;					//标定玩家在map[player_map_x][player_map_y]的位置
+bool is_big = false;							//标定是否为无敌状态,用于传入enemy使用
+bool is_moving = false;							//标定是否在移动,用于传入item中
+
 class Player {
 public:
 	Player() = default;
 	~Player() = default;
 
 	void set_position(int x, int y) {
-		this->x = x;
-		this->y = y;
+		player_map_x = x;
+		player_map_y = y;
 		this->target_x = x;
 		this->target_y = y;
 		player_position.x = 80 + x * 80;
 		player_position.y = 60 + y * 50;
 		pre_flag = flag;
-	}
-
-	void set_big(bool is_big){
-		this->is_big = is_big;
 	}
 
 	virtual void data_input(const ExMessage& msg) {
@@ -68,9 +77,9 @@ public:
 		}
 
 		//更新input内容的映射
-		if (move_direction != Direction::NONE ) {
-			target_x = x;
-			target_y = y;
+		if (move_direction != Direction::NONE) {
+			target_x = player_map_x;
+			target_y = player_map_y;
 			switch (move_direction) {
 			case Direction::UP:
 				target_y--;
@@ -90,12 +99,12 @@ public:
 
 		if (game_map[target_x][target_y] != 3) {
 			is_moving = true;
-			game_map[x][y] = 0;		//重置原来位置
+			game_map[player_map_x][player_map_y] = 0;		//重置原来位置
 		}
 		else {
 			is_moving = false;
-			target_x = x;
-			target_y = y;
+			target_x = player_map_x;
+			target_y = player_map_y;
 		}
 
 		// 更新player位置
@@ -114,7 +123,7 @@ public:
 			}
 			else if (player_position.y < target_position_y) {
 				player_position.y += speed * delta;
-				if (player_position.y > target_position_y) 
+				if (player_position.y > target_position_y)
 					player_position.y = target_position_y;
 			}
 			else if (player_position.y > target_position_y) {
@@ -126,20 +135,23 @@ public:
 			//如果到达目标位置，停止移动
 			if (player_position.x == target_position_x && player_position.y == target_position_y) {
 				is_moving = false;
-				x = target_x;
-				y = target_y;
-				if (game_map[x][y] == 4) {
+				player_map_x = target_x;
+				player_map_y = target_y;
+				if (game_map[player_map_x][player_map_y] == 4) {
 					is_win = true;
 				}
-				game_map[x][y] = 1;			//更新新位置
+				game_map[player_map_x][player_map_y] = 1;			//更新新位置
 			}
-
 		}
 
-		if (game_map[x][y] == 2) {
+		if (game_map[player_map_x][player_map_y] == 2) {
 			is_live = false;
 		}
-		
+
+		if (game_map[player_map_x][player_map_y] == 6) {
+			is_big = true;
+		}
+
 	}
 
 	virtual void picture_draw() {
@@ -157,35 +169,21 @@ public:
 		}
 
 		if (is_win) {
-			animation_player_win.picture_draw(player_position.x, player_position.y);
+			//animation_player_win.picture_draw(player_position.x, player_position.y);
 			is_win = false;
 			flag++;
 		}
 
 	}
 
-private:
-	enum class Direction {
-		NONE,
-		UP,
-		DOWN,
-		LEFT,
-		RIGHT
-	};
-
 protected:
-	int x, y;						//标定map[x][y]的位置
 	int speed = 15;					//标定移动速度
 	int target_x, target_y;			//目标位置
 	int pre_flag;					//标定上一帧的flag
 
-	bool is_moving = false;			//标定是否在移动
-	bool is_big = false;			//标定是否为无敌状态
 	bool is_live = true;			//标定是否存活
 	bool is_win = false;			//标定是否胜利
 	bool is_facing_right = true;	//标定是否朝右
-
-	Direction move_direction = Direction::NONE;
 
 protected:
 	Animation animation_player_idle_left;

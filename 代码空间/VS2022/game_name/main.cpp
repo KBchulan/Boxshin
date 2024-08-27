@@ -42,6 +42,7 @@ int game_map[14][12] = { 0 };
 //3：墙壁
 //4：胜利星星
 //5: 珊瑚
+//6：珊瑚吐出的变大的泡泡
 
 
 //player 王怀玺 极光 刘昊
@@ -50,8 +51,8 @@ int game_map[14][12] = { 0 };
 //26晚前提交
 
 //基本场景类如下
-Scene* map_scene = nullptr;	
-Scene* set_scene = nullptr;	
+Scene* map_scene = nullptr;
+Scene* set_scene = nullptr;
 Scene* exit_scene = nullptr;
 Scene* menu_scene = nullptr;
 Scene* game_scene = nullptr;
@@ -71,27 +72,27 @@ Scene* map07 = nullptr;
 
 
 int flag = 1;
-	/*
-	   flag用于判定场景类型
-	   1:menu_scene
-	   2:selector_scene
-	   3:game_scene
-	   4:map_scene
-	   5:set_scene
-	   6:exit_scenes
-	   7:game_introduction_scene
-	   8:team_introduction_scene
-	   9:game_pause_scene
+/*
+   flag用于判定场景类型
+   1:menu_scene
+   2:selector_scene
+   3:game_scene
+   4:map_scene
+   5:set_scene
+   6:exit_scenes
+   7:game_introduction_scene
+   8:team_introduction_scene
+   9:game_pause_scene
 
-	   以下是game_concrete_scene的场景类型
-	   61:map01
-	   62:map02
-	   63:map03
-	   64:map04
-	   65:map05
-	   66:map06
-	   67:map07
-	*/
+   以下是game_concrete_scene的场景类型
+   61:map01
+   62:map02
+   63:map03
+   64:map04
+   65:map05
+   66:map06
+   67:map07
+*/
 
 int music_num = 1;					//控制音乐是否播放,1为播放，0为停止
 int sound_num = 1;					//控制音效是否播放,1为播放，0为停止
@@ -127,35 +128,30 @@ int main() {
 
 	scene_manager.set_start_scene(menu_scene);
 
-	// 初始化高分辨率计时器
-	LARGE_INTEGER frequency;
-	LARGE_INTEGER frame_start, frame_end;
-	LARGE_INTEGER last_tick_time, current_tick_time;
-	QueryPerformanceFrequency(&frequency);
-	QueryPerformanceCounter(&last_tick_time);
+	while (running) {
+		DWORD frame_start = GetTickCount();
 
-	while (running){
-		QueryPerformanceCounter(&frame_start);
-
-		// 处理输入
-		while (peekmessage(&msg)) {
+		//处理输入
+		while (peekmessage(&msg))
+		{
 			scene_manager.data_input(msg);
 		}
 
-		// 更新数据
-		QueryPerformanceCounter(&current_tick_time);
-		DWORD delta = (current_tick_time.QuadPart - last_tick_time.QuadPart) * 1000 / frequency.QuadPart;
+		//更新数据
+		static DWORD last_tick_time = GetTickCount();
+		DWORD current_tick_time = GetTickCount();
+		DWORD delta = current_tick_time - last_tick_time;
 		scene_manager.data_update(delta);
 		last_tick_time = current_tick_time;
 
-		// 绘图
+		//绘图
 		cleardevice();
 		scene_manager.picture_draw();
 		FlushBatchDraw();
 
-		// 动态延时
-		QueryPerformanceCounter(&frame_end);
-		DWORD frame_delta = (frame_end.QuadPart - frame_start.QuadPart) * 1000 / frequency.QuadPart;
+		//动态延时
+		DWORD frame_end = GetTickCount();
+		DWORD frame_delta = frame_end - frame_start;
 		if (frame_delta < 1000 / FPS) {
 			Sleep(1000 / FPS - frame_delta);
 		}

@@ -27,38 +27,32 @@ IMAGE img_game_pause_background;
 IMAGE img_game_introduction_background;
 IMAGE img_team_introduction_background;
 
-
 //角色类加载
 
 
 //字体类加载
 
 
-//素材类加载
 
-Atlas atlas_bubble;					//气泡
-Atlas atlas_flow;					//水流
-Atlas atlas_star;					//胜利星
-Atlas atlas_coral;					//珊瑚
-IMAGE img_wall;						//墙
-IMAGE img_penetration_wall;			//穿透墙
-IMAGE img_mechanics_0;				//
-IMAGE img_mechanics_1;				//
-
-
-//图集类加载
+//角色选择图集
 Atlas atlas_gamer_diver;
 Atlas atlas_gamer_lypo;
+
+//游戏敌人图集
 Atlas atlas_enemy_fish;
 Atlas atlas_enemy_crab;
 
+//游戏玩家图集
 Atlas game_atlas_gamer_diver_left;
 Atlas game_atlas_gamer_diver_right;
 Atlas game_atlas_gamer_lypo_left;
 Atlas game_atlas_gamer_lypo_right;
 
-
-
+//游戏非生物类素材
+Atlas atlas_bubble;					//气泡
+Atlas atlas_flow;					//水流
+Atlas atlas_star;					//胜利星
+Atlas atlas_coral;					//珊瑚
 
 
 void load_game_resources() {
@@ -77,38 +71,33 @@ void load_game_resources() {
 	loadimage(&img_exit_background, _T("resources/img_exit_background.png"), 1045, 585);
 	loadimage(&img_game_introduction, _T("resources/game_interdoction.png"), 1280, 720);
 	loadimage(&img_selector_background, _T("resources/img_selector_background.png"), 1280, 720);
-	loadimage(&img_game_pause_background, _T("resources/img_game_pause_background.png"), 1280, 720);	
+	loadimage(&img_game_pause_background, _T("resources/img_game_pause_background.png"), 1280, 720);
 	loadimage(&img_game_introduction_background, _T("resources/img_game_introduction_background.png"), 1280, 720);
 	loadimage(&img_team_introduction_background, _T("resources/img_team_introduction_background.png"), 1280, 720);
-	
-
-	//角色类加载
 
 
 	//字体类加载
 
 
-	//素材类加载
-	loadimage(&img_wall, _T("resources/img_wall"), 40, 40);
-	loadimage(&img_penetration_wall, _T("resources/img_penetration_wall"), 40, 40);
-	atlas_coral.load_from_file(_T("resources/img_coral.png"), 1, 76, 48);
-	loadimage(&img_mechanics_0, _T("img_mechanics_0"), 40, 40);
-	loadimage(&img_mechanics_1, _T("img_mechanics_1"), 40, 40);
-	atlas_star.load_from_file(_T("resources/img_star.png"), 1, 45, 45);
 
-
-	//图集类加载
+	//角色选择图集类加载
 	atlas_gamer_diver.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 200, 100);
 	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 220, 100);
-	
-	//游戏内图集
+
+	//游戏玩家图集
 	game_atlas_gamer_diver_right.load_from_file(_T("resources/diver_gamer_%d.png"), 9, 80, 50);
 	flip_atlas(game_atlas_gamer_diver_right, game_atlas_gamer_diver_left);
 	game_atlas_gamer_lypo_right.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 80, 50);
 	flip_atlas(game_atlas_gamer_lypo_right, game_atlas_gamer_lypo_left);
-	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"),4,90, 80);
-	atlas_enemy_crab.load_from_file(_T("resources/enemy_crab_%d.png"), 1, 40, 40);
 
+	//游戏敌人图集
+	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"), 4, 80, 50);
+	atlas_enemy_crab.load_from_file(_T("resources/enemy_crab.png"), 1, 80, 50);
+
+
+	//游戏非生物素材类加载
+	atlas_coral.load_from_file(_T("resources/img_coral.png"), 1, 76, 48);
+	atlas_star.load_from_file(_T("resources/img_star.png"), 1, 45, 45);
 
 	//音效类加载
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);

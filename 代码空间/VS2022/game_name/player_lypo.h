@@ -12,12 +12,11 @@ public:
 		animation_player_idle_left.set_atlas(&game_atlas_gamer_lypo_left);
 		animation_player_idle_left.set_interval(75);
 		animation_player_idle_left.set_loop(true);
-		
+
 		animation_player_idle_right.set_atlas(&game_atlas_gamer_lypo_right);
 		animation_player_idle_right.set_interval(75);
 		animation_player_idle_right.set_loop(true);
 	}
-
 	~PlayerLypo() = default;
 
 	void data_input(const ExMessage& msg) {
