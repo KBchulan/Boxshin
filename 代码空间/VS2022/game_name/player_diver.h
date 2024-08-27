@@ -7,6 +7,8 @@ extern Atlas game_atlas_gamer_diver_left;
 extern Atlas game_atlas_gamer_diver_right;
 extern Atlas game_atlas_gamer_diver_win;
 extern Atlas game_atlas_gamer_diver_die;
+extern Atlas game_atlas_gamer_diver_left_big;
+extern Atlas game_atlas_gamer_diver_right_big;
 
 class PlayerDive : public Player {
 public:
@@ -15,7 +17,8 @@ public:
 		animation_player_idle_right.set_atlas(&game_atlas_gamer_diver_right);
 		animation_player_win.set_atlas(&game_atlas_gamer_diver_win);
 		animation_player_die.set_atlas(&game_atlas_gamer_diver_die);
-
+		animation_player_big_left.set_atlas(&game_atlas_gamer_diver_left_big);
+		animation_player_big_right.set_atlas(&game_atlas_gamer_diver_right_big);
 	}
 	~PlayerDive() = default;
 

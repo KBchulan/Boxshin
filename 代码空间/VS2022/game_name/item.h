@@ -12,6 +12,11 @@ extern Atlas atlas_coral;
 extern Atlas atlas_star;
 extern Atlas atlas_bubble;
 extern Atlas atlas_coral_bubble;
+extern Atlas atlas_crossed_wall;
+
+extern bool is_big;						//标定是否为无敌状态,用于传入enemy使用
+
+
 
 class Item {
 public:
@@ -36,7 +41,7 @@ protected:
 
 
 
-class Coral :public Item {
+class Coral :public Item {                  //珊瑚墙壁
 public:
     Coral() {
         animation_item_idle.set_interval(1000);
@@ -83,14 +88,17 @@ private:
 
 class Penetration_wall :public Item {
 public:
-    Penetration_wall() = default;
+    Penetration_wall() {
+        animation_item_idle.set_interval(200);
+        animation_item_idle.set_atlas(&atlas_crossed_wall);
+    }
     ~Penetration_wall() = default;
 
     void data_update(int delta) {
         Item::date_update(delta);
     }
 
-    void picture_draw(int x, int y) {
+    void picture_draw(int x, int y){
         Item::picture_draw(x, y);
     }
 
@@ -110,11 +118,12 @@ public:
     }
 
     void picture_draw(int x, int y) {
-        Item::picture_draw(x, y);
+        if(is_draw)
+            Item::picture_draw(x, y);
     }
 
 private:
-
+    bool is_draw = true;
 };
 
 class CoralBullle :public Item {                //吐泡泡的珊瑚

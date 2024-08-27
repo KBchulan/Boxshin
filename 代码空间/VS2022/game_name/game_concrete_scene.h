@@ -20,6 +20,8 @@ extern POINT player_position;
 //地图信息
 extern int game_map[14][12];
 
+POINT penetration_wall_position = { 0,0 };			//可穿过墙的位置
+
 GameScene* game_background_scene;
 
 class Map61 :public Scene {
@@ -48,10 +50,10 @@ public:
 		game_map[7][5] = 3;
 		game_map[8][5] = 3;
 
-		game_map[7][7] = 4;
+		game_map[7][4] = 4;
 
 
-		player->set_position(5, 5);
+		player->set_position(5, 5, 1);
 
 	}
 
@@ -110,11 +112,14 @@ public:
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
+		player->set_position(3, 5, 2);
+		penetration_wall_position = { 7,2 };
 
 		coral = new Coral();
 		star = new Star();
 		bubble = new Bubble();
 		coral_bullle = new CoralBullle();
+		penetration_wall = new Penetration_wall();
 
 		for (int i = 0; i <= 7; i++) {
 			game_map[i][1] = 3;
@@ -146,6 +151,11 @@ public:
 
 		game_map[4][10] = 5;
 		game_map[4][9] = 6;
+
+		game_map[10][3] = 4;
+		game_map[10][8] = 4;
+
+		game_map[7][2] = 7;
 	}
 
 	void data_input(const ExMessage& msg) {
@@ -154,16 +164,21 @@ public:
 	}
 
 	void data_update(int delta) {
-		game_background_scene->data_update(delta);
+
 		player->data_update(delta);
 		coral->data_update(delta);
 		star->data_update(delta);
 		bubble->data_update(delta);
 		coral_bullle->data_update(delta);
+		penetration_wall->data_update(delta);
+		if (flag != 62) {
+			scene_manager.switch_to(flag);
+		}
 	}
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
+		player->picture_draw();
 
 		for (int i = 0; i < 14; i++) {
 			for (int j = 0; j < 12; j++) {
@@ -180,6 +195,9 @@ public:
 				case 6:
 					bubble->picture_draw(i, j);
 					break;
+				case 7:
+					penetration_wall->picture_draw(i, j);
+					break;
 				default:
 					break;
 				}
@@ -194,6 +212,7 @@ public:
 		delete star;
 		delete bubble;
 		delete coral_bullle;
+		delete penetration_wall;
 	}
 
 private:
@@ -201,7 +220,7 @@ private:
 	Bubble* bubble;
 	CoralBullle* coral_bullle;
 	Coral* coral;
-
+	Penetration_wall* penetration_wall;
 
 };
 

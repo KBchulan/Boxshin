@@ -47,6 +47,8 @@ Atlas game_atlas_gamer_diver_left;
 Atlas game_atlas_gamer_diver_right;
 Atlas game_atlas_gamer_diver_win;
 Atlas game_atlas_gamer_diver_die;
+Atlas game_atlas_gamer_diver_left_big;
+Atlas game_atlas_gamer_diver_right_big;
 
 Atlas game_atlas_gamer_lypo_left;
 Atlas game_atlas_gamer_lypo_right;
@@ -56,6 +58,7 @@ Atlas atlas_star;					//胜利星
 Atlas atlas_coral;					//珊瑚
 Atlas atlas_bubble;					//气泡
 Atlas atlas_coral_bubble;			//吐气泡的珊瑚
+Atlas atlas_crossed_wall;			//可穿越的墙
 
 
 void load_game_resources() {
@@ -88,12 +91,16 @@ void load_game_resources() {
 	atlas_gamer_lypo.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 220, 100);
 
 	//游戏玩家图集
-	game_atlas_gamer_diver_right.load_from_file(_T("resources/diver_gamer_%d.png"), 10, 80, 50);
+	game_atlas_gamer_diver_right.load_from_file(_T("resources/diver_gamer_%d.png"), 10, 60, 37.5);
 	flip_atlas(game_atlas_gamer_diver_right, game_atlas_gamer_diver_left);
 	game_atlas_gamer_lypo_right.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 80, 50);
 	flip_atlas(game_atlas_gamer_lypo_right, game_atlas_gamer_lypo_left);
 	game_atlas_gamer_diver_win.load_from_file(_T("resources/diver_win_%d.png"), 4, 80, 50);
 	game_atlas_gamer_diver_die.load_from_file(_T("resources/diver_win_%d.png"), 4, 80, 50);
+	game_atlas_gamer_diver_right_big.load_from_file(_T("resources/diver_gamer_%d.png"), 10, 80, 50);
+	flip_atlas(game_atlas_gamer_diver_right_big, game_atlas_gamer_diver_left_big);
+
+
 
 	//游戏敌人图集
 	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"), 4, 80, 50);
@@ -105,6 +112,7 @@ void load_game_resources() {
 	atlas_star.load_from_file(_T("resources/img_star.png"), 1, 45, 45);
 	atlas_bubble.load_from_file(_T("resources/bubble_%d.png"), 3, 80, 80);
 	atlas_coral_bubble.load_from_file(_T("resources/coral_%d.png"),2, 80, 80);
+	atlas_crossed_wall.load_from_file(_T("resources/img_penetrationwall.png"), 1, 76, 48);
 
 	  //音效类加载
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);
