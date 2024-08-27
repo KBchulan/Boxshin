@@ -16,19 +16,20 @@ extern Atlas atlas_enemy_crab;
 class Enemy_crab:public Enemy
 {
 public:
-	Enemy_crab(atlas_enemy_crab,true,true);
 	~Enemy_crab() = default;
 
+	Enemy_crab(*atlas_enemy_crab);
 
-	/*void set_position(int x, int y)
+
+	void set_position(int x, int y)
 	{
 		this->x = x;
 		this->y = y;
 		this->target_x = x;
 		this->target_y = y;
 		enemy_position.x = 80 + x * 80;
-		enemy_position.y = 80 + y * 40;
-	}*/
+		enemy_position.y = 60 + y * 50;
+	}
 
 private:
 	enum class Direction {
@@ -71,12 +72,13 @@ private:
 			}
 			move_direction = Direction::DOWN;
 			is_can_move = true;
+			game_map[x][y] = 0;
 		}
 
-		// 更新player位置
+		// 更新crab位置
 		if (is_can_move) {
-			int target_position_x = 120 + target_x * 40;
-			int target_position_y = 40 + target_y * 40;
+			int target_position_x = 80 + target_x * 80;
+			int target_position_y = 60 + target_y * 50;
 			if (enemy_position.x < target_position_x) {
 				enemy_position.x += speed * delta;
 				if (enemy_position.x > target_position_x) enemy_position.x = target_position_x;

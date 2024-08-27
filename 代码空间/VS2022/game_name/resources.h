@@ -107,6 +107,8 @@ void load_game_resources() {
 	game_atlas_gamer_lypo_right.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 80, 50);
 	flip_atlas(game_atlas_gamer_lypo_right, game_atlas_gamer_lypo_left);
 	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"),9,40, 40);
+	atlas_enemy_crab.load_from_file(_T("resources/enemy_crab_%d.png"), 1, 40, 40);
+
 
 	//音效类加载
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);
