@@ -87,7 +87,6 @@ public:
 		default:
 			break;
 		}
-
 		current_scene->scene_enter();
 	}
 

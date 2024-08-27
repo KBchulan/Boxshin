@@ -58,12 +58,6 @@ Atlas atlas_bubble;					//气泡
 Atlas atlas_coral_bubble;			//吐气泡的珊瑚
 
 
-Atlas atlas_flow;					//水流
-Atlas atlas_mechanic_trigger;		//机关触发器
-Atlas atlas_mechanic_gate;			//机关门
-Atlas atlas_penetration_wall;		//可穿越墙壁
-
-
 void load_game_resources() {
 	//背景图类加载
 	loadimage(&img_team_one, _T("resources/team_one.png"), 1280, 720);
@@ -111,11 +105,6 @@ void load_game_resources() {
 	atlas_star.load_from_file(_T("resources/img_star.png"), 1, 45, 45);
 	atlas_bubble.load_from_file(_T("resources/bubble_%d.png"), 3, 80, 80);
 	atlas_coral_bubble.load_from_file(_T("resources/coral_%d.png"),2, 80, 80);
-
-	atlas_penetration_wall.load_from_file(_T("resources/img_penetrationwall.png"), 1, 64, 64);
-	atlas_mechanic_trigger.load_from_file(_T("resources/trigger_%d.png"), 2, 64, 64);
-	atlas_mechanic_gate.load_from_file(_T("resources/mechanic_gate.png"), 1, 80, 18); // 横向
-	atlas_flow.load_from_file(_T("resources/water_flow_%d.png"), 2, 50, 50);
 
 	  //音效类加载
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);

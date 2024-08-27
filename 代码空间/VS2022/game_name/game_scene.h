@@ -78,9 +78,6 @@ public:
 	
 	void data_update(int delta) {
 		//更新数据
-		if (flag <= 60) {
-			scene_manager.switch_to(flag);
-		}
 	}
 	
 	 void picture_draw() {

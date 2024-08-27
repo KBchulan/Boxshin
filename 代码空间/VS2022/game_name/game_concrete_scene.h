@@ -48,7 +48,8 @@ public:
 		game_map[7][5] = 3;
 		game_map[8][5] = 3;
 
-		game_map[7][4] = 4;
+		game_map[7][7] = 4;
+
 
 		player->set_position(5, 5);
 
@@ -60,13 +61,16 @@ public:
 	}
 
 	void data_update(int delta) {
-		game_background_scene->data_update(delta);
+		if (flag != 61) {
+			scene_manager.switch_to(flag);
+		}
 		player->data_update(delta);
 	}
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
 		player->picture_draw();
+		std::cout << flag << std::endl;
 
 		for (int i = 0; i < 14; i++) {
 			for (int j = 0; j < 12; j++) {
@@ -76,7 +80,6 @@ public:
 					break;
 				case 4:
 					star->picture_draw(i, j);
-					break;
 				default:
 					break;
 				}
@@ -95,8 +98,6 @@ public:
 private:
 	Coral* coral;
 	Star* star;
-	Bubble* bubble;
-	Penetration_wall* penetration_wall;
 
 };
 
@@ -162,7 +163,6 @@ public:
 	}
 
 	void picture_draw() {
-		std::cout << flag << std::endl;
 		game_background_scene->picture_draw();
 
 		for (int i = 0; i < 14; i++) {
@@ -197,10 +197,12 @@ public:
 	}
 
 private:
-	Coral* coral;
 	Star* star;
 	Bubble* bubble;
 	CoralBullle* coral_bullle;
+	Coral* coral;
+
+
 };
 
 class Map63 :public Scene {
@@ -218,7 +220,9 @@ public:
 	}
 
 	void data_update(int delta) {
-		game_background_scene->data_update(delta);
+		if (flag != 63) {
+			scene_manager.switch_to(flag);
+		}
 	}
 
 	void picture_draw() {
@@ -249,7 +253,9 @@ public:
 	}
 
 	void data_update(int delta) {
-		game_background_scene->data_update(delta);
+		if (flag != 64) {
+			scene_manager.switch_to(flag);
+		}
 	}
 
 	void picture_draw() {
@@ -280,7 +286,9 @@ public:
 	}
 
 	void data_update(int delta) {
-		game_background_scene->data_update(delta);
+		if (flag != 65) {
+			scene_manager.switch_to(flag);
+		}
 	}
 
 	void picture_draw() {
@@ -312,7 +320,9 @@ public:
 	}
 
 	void data_update(int delta) {
-		game_background_scene->data_update(delta);
+		if (flag != 66) {
+			scene_manager.switch_to(flag);
+		}
 	}
 
 	void picture_draw() {
@@ -343,7 +353,9 @@ public:
 	}
 
 	void data_update(int delta) {
-		game_background_scene->data_update(delta);
+		if (flag != 67) {
+			scene_manager.switch_to(flag);
+		}
 	}
 
 	void picture_draw() {

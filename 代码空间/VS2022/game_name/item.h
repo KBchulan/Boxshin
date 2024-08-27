@@ -45,6 +45,7 @@ public:
     }
     ~Coral() = default;
 
+
     void data_update(int delta) {
         Item::date_update(delta);
     }
@@ -52,6 +53,8 @@ public:
     void picture_draw(int x, int y) {
         Item::picture_draw(x, y);
     }
+
+private:
 
 };
 
@@ -73,15 +76,14 @@ public:
         Item::picture_draw(x, y);
     }
 
+private:
+
+
 };
 
 class Penetration_wall :public Item {
 public:
-    Penetration_wall() {
-        animation_item_idle.set_interval(1000);
-        animation_item_idle.set_atlas(&atlas_penetration_wall);
-
-    }
+    Penetration_wall() = default;
     ~Penetration_wall() = default;
 
     void data_update(int delta) {
@@ -92,14 +94,14 @@ public:
         Item::picture_draw(x, y);
     }
 
+private:
 };
 
 class Bubble :public Item {
 public:
     Bubble() {
-        animation_item_idle.set_atlas(&atlas_bubble);
         animation_item_idle.set_interval(200);
-        animation_item_idle.set_loop(true);
+        animation_item_idle.set_atlas(&atlas_bubble);
     }
     ~Bubble() = default;
 
@@ -111,16 +113,15 @@ public:
         Item::picture_draw(x, y);
     }
 
+private:
 
 };
-
 
 class CoralBullle :public Item {                //吐泡泡的珊瑚
 public:
     CoralBullle() {
         animation_item_idle.set_atlas(&atlas_coral_bubble);
         animation_item_idle.set_interval(200);
-        animation_item_idle.set_loop(true);
 
     }
     ~CoralBullle() = default;
@@ -133,6 +134,9 @@ public:
     void picture_draw(int x, int y) {
         animation_item_idle.picture_draw(x * 80 + 80, y * 50 + 35);
     }
+
+private:
+
 
 };
 
