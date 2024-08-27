@@ -5,17 +5,16 @@
 
 extern Atlas game_atlas_gamer_diver_left;
 extern Atlas game_atlas_gamer_diver_right;
+extern Atlas game_atlas_gamer_diver_win;
+extern Atlas game_atlas_gamer_diver_die;
 
 class PlayerDive : public Player {
 public:
 	PlayerDive() {
 		animation_player_idle_left.set_atlas(&game_atlas_gamer_diver_left);
-		animation_player_idle_left.set_interval(75);
-		animation_player_idle_left.set_loop(true);
-
 		animation_player_idle_right.set_atlas(&game_atlas_gamer_diver_right);
-		animation_player_idle_right.set_interval(75);
-		animation_player_idle_right.set_loop(true);
+		animation_player_win.set_atlas(&game_atlas_gamer_diver_win);
+		animation_player_die.set_atlas(&game_atlas_gamer_diver_die);
 
 	}
 	~PlayerDive() = default;

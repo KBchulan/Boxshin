@@ -45,6 +45,9 @@ Atlas atlas_enemy_crab;
 //游戏玩家图集
 Atlas game_atlas_gamer_diver_left;
 Atlas game_atlas_gamer_diver_right;
+Atlas game_atlas_gamer_diver_win;
+Atlas game_atlas_gamer_diver_die;
+
 Atlas game_atlas_gamer_lypo_left;
 Atlas game_atlas_gamer_lypo_right;
 
@@ -89,6 +92,8 @@ void load_game_resources() {
 	flip_atlas(game_atlas_gamer_diver_right, game_atlas_gamer_diver_left);
 	game_atlas_gamer_lypo_right.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 80, 50);
 	flip_atlas(game_atlas_gamer_lypo_right, game_atlas_gamer_lypo_left);
+	game_atlas_gamer_diver_win.load_from_file(_T("resources/diver_win_%d.png"), 4, 80, 50);
+	game_atlas_gamer_diver_die.load_from_file(_T("resources/diver_win_%d.png"), 4, 80, 50);
 
 	//游戏敌人图集
 	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"), 4, 80, 50);

@@ -9,11 +9,14 @@
 #include"animation.h"
 
 #include"scene.h"
+
 #include"button.h"
 #include"player.h"
 #include"resources.h"
 #include"set_scene.h"
 #include"map_scene.h"
+#include"enemy_crab.h"
+#include"enemy_fish.h"
 #include"exit_scene.h"
 #include"menu_scene.h"
 #include"game_scene.h"
@@ -43,12 +46,6 @@ int game_map[14][12] = { 0 };
 //4：胜利星星
 //5: 珊瑚
 //6：珊瑚吐出的变大的泡泡
-
-
-//player 王怀玺 极光 刘昊
-//enemy 左巴阳	林 	米饭
-//item	黑子 九州
-//26晚前提交
 
 //基本场景类如下
 Scene* map_scene = nullptr;

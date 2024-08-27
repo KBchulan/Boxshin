@@ -5,8 +5,11 @@
 #include"game_scene.h"
 #include"player_lypo.h"
 #include"player_diver.h"
+#include"enemy_crab.h"
+#include"enemy_fish.h"
 
 extern int flag;
+
 //玩家信息
 extern Player* player;
 extern POINT player_position;
@@ -86,8 +89,8 @@ public:
 	void scene_exit() {
 		game_background_scene->scene_exit();
 		memset(game_map, 0, sizeof(game_map));
-		//delete coral;
-		//delete star;
+		delete coral;
+		delete star;
 	}
 
 private:
