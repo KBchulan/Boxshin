@@ -7,15 +7,74 @@
 #include "enemy.h"
 
 extern Atlas atlas_enemy_crab;
+extern Direction move_direction;
+extern bool is_big;
 
-
-class Enemy_crab :public Enemy {
+class EnemyCrab :public Enemy {
 public:
-	Enemy_crab() {
+	EnemyCrab() {
+		animation_enemy_idle.set_atlas(&atlas_enemy_crab);
+		is_can_move = false;
+		is_can_bemove = false;
+		move_sum = 1;
+	}
+	~EnemyCrab() = default;
+
+	void data_input(const ExMessage& msg) {
+		Enemy::data_input(msg);
+		if (msg.message == WM_KEYDOWN) {
+			switch (msg.vkcode) {
+			case VK_UP:case VK_DOWN:case VK_LEFT:case VK_RIGHT:
+				if (is_can_move && move_sum) {
+					Move();
+				}
+				break;
+			}
+		}
+	}
+
+	void data_update(int delta) {
+		Enemy::data_update(delta);
+
+		//¸üÐÂÊôÐÔ
+		if (is_big) {
+			is_can_bemove = true;
+		}
 
 	}
-	~Enemy_crab() = default;
 
+	void picture_draw() {
+		Enemy::picture_draw();
+	}
+
+	void push_back_to(int x, int y) {
+		Move_direction move_direction = { x,y };
+		move_direction_list.push_back(move_direction);
+	}
+
+	void Move() {
+		if (!move_direction_list.empty()) {
+			Move_direction& current_move = move_direction_list.front();
+			enemy_x += current_move.x;
+			enemy_y += current_move.y;
+			move_direction_list.erase(move_direction_list.begin());
+			move_sum--;
+			if (move_sum == 0) {
+				move_direction_list.clear();
+				is_can_move = false;
+			}
+		}
+
+	}
+
+private:
+	struct Move_direction {
+		int x, y;
+	};
+
+private:
+	std::vector<Move_direction> move_direction_list;
+	int control_move = 0;
 
 };
 
