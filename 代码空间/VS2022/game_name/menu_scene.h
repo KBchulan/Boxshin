@@ -48,7 +48,7 @@ public:
 		voice_open_button.bottom = voice_open_button_y;
 		gamevoiceopen = GameVoiceOpen(voice_open_button, _T("resources/sound_off_idle.png"), _T("resources/sound_off_hovered.png"), _T("resources/sound_off_pushed.png"), voice_open_button_x, voice_open_button_y);
 
-		mciSendString(_T("play menu_bgm repeat"), NULL, 0, NULL);
+		//mciSendString(_T("play menu_bgm repeat"), NULL, 0, NULL);
 		
 	}
 

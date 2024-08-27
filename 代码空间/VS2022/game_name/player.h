@@ -51,6 +51,7 @@ public:
 			[&]() {
 				is_win = false;
 				flag++;
+				scene_manager.switch_to(flag);
 			}
 		);
 
@@ -59,7 +60,7 @@ public:
 		timer_player_die.set_callback(
 			[&]() {
 				is_live = true;
-				flag = 4;
+				scene_manager.switch_to(flag);
 			}
 		);
 
@@ -73,7 +74,6 @@ public:
 		this->target_y = y;
 		player_position.x = 80 + x * 80;
 		player_position.y = 60 + y * 50;
-		pre_flag = flag;
 	}
 
 	virtual void data_input(const ExMessage& msg) {
@@ -103,12 +103,6 @@ public:
 	}
 
 	virtual void data_update(int delta) {
-		//切换场景
-		if (flag != pre_flag) {
-			pre_flag = flag;
-			scene_manager.switch_to(flag);
-		}
-
 		//动画类更新，定时器更新
 		if (!is_win) {
 			animation_player_idle_left.data_update(delta);
@@ -232,7 +226,6 @@ public:
 protected:
 	int speed = 15;					//标定移动速度
 	int target_x, target_y;			//目标位置
-	int pre_flag;					//标定上一帧的flag
 
 	bool is_live = true;			//标定是否存活
 	bool is_win = false;			//标定是否胜利

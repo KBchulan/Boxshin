@@ -36,11 +36,6 @@ public:
 		return idx_frame;
 	}
 
-	// 为了实现开关类道具
-	void set_idx_frame(int idx) {
-		this->idx_frame = idx;
-	}
-
 	IMAGE* get_frame() {
 		return atlas->get_image(idx_frame);
 	}

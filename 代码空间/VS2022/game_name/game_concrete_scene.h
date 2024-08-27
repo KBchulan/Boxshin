@@ -20,7 +20,6 @@ extern POINT player_position;
 //地图信息
 extern int game_map[14][12];
 
-
 GameScene* game_background_scene;
 
 class Map61 :public Scene {
@@ -32,14 +31,8 @@ public:
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
 
-		POINT dummy_point{ 0, 0 };
-		coral = new Coral(dummy_point);
-		star = new Star(dummy_point);
-		bubble = new Bubble(POINT{9, 8});
-		penetration_wall = new Penetration_wall(POINT{8, 8});
-		mechanic_trigger = new Mechanic_trigger(POINT{7, 8});
-		mechanic_gate = new Mechanic_gate(dummy_point);
-
+		coral=new Coral();
+		star=new Star();
 
 		for (int i = 0; i < 14; i++) {
 			game_map[i][2] = 3;
@@ -55,12 +48,6 @@ public:
 		game_map[7][5] = 3;
 		game_map[8][5] = 3;
 
-		game_map[9][8] = 6; // 测试泡泡
-		game_map[8][8] = 7; // 测试可穿越墙壁
-		game_map[7][8] = 8; // 测试机关触发器
-		game_map[9][5] = 9; // 测试机关门
-
-
 		game_map[7][4] = 4;
 
 		player->set_position(5, 5);
@@ -75,14 +62,11 @@ public:
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
 		player->data_update(delta);
-		bubble->data_update(delta);
-		mechanic_trigger->data_update(delta);
 	}
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
 		player->picture_draw();
-
 
 		for (int i = 0; i < 14; i++) {
 			for (int j = 0; j < 12; j++) {
@@ -93,23 +77,12 @@ public:
 				case 4:
 					star->picture_draw(i, j);
 					break;
-				case 6:
-					bubble->picture_draw(i, j);
-					break;
-				case 7:
-					penetration_wall->picture_draw(i, j);
-					break;
-				case 8:
-					mechanic_trigger->picture_draw(i, j);
-					break;
-				case 9:
-					mechanic_gate->picture_draw(i, j);
-					break;
 				default:
 					break;
 				}
 			}
 		}
+
 	}
 
 	void scene_exit() {
@@ -124,9 +97,6 @@ private:
 	Star* star;
 	Bubble* bubble;
 	Penetration_wall* penetration_wall;
-	Mechanic_trigger* mechanic_trigger;
-	Mechanic_gate* mechanic_gate;
-
 
 };
 
@@ -139,27 +109,98 @@ public:
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
+
+		coral = new Coral();
+		star = new Star();
+		bubble = new Bubble();
+		coral_bullle = new CoralBullle();
+
+		for (int i = 0; i <= 7; i++) {
+			game_map[i][1] = 3;
+		}
+		for (int i = 7; i < 13; i++) {
+			game_map[i][0] = 3;
+		}
+		game_map[2][0] = game_map[3][0] = 3;
+		for (int i = 0; i < 12; i++) {
+			game_map[12][i] = 3;
+		}
+		for (int i = 1; i < 11; i++) {
+			game_map[0][i] = 3;
+		}
+		game_map[1][10] = game_map[2][10] = game_map[3][10] = game_map[3][11] = game_map[4][11] = game_map[5][11] = game_map[5][10] = 3;
+		for (int i = 5; i < 13; i++) {
+			game_map[i][10] = 3;
+		}
+		game_map[13][4] = game_map[13][5] = 3;
+		for (int i = 3; i < 8; i++) {
+			game_map[7][i] = 3;
+		}
+		for (int i = 9; i < 11; i++) {
+			game_map[7][i] = 3;
+		}
+		for (int i = 8; i <= 11; i++) {
+			game_map[i][5] = 3;
+		}
+
+		game_map[4][10] = 5;
+		game_map[4][9] = 6;
 	}
 
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
+		player->data_input(msg);
 	}
 
 	void data_update(int delta) {
 		game_background_scene->data_update(delta);
+		player->data_update(delta);
+		coral->data_update(delta);
+		star->data_update(delta);
+		bubble->data_update(delta);
+		coral_bullle->data_update(delta);
 	}
 
 	void picture_draw() {
+		std::cout << flag << std::endl;
 		game_background_scene->picture_draw();
+
+		for (int i = 0; i < 14; i++) {
+			for (int j = 0; j < 12; j++) {
+				switch (game_map[i][j]) {
+				case 3:
+					coral->picture_draw(i, j);
+					break;
+				case 4:
+					star->picture_draw(i, j);
+					break;
+				case 5:
+					coral_bullle->picture_draw(i, j);
+					break;
+				case 6:
+					bubble->picture_draw(i, j);
+					break;
+				default:
+					break;
+				}
+			}
+		}
+
 	}
 
 	void scene_exit() {
 		game_background_scene->scene_exit();
+		delete coral;
+		delete star;
+		delete bubble;
+		delete coral_bullle;
 	}
 
 private:
-
-
+	Coral* coral;
+	Star* star;
+	Bubble* bubble;
+	CoralBullle* coral_bullle;
 };
 
 class Map63 :public Scene {
