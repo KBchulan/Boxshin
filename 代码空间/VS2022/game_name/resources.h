@@ -56,8 +56,8 @@ Atlas atlas_bubble;					//气泡
 Atlas atlas_flow;					//水流
 Atlas atlas_star;					//胜利星
 Atlas atlas_coral;					//珊瑚
-Atlas atlas_machanic_trigger;		//机关触发器
-Atlas atlas_machanic_gate;			//机关门
+Atlas atlas_mechanic_trigger;		//机关触发器
+Atlas atlas_mechanic_gate;			//机关门
 Atlas atlas_penetration_wall;		//可穿越墙壁
 
 
