@@ -115,10 +115,10 @@ public:
 		player->set_position(3, 5, 2);
 		penetration_wall_position = { 7,2 };
 
-		coral = new Coral();
+		coral = new Coral();//珊瑚
 		star = new Star();
 		bubble = new Bubble();
-		coral_bullle = new CoralBullle();
+		coral_bullle = new CoralBullle();//吐泡泡的珊瑚
 		penetration_wall = new Penetration_wall();
 
 		for (int i = 0; i <= 7; i++) {
@@ -208,6 +208,7 @@ public:
 
 	void scene_exit() {
 		game_background_scene->scene_exit();
+		memset(game_map, 0, sizeof(game_map));
 		delete coral;
 		delete star;
 		delete bubble;
@@ -265,13 +266,45 @@ public:
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
+		player->set_position(4, 5, 1);
+		coral = new Coral();//珊瑚
+		star = new Star();
+		bubble = new Bubble();
+		coral_bullle = new CoralBullle();//吐泡泡的珊瑚
+		//game_map[4][10]=2;//来回游动的怪物位置
+		for (int i = 0; i <= 13; i++) {
+			game_map[i][0] = 3;//最上面一层的渲染
+		}
+		for ( int j = 0;j <= 11;j++) {
+			game_map[0][j] = 3;//左侧渲染
+		}
+		for (int i = 0; i<= 13;i++) {
+			game_map[i][11] = 3;//底部渲染
+		}
+		for (int j = 0; j <= 11;j++) {
+			game_map[13][j] = 3;
+		}//四周围好了
+		for (int i = 1;i <= 8;i++) {
+			game_map[i][8] = 3;
+		 }
+		game_map[12][8] = 3;
+		game_map[2][10] = 4;
+		game_map[8][7] = 5;
+		game_map[8][6] = 6;
 	}
 
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
+		player->data_input(msg);
 	}
 
 	void data_update(int delta) {
+		player->data_update(delta);
+		coral->data_update(delta);
+		star->data_update(delta);
+		bubble->data_update(delta);
+		coral_bullle->data_update(delta);
+	
 		if (flag != 64) {
 			scene_manager.switch_to(flag);
 		}
@@ -279,15 +312,47 @@ public:
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
+		player->picture_draw();
+		for (int i = 0; i < 14; i++) {
+			for (int j = 0; j < 12; j++) {
+				switch (game_map[i][j]) {
+				case 2:
+					//怪物鱼的位置
+					break;
+				case 3:
+					coral->picture_draw(i, j);
+					break;
+				case 4:
+					star->picture_draw(i, j);
+					break;
+				case 5:
+					coral_bullle->picture_draw(i, j);
+					break;
+				case 6:
+					bubble->picture_draw(i, j);
+					break;
+				default:
+					break;
+				}
+			}
+		}
 	}
 
 	void scene_exit() {
 		game_background_scene->scene_exit();
+		memset(game_map, 0, sizeof(game_map));
+		delete coral;
+		delete star;
+		delete bubble;
+		delete coral_bullle;
 	}
 
 private:
-
-
+	CoralBullle* coral_bullle;
+	Bubble* bubble;
+	Star* star;
+	Coral* coral;
+	
 };
 
 class Map65 :public Scene {
