@@ -21,7 +21,7 @@ enum class Direction {
 	RIGHT
 };
 
-Direction move_direction = Direction::NONE;     //标定移动方向，用于传入enemy和item中使用
+Direction move_direction;						//标定移动方向，用于传入enemy和item中使用
 int player_map_x, player_map_y;					//标定玩家在map[player_map_x][player_map_y]的位置
 bool is_big = false;							//标定是否为无敌状态,用于传入enemy使用
 bool is_moving = false;							//标定是否在移动,用于传入item中
@@ -29,6 +29,8 @@ bool is_moving = false;							//标定是否在移动,用于传入item中
 class Player {
 public:
 	Player(){
+		//初始化方向
+		Direction move_direction = Direction::NONE;
 		//初始化公共动画
 		animation_player_idle_left.set_loop(true);
 		animation_player_idle_left.set_interval(75);	
