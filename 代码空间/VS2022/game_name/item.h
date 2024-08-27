@@ -41,6 +41,9 @@ public:
 	void picture_draw(int x,int y) {
 		animation_item_idle.picture_draw(80 * x + 80, y * 50 + 60);
 	}
+
+
+
 };
 
 class Star :public Item {
@@ -55,6 +58,9 @@ public:
 	void picture_draw(int x, int y) {
 		animation_item_idle.picture_draw(80 * x + 95, y * 50 + 58);
 	}
+
+
+
 };
 
 

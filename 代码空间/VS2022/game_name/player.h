@@ -157,12 +157,10 @@ public:
 		}
 
 		if (is_win) {
-			//animation_player_win.picture_draw(player_position.x, player_position.y);
+			animation_player_win.picture_draw(player_position.x, player_position.y);
 			is_win = false;
 			flag++;
 		}
-
-		std::cout << is_win << std::endl;
 
 	}
 

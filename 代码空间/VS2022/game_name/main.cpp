@@ -35,7 +35,6 @@ Player* player = nullptr;
 //一个格子80*50
 //地图大小14*12
 //x=80+80*i;y=60+50*j;
-
 int game_map[14][12] = { 0 };
 //0：空地
 //1：玩家
@@ -128,31 +127,35 @@ int main() {
 
 	scene_manager.set_start_scene(menu_scene);
 
-	while (running)
-	{
-		DWORD frame_start = GetTickCount();
+	// 初始化高分辨率计时器
+	LARGE_INTEGER frequency;
+	LARGE_INTEGER frame_start, frame_end;
+	LARGE_INTEGER last_tick_time, current_tick_time;
+	QueryPerformanceFrequency(&frequency);
+	QueryPerformanceCounter(&last_tick_time);
 
-		//处理输入
-		while (peekmessage(&msg))
-		{
+	while (running){
+		QueryPerformanceCounter(&frame_start);
+
+		// 处理输入
+		while (peekmessage(&msg)) {
 			scene_manager.data_input(msg);
 		}
 
-		//更新数据
-		static DWORD last_tick_time = GetTickCount();
-		DWORD current_tick_time = GetTickCount();
-		DWORD delta = current_tick_time - last_tick_time;
+		// 更新数据
+		QueryPerformanceCounter(&current_tick_time);
+		DWORD delta = (current_tick_time.QuadPart - last_tick_time.QuadPart) * 1000 / frequency.QuadPart;
 		scene_manager.data_update(delta);
 		last_tick_time = current_tick_time;
 
-		//绘图
+		// 绘图
 		cleardevice();
 		scene_manager.picture_draw();
 		FlushBatchDraw();
 
-		//动态延时
-		DWORD frame_end = GetTickCount();
-		DWORD frame_delta = frame_end - frame_start;
+		// 动态延时
+		QueryPerformanceCounter(&frame_end);
+		DWORD frame_delta = (frame_end.QuadPart - frame_start.QuadPart) * 1000 / frequency.QuadPart;
 		if (frame_delta < 1000 / FPS) {
 			Sleep(1000 / FPS - frame_delta);
 		}
