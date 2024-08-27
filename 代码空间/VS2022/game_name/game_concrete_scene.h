@@ -32,8 +32,9 @@ public:
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
 
-		coral = new Coral();
-		star = new Star();
+		POINT dummy_point{ 0, 0 };
+		coral = new Coral(dummy_point);
+		star = new Star(dummy_point);
 
 		for (int i = 0; i < 14; i++) {
 			game_map[i][2] = 3;
