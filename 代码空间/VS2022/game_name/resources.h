@@ -106,7 +106,7 @@ void load_game_resources() {
 	flip_atlas(game_atlas_gamer_diver_right, game_atlas_gamer_diver_left);
 	game_atlas_gamer_lypo_right.load_from_file(_T("resources/lypo_gamer_%d.png"), 9, 80, 50);
 	flip_atlas(game_atlas_gamer_lypo_right, game_atlas_gamer_lypo_left);
-	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"),9,40, 40);
+	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"),4,90, 80);
 	atlas_enemy_crab.load_from_file(_T("resources/enemy_crab_%d.png"), 1, 40, 40);
 
 
