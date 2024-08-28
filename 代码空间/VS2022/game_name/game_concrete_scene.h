@@ -15,7 +15,8 @@ extern Player* player;
 extern POINT player_position;
 
 //敌人信息
-
+Enemy* enemy_crab = nullptr;
+extern int enemy_x, enemy_y;
 
 //地图信息
 extern int game_map[14][12];
@@ -72,7 +73,6 @@ public:
 	void picture_draw() {
 		game_background_scene->picture_draw();
 		player->picture_draw();
-		std::cout << flag << std::endl;
 
 		for (int i = 0; i < 14; i++) {
 			for (int j = 0; j < 12; j++) {
@@ -95,6 +95,7 @@ public:
 		memset(game_map, 0, sizeof(game_map));
 		delete coral;
 		delete star;
+		delete game_background_scene;
 	}
 
 private:
@@ -112,14 +113,18 @@ public:
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
+
 		player->set_position(3, 5, 2);
 		penetration_wall_position = { 7,2 };
 
-		coral = new Coral();//珊瑚
 		star = new Star();
+		coral = new Coral();
 		bubble = new Bubble();
-		coral_bullle = new CoralBullle();//吐泡泡的珊瑚
+		enemy_crab = new EnemyCrab();
+		coral_bullle = new CoralBullle();
 		penetration_wall = new Penetration_wall();
+
+		game_map[enemy_x][enemy_y] = 2;
 
 		for (int i = 0; i <= 7; i++) {
 			game_map[i][1] = 3;
@@ -161,14 +166,15 @@ public:
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 		player->data_input(msg);
+		enemy_crab->data_input(msg);
 	}
 
-	void data_update(int delta) {
-
-		player->data_update(delta);
-		coral->data_update(delta);
+	void data_update(int delta) {	
 		star->data_update(delta);
+		coral->data_update(delta);
 		bubble->data_update(delta);
+		player->data_update(delta);
+		enemy_crab->data_update(delta);
 		coral_bullle->data_update(delta);
 		penetration_wall->data_update(delta);
 		if (flag != 62) {
@@ -178,11 +184,14 @@ public:
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
-		player->picture_draw();
+		player->picture_draw();	
 
 		for (int i = 0; i < 14; i++) {
 			for (int j = 0; j < 12; j++) {
 				switch (game_map[i][j]) {
+				case 2:
+					enemy_crab->picture_draw();
+					break;
 				case 3:
 					coral->picture_draw(i, j);
 					break;
@@ -209,18 +218,21 @@ public:
 	void scene_exit() {
 		game_background_scene->scene_exit();
 		memset(game_map, 0, sizeof(game_map));
-		delete coral;
+		enemy_crab = nullptr;
+
 		delete star;
+		delete coral;
 		delete bubble;
 		delete coral_bullle;
 		delete penetration_wall;
+		delete game_background_scene;
 	}
 
 private:
 	Star* star;
+	Coral* coral;
 	Bubble* bubble;
 	CoralBullle* coral_bullle;
-	Coral* coral;
 	Penetration_wall* penetration_wall;
 
 };
@@ -267,23 +279,24 @@ public:
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
 		player->set_position(4, 5, 1);
-		coral = new Coral();//珊瑚
+		coral = new Coral();
 		star = new Star();
 		bubble = new Bubble();
-		coral_bullle = new CoralBullle();//吐泡泡的珊瑚
+		coral_bullle = new CoralBullle();
+
 		//game_map[4][10]=2;//来回游动的怪物位置
 		for (int i = 0; i <= 13; i++) {
-			game_map[i][0] = 3;//最上面一层的渲染
+			game_map[i][0] = 3;
 		}
 		for ( int j = 0;j <= 11;j++) {
-			game_map[0][j] = 3;//左侧渲染
+			game_map[0][j] = 3;
 		}
 		for (int i = 0; i<= 13;i++) {
-			game_map[i][11] = 3;//底部渲染
+			game_map[i][11] = 3;
 		}
 		for (int j = 0; j <= 11;j++) {
 			game_map[13][j] = 3;
-		}//四周围好了
+		}
 		for (int i = 1;i <= 8;i++) {
 			game_map[i][8] = 3;
 		 }

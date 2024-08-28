@@ -16,7 +16,18 @@ public:
 		animation_enemy_idle.set_atlas(&atlas_enemy_crab);
 		is_can_move = false;
 		is_can_bemove = false;
-		move_sum = 1;
+		switch (flag) {
+		case 62:
+			move_sum = 1;
+			move_direction_list.clear();
+			push_back_to(0, 1);
+			enemy_x = 7;
+			enemy_y = 8;
+			enemy_target_x = enemy_x;
+			enemy_target_y = enemy_y;
+			break;
+		}
+
 	}
 	~EnemyCrab() = default;
 
@@ -27,6 +38,7 @@ public:
 			case VK_UP:case VK_DOWN:case VK_LEFT:case VK_RIGHT:
 				if (is_can_move && move_sum) {
 					Move();
+					move_sum--;
 				}
 				break;
 			}
@@ -39,6 +51,15 @@ public:
 		//¸üÐÂÊôÐÔ
 		if (is_big) {
 			is_can_bemove = true;
+		}
+
+		switch (flag) {
+		case 62:
+			if (enemy_x == 8 && enemy_y == 8)
+				is_can_move = true;
+			break;
+		default:
+			break;
 		}
 
 	}
@@ -55,8 +76,10 @@ public:
 	void Move() {
 		if (!move_direction_list.empty()) {
 			Move_direction& current_move = move_direction_list.front();
+			game_map[enemy_x][enemy_y] = 1;
 			enemy_x += current_move.x;
 			enemy_y += current_move.y;
+			game_map[enemy_x][enemy_y] = 2;
 			move_direction_list.erase(move_direction_list.begin());
 			move_sum--;
 			if (move_sum == 0) {
@@ -74,7 +97,6 @@ private:
 
 private:
 	std::vector<Move_direction> move_direction_list;
-	int control_move = 0;
 
 };
 

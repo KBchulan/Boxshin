@@ -13,6 +13,7 @@ extern int game_map[14][12];
 extern POINT player_position;
 extern SceneManager scene_manager;
 extern POINT penetration_wall_position;
+extern int enemy_target_x, enemy_target_y;
 
 enum class Direction {
 	NONE,
@@ -82,33 +83,50 @@ public:
 		player_position.x = 80 + x * 80;
 		player_position.y = 60 + y * 50;
 		target_star = num_star;
+		getten_star = 0;
+		is_facing_right = true;
+		is_big = false;
+		is_live = true;
+		is_win = false;
+
+		switch (flag) {
+		case 62:
+			big_steps = 20;
+			moved_steps = 0;
+			break;
+
+		default:
+			break;
+		}
 	}
 
 	virtual void data_input(const ExMessage& msg) {
-		switch (msg.message) {
-		case WM_KEYDOWN:
-			switch (msg.vkcode) {
-			case VK_UP:
-				move_direction = Direction::UP;
+		if (!is_win && is_live) {
+			switch (msg.message) {
+			case WM_KEYDOWN:
+				switch (msg.vkcode) {
+				case VK_UP:
+					move_direction = Direction::UP;
+					break;
+				case VK_DOWN:
+					move_direction = Direction::DOWN;
+					break;
+				case VK_LEFT:
+					move_direction = Direction::LEFT;
+					is_facing_right = false;
+					break;
+				case VK_RIGHT:
+					move_direction = Direction::RIGHT;
+					is_facing_right = true;
+					break;
+				}
 				break;
-			case VK_DOWN:
-				move_direction = Direction::DOWN;
-				break;
-			case VK_LEFT:
-				move_direction = Direction::LEFT;
-				is_facing_right = false;
-				break;
-			case VK_RIGHT:
-				move_direction = Direction::RIGHT;
-				is_facing_right = true;
+			case WM_KEYUP:
+				move_direction = Direction::NONE;
+				if (is_big)
+					moved_steps++;
 				break;
 			}
-			break;
-		case WM_KEYUP:
-			move_direction = Direction::NONE;
-			if(is_big)
-				moved_steps++;
-			break;
 		}
 	}
 
@@ -152,15 +170,26 @@ public:
 				move_direction = Direction::NONE;
 			}
 
+			if (game_map[target_x][target_y] == 2) {
+				if (!is_big) {
+					is_live = false;
+				}
+				else {
+					enemy_target_x += (target_x - player_map_x);
+					enemy_target_y += (target_y - player_map_y);
+				}
+			}
+
+			//重置原来位置
 			if (game_map[target_x][target_y] != 3 
 				&& game_map[target_x][target_y] != 5
 				&& game_map[target_x][target_y] != 7) {
-					is_moving = true;
-					game_map[player_map_x][player_map_y] = 0;		//重置原来位置
+				is_moving = true;
+				game_map[player_map_x][player_map_y] = 0;
 			}
 			else if(game_map[target_x][target_y] == 7 && !is_big) {
 				is_moving = true;
-				game_map[player_map_x][player_map_y] = 0;		//重置原来位置/
+				game_map[player_map_x][player_map_y] = 0;
 			}
 			else {
 				is_moving = false;
@@ -196,8 +225,10 @@ public:
 				//如果到达目标位置，停止移动
 				if (player_position.x == target_position_x && player_position.y == target_position_y) {
 					is_moving = false;
+
 					player_map_x = target_x;
 					player_map_y = target_y;
+
 					if (game_map[player_map_x][player_map_y] == 4) {
 						getten_star++;
 						if (getten_star == target_star) {
@@ -216,11 +247,6 @@ public:
 						game_map[pre_position_bubble.x][pre_position_bubble.y] = pre_map_value;
 					}
 
-					if (game_map[player_map_x][player_map_y] == 2) {
-						//if(enemy_crab)
-						is_live = false;
-					}
-
 					if (game_map[player_map_x][player_map_y] == 6) {
 						pre_map_value = game_map[player_map_x][player_map_y];
 						pre_position_bubble = {player_map_x,player_map_y};
@@ -231,6 +257,7 @@ public:
 				}
 			}
 		}
+
 		game_map[penetration_wall_position.x][penetration_wall_position.y] = 7;
 	}
 
@@ -250,9 +277,9 @@ public:
 				}
 				else
 					if (is_facing_right)
-						animation_player_idle_right.picture_draw(player_position.x+10, player_position.y+6);
+						animation_player_idle_right.picture_draw(player_position.x + 10, player_position.y + 6);
 					else
-						animation_player_idle_left.picture_draw(player_position.x+10, player_position.y+6);
+						animation_player_idle_left.picture_draw(player_position.x + 10, player_position.y + 6);
 			}
 			else {
 				animation_player_die.picture_draw(player_position.x, player_position.y);
@@ -265,17 +292,16 @@ private:
 	void Draw_big_steps_num() {
 		static TCHAR arr[64];
 		_stprintf_s(arr, _T("%d"), big_steps - moved_steps);
-
 		setbkmode(TRANSPARENT);
-		outtextxy(player_position.x+40, player_position.y,arr);
+		outtextxy(player_position.x + 40, player_position.y, arr);
 	}
 
 protected:
 	int target_star = 0;
 	int getten_star = 0;
 
-	int big_steps = 20;
-	int moved_steps = 0;
+	int big_steps;
+	int moved_steps;
 
 	int pre_map_value = 0;
 	POINT pre_position_bubble = { 0,0 };
