@@ -165,8 +165,11 @@ public:
 
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
+		
 		player->data_input(msg);
 		enemy_crab->data_input(msg);
+		
+		
 	}
 
 	void data_update(int delta) {	

@@ -189,6 +189,8 @@ public:
 				else {
 					enemy_target_x += (target_x - player_map_x);
 					enemy_target_y += (target_y - player_map_y);
+					is_moving = true;
+					game_map[player_map_x][player_map_y] = 0;
 				}
 			}
 			else {

@@ -35,41 +35,45 @@ public:
 		animation_enemy_idle.data_update(delta);
 		enemy_position.x = enemy_x * 80 + 80;
 		enemy_position.y = enemy_y * 50 + 60;
-		enemy_target.x = enemy_target_x * 80 + 80;
-		enemy_target.y = enemy_target_y * 50 + 60;
-		
-		if (enemy_position.x < enemy_target.x) {
-			enemy_position.x += speed * delta;
-			if (enemy_position.x > enemy_target.x)
-				enemy_position.x = enemy_target.x;
-		}
-		else if (enemy_position.x > enemy_target.x) {
-			enemy_position.x -= speed * delta;
-			if (enemy_position.x < enemy_target.x)
-				enemy_position.x = enemy_target.x;
-		}
-		if (enemy_position.y < enemy_target.y) {
-			enemy_position.y += speed * delta;
-			if (enemy_position.y > enemy_target.y)
-				enemy_position.y = enemy_target.y;
-		}
-		else if (enemy_position.y > enemy_target.y) {
-			enemy_position.y -= speed * delta;
-			if (enemy_position.y < enemy_target.y)
-				enemy_position.y = enemy_target.y;
-		}
 
-		if (enemy_position.x == enemy_target.y && enemy_position.y == enemy_target.y) {
-			enemy_x = enemy_target_x;
-			enemy_y = enemy_target_y;
+		if (enemy_x != enemy_target_x || enemy_y != enemy_target_y) {
+			enemy_target.x = enemy_target_x * 80 + 80;
+			enemy_target.y = enemy_target_y * 50 + 60;
 
-			game_map[enemy_x][enemy_y] = 2;
+			if (enemy_position.x < enemy_target.x) {
+				enemy_position.x += speed * delta;
+				if (enemy_position.x > enemy_target.x)
+					enemy_position.x = enemy_target.x;
+			}
+			else if (enemy_position.x > enemy_target.x) {
+				enemy_position.x -= speed * delta;
+				if (enemy_position.x < enemy_target.x)
+					enemy_position.x = enemy_target.x;
+			}
+			if (enemy_position.y < enemy_target.y) {
+				enemy_position.y += speed * delta;
+				if (enemy_position.y > enemy_target.y)
+					enemy_position.y = enemy_target.y;
+			}
+			else if (enemy_position.y > enemy_target.y) {
+				enemy_position.y -= speed * delta;
+				if (enemy_position.y < enemy_target.y)
+					enemy_position.y = enemy_target.y;
+			}
+
+			if (enemy_position.x == enemy_target.x && enemy_position.y == enemy_target.y) {
+				enemy_x = enemy_target_x;
+				enemy_y = enemy_target_y;
+
+				game_map[enemy_x][enemy_y] = 2;
+			}
 		}
 	
 	}
 
 	void picture_draw() {
 		animation_enemy_idle.picture_draw(enemy_position.x, enemy_position.y);
+		std::cout << enemy_x << "  " << enemy_y << " " << enemy_target_x << " " << enemy_target_y << std::endl;
 	}
 
 	POINT get_position()const {

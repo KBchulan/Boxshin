@@ -76,10 +76,8 @@ public:
 	void Move() {
 		if (!move_direction_list.empty()) {
 			Move_direction& current_move = move_direction_list.front();
-			game_map[enemy_x][enemy_y] = 1;
-			enemy_x += current_move.x;
-			enemy_y += current_move.y;
-			game_map[enemy_x][enemy_y] = 2;
+			enemy_target_x += current_move.x;
+			enemy_target_y += current_move.y;
 			move_direction_list.erase(move_direction_list.begin());
 			move_sum--;
 			if (move_sum == 0) {
