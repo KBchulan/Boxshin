@@ -13,6 +13,7 @@ extern int flag;
 //玩家信息
 extern Player* player;
 extern POINT player_position;
+extern int player_map_x, player_map_y;
 
 //敌人信息
 Enemy* enemy_crab = nullptr;
@@ -22,6 +23,8 @@ extern int enemy_x, enemy_y;
 extern int game_map[14][12];
 
 POINT penetration_wall_position = { 0,0 };			//可穿过墙的位置
+POINT penetration_wall_position_01 = { 0,0 };		//可穿过墙的位置
+POINT button_position = { 0,0 };					//按钮的位置
 
 GameScene* game_background_scene;
 
@@ -116,6 +119,7 @@ public:
 
 		player->set_position(3, 5, 2);
 		penetration_wall_position = { 7,2 };
+		penetration_wall_position_01 = { 7,2 };
 
 		star = new Star();
 		coral = new Coral();
@@ -161,6 +165,8 @@ public:
 		game_map[10][8] = 4;
 
 		game_map[7][2] = 7;
+
+
 	}
 
 	void data_input(const ExMessage& msg) {
@@ -215,6 +221,7 @@ public:
 			}
 		}
 
+		
 		player->picture_draw();
 
 	}
@@ -241,6 +248,8 @@ private:
 
 };
 
+
+
 class Map63 :public Scene {
 public:
 	Map63() = default;
@@ -249,13 +258,81 @@ public:
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
+
+		player->set_position(4, 5, 1);
+		penetration_wall_position = { 7,5 };
+		penetration_wall_position_01 = { 8,5 };
+		button_position = { 6,7 };
+
+		star = new Star();
+		door = new Door();
+		coral = new Coral();
+		bubble = new Bubble();
+		enemy_crab = new EnemyCrab();
+		game_button = new GameButton();
+		coral_bullle = new CoralBullle();
+		penetration_wall = new Penetration_wall();
+
+		for (int i = 0; i < 14; i++) {
+			game_map[i][2] = 3;
+			game_map[i][8] = 3;
+		}
+		for (int i = 0; i < 12; i++) {
+			game_map[2][i] = 3;
+			game_map[13][i] = 3;
+		}
+
+		game_map[3][3] = 3;
+		game_map[4][3] = 3;
+		game_map[5][3] = 3;
+		game_map[3][7] = 3;
+		game_map[4][7] = 3;
+		game_map[5][7] = 3;
+		game_map[7][4] = 3;
+		game_map[8][4] = 3;
+		game_map[7][6] = 3;
+		game_map[8][6] = 3;
+		game_map[10][3] = 3;
+		game_map[11][3] = 3;
+		game_map[12][3] = 3;
+		game_map[10][7] = 3;
+		game_map[11][7] = 3;
+		game_map[12][7] = 3;
+		game_map[7][9] = 3;
+		game_map[8][9] = 3;
+
+		game_map[7][5] = 7;			// 可穿越墙壁
+		game_map[8][5] = 7;			// 可穿越墙壁
+		game_map[6][7] = 8;			// 机关触发器
+		game_map[10][4] = 9;		// 机关门
+		game_map[10][5] = 9;		// 机关门
+		game_map[10][6] = 9;		// 机关门
+		game_map[9][7] = 5;			// 泡泡
+		game_map[9][6] = 6;			// 泡泡
+
+		game_map[11][5] = 4;		// 星星
+
+		game_map[7][3] = 2;			// 螃蟹
 	}
 
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
+
+		player->data_input(msg);
+		enemy_crab->data_input(msg);
 	}
 
 	void data_update(int delta) {
+		star->data_update(delta);
+		door->data_update(delta);
+		coral->data_update(delta);
+		bubble->data_update(delta);
+		enemy_crab->data_update(delta);
+		game_button->data_update(delta);
+		player->data_update(delta);
+		coral_bullle->data_update(delta);
+		penetration_wall->data_update(delta);
+
 		if (flag != 63) {
 			scene_manager.switch_to(flag);
 		}
@@ -263,14 +340,74 @@ public:
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
+		setbkmode(TRANSPARENT);
+		outtextxy(370, 40, _T("Our button needs to be touched by the crab. If the character touches it, please start again."));
+		for (int i = 0; i < 14; i++) {
+			for (int j = 0; j < 12; j++) {
+				switch (game_map[i][j]) {
+				case 2:
+					if (i == 6 && j == 7)
+						game_button->picture_draw(i, j);
+					enemy_crab->picture_draw();
+					break;
+				case 3:
+					coral->picture_draw(i, j);
+					break;
+				case 4:
+					star->picture_draw(i, j);
+					break;
+				case 5:
+					coral_bullle->picture_draw(i, j);
+					break;
+				case 6:
+					bubble->picture_draw(i, j);
+					break;
+				case 7:
+					penetration_wall->picture_draw(i, j);
+					break;
+				case 8:
+					game_button->picture_draw(i, j);
+					break;
+				case 9:
+					if (!(enemy_x == 6 && enemy_y == 7))
+						door->picture_draw(i, j);
+					break;
+				default:
+					break;
+				}
+			}
+		}
+
+		if (player_map_x == 6 && player_map_y == 7) {
+			game_button->picture_draw(0, 0);
+		}
+		player->picture_draw();
+		
 	}
 
 	void scene_exit() {
 		game_background_scene->scene_exit();
+		memset(game_map, 0, sizeof(game_map));
+		enemy_crab = nullptr;
+
+		delete star;
+		delete door;
+		delete coral;
+		delete bubble;
+		delete coral_bullle;
+		delete game_button;
+		delete penetration_wall;
+		delete game_background_scene;
 	}
 
 private:
-
+	Star* star;
+	Door* door;
+	Coral* coral;
+	Bubble* bubble;
+	CoralBullle* coral_bullle;
+	GameButton* game_button;
+	Penetration_wall* penetration_wall;
 
 };
 

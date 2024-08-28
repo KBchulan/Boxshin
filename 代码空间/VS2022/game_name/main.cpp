@@ -1,7 +1,7 @@
+#include<time.h>
+#include<conio.h>
 #include<easyx.h>
 #include<Windows.h>
-#include<conio.h>
-#include<time.h>
 
 #include"util.h"
 #include"timer.h"
@@ -9,7 +9,7 @@
 #include"animation.h"
 
 #include"scene.h"
-
+#include"enemy.h"
 #include"button.h"
 #include"player.h"
 #include"resources.h"

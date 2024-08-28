@@ -75,7 +75,6 @@ public:
 
 	void picture_draw() {
 		animation_enemy_idle.picture_draw(enemy_position.x, enemy_position.y);
-		std::cout << enemy_x << "  " << enemy_y << " " << enemy_target_x << " " << enemy_target_y << std::endl;
 	}
 
 	POINT get_position()const {

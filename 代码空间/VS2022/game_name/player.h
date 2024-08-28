@@ -13,6 +13,9 @@ extern int game_map[14][12];
 extern POINT player_position;
 extern SceneManager scene_manager;
 extern POINT penetration_wall_position;
+extern POINT penetration_wall_position_01;
+extern POINT button_position;
+
 extern int enemy_target_x, enemy_target_y;
 
 enum class Direction {
@@ -94,7 +97,10 @@ public:
 			big_steps = 5;
 			moved_steps = 0;
 			break;
-
+		case 63:
+			big_steps = 6;
+			moved_steps = 0;
+			break;
 		default:
 			break;
 		}
@@ -261,6 +267,8 @@ public:
 		}
 
 		game_map[penetration_wall_position.x][penetration_wall_position.y] = 7;
+		game_map[penetration_wall_position_01.x][penetration_wall_position_01.y] = 7;
+
 	}
 
 	virtual void picture_draw() {

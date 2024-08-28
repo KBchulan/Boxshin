@@ -26,6 +26,20 @@ public:
 			enemy_target_x = enemy_x;
 			enemy_target_y = enemy_y;
 			break;
+		case 63:
+			move_sum = 4;
+			move_direction_list.clear();
+			push_back_to(0, 1);
+			push_back_to(0, 1);
+			push_back_to(0, 1);
+			push_back_to(0, 1);
+			enemy_x = 7;
+			enemy_y = 3;
+			enemy_target_x = enemy_x;
+			enemy_target_y = enemy_y;
+			break;
+		default:
+			break;
 		}
 
 	}
@@ -58,6 +72,10 @@ public:
 			if (enemy_x == 8 && enemy_y == 8)
 				is_can_move = true;
 			break;
+		case 63:
+			if (enemy_x == 6 && enemy_y == 3)
+				is_can_move = true;
+			break;
 		default:
 			break;
 		}
@@ -79,7 +97,6 @@ public:
 			enemy_target_x += current_move.x;
 			enemy_target_y += current_move.y;
 			move_direction_list.erase(move_direction_list.begin());
-			move_sum--;
 			if (move_sum == 0) {
 				move_direction_list.clear();
 				is_can_move = false;

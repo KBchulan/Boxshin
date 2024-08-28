@@ -13,9 +13,12 @@ extern Atlas atlas_star;
 extern Atlas atlas_bubble;
 extern Atlas atlas_coral_bubble;
 extern Atlas atlas_crossed_wall;
+extern Atlas atlas_button_idle;
+extern Atlas atlas_button_down;
+extern Atlas atlas_door;
 
 extern bool is_big;						//标定是否为无敌状态,用于传入enemy使用
-
+extern int flag;
 
 
 class Item {
@@ -141,11 +144,76 @@ public:
     }
 
     void picture_draw(int x, int y) {
-        animation_item_idle.picture_draw(x * 80 + 80, y * 50 + 35);
+        Item::picture_draw(x, y);
     }
 
 private:
 
+
+};
+
+class GameButton :public Item {
+public:
+    GameButton() {
+        animation_item_idle.set_interval(1000);
+        animation_item_idle.set_atlas(&atlas_button_idle);
+        switch (flag)
+        {
+        case 63:
+            button_pos = { 6,7 };
+            break;
+        default:
+            break;
+        }
+    }
+    ~GameButton() = default;
+
+    void data_update(int delta) {
+        Item::date_update(delta);
+        if (game_map[button_pos.x][button_pos.y] != 8) {
+            is_down = true;
+        }
+        else {
+            is_down = false;
+        }
+    }
+
+    void picture_draw(int x, int y) {
+        if(is_down)
+            animation_item_idle.set_atlas(&atlas_button_down);
+        else
+            animation_item_idle.set_atlas(&atlas_button_idle);
+        animation_item_idle.picture_draw(button_pos.x * 80 + 80, button_pos.y * 50 + 60);
+    }
+
+    bool is_button_down() {
+        return is_down;
+    }
+
+private:
+    bool is_down = false;
+    POINT button_pos;
+
+};
+
+class Door :public Item {                  //门
+public:
+    Door() {
+        animation_item_idle.set_interval(1000);
+        animation_item_idle.set_atlas(&atlas_door);
+
+    }
+    ~Door() = default;
+
+    void data_update(int delta) {
+        Item::date_update(delta);
+    }
+
+    void picture_draw(int x, int y) {
+        Item::picture_draw(x, y);
+    }
+
+private:
 
 };
 
