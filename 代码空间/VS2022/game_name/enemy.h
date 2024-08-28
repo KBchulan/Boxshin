@@ -62,6 +62,8 @@ public:
 			}
 
 			if (enemy_position.x == enemy_target.x && enemy_position.y == enemy_target.y) {
+				game_map[enemy_x][enemy_y] = 0;
+
 				enemy_x = enemy_target_x;
 				enemy_y = enemy_target_y;
 

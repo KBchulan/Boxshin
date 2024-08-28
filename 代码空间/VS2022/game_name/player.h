@@ -91,7 +91,7 @@ public:
 
 		switch (flag) {
 		case 62:
-			big_steps = 20;
+			big_steps = 5;
 			moved_steps = 0;
 			break;
 
@@ -284,6 +284,8 @@ public:
 						animation_player_idle_left.picture_draw(player_position.x + 10, player_position.y + 6);
 			}
 			else {
+				setbkmode(TRANSPARENT);
+				outtextxy(player_position.x - 60, player_position.y - 15, _T("You will die,please try again!"));
 				animation_player_die.picture_draw(player_position.x, player_position.y);
 			}
 		}

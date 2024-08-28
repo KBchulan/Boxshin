@@ -176,8 +176,8 @@ public:
 		star->data_update(delta);
 		coral->data_update(delta);
 		bubble->data_update(delta);
-		player->data_update(delta);
 		enemy_crab->data_update(delta);
+		player->data_update(delta);		
 		coral_bullle->data_update(delta);
 		penetration_wall->data_update(delta);
 		if (flag != 62) {
@@ -187,7 +187,6 @@ public:
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
-		player->picture_draw();	
 
 		for (int i = 0; i < 14; i++) {
 			for (int j = 0; j < 12; j++) {
@@ -215,6 +214,8 @@ public:
 				}
 			}
 		}
+
+		player->picture_draw();
 
 	}
 
