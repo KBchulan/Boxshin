@@ -170,7 +170,19 @@ public:
 				move_direction = Direction::NONE;
 			}
 
-			if (game_map[target_x][target_y] == 2) {
+			//重置原来位置
+			if (game_map[target_x][target_y] != 3 
+				&& game_map[target_x][target_y] != 2
+				&& game_map[target_x][target_y] != 5
+				&& game_map[target_x][target_y] != 7) {
+				is_moving = true;
+				game_map[player_map_x][player_map_y] = 0;
+			}
+			else if (game_map[target_x][target_y] == 7 && !is_big) {
+				is_moving = true;
+				game_map[player_map_x][player_map_y] = 0;
+			}
+			else if (game_map[target_x][target_y] == 2) {
 				if (!is_big) {
 					is_live = false;
 				}
@@ -178,18 +190,6 @@ public:
 					enemy_target_x += (target_x - player_map_x);
 					enemy_target_y += (target_y - player_map_y);
 				}
-			}
-
-			//重置原来位置
-			if (game_map[target_x][target_y] != 3 
-				&& game_map[target_x][target_y] != 5
-				&& game_map[target_x][target_y] != 7) {
-				is_moving = true;
-				game_map[player_map_x][player_map_y] = 0;
-			}
-			else if(game_map[target_x][target_y] == 7 && !is_big) {
-				is_moving = true;
-				game_map[player_map_x][player_map_y] = 0;
 			}
 			else {
 				is_moving = false;
