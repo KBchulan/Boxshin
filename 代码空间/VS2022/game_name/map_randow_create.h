@@ -4,6 +4,8 @@
 #include <chrono>
 #include <easyx.h>
 
+#include"special_player.h"
+
 
 #define LOGICAL_SCREEN_WIDTH 1280                                               // 逻辑屏幕宽度
 #define LOGICAL_SCREEN_HEIGHT 720                                               // 逻辑屏幕高度
@@ -26,12 +28,12 @@ enum BlockType {
 #define positive(x) (((x) > 0) ? (x) : 0)
 #define random(x) ((rand() % (x)) - ((x) / 2))
 
-
 struct Map {
     char data[MAP_BLOCK_ROWS][MAP_BLOCK_COLS];                  //每个单元格状态
     RECT rects[MAP_BLOCK_ROWS * MAP_BLOCK_COLS + 4];            //存储所有矩形块的位置信息
     RECT collide_rects[MAP_BLOCK_ROWS][MAP_BLOCK_COLS];         //每个单元格的碰撞信息
     int rects_size = 0;                                         //跟踪 rects 数组中当前存储的矩形块的数量
+    SpecialPlayer* special_player = nullptr;                    //玩家对象
 
     void translate() {
         rects_size = 0;
@@ -150,22 +152,28 @@ struct Map {
 
     Map() {
         generate();
-
+        special_player = new SpecialPlayer();
+        special_player->set_init(2 * MAP_BLOCK_SIZE, 4 * MAP_BLOCK_SIZE );
     }
+    ~Map() = default;
 
     void data_input(const ExMessage& msg) {
-
+        special_player->data_input(msg);
     }
 
     void data_update(int delta) {
-
+        special_player->data_update(delta);
     }
 
     void draw() {
+        settextstyle(40, 0, _T("Arial"));
+        setbkmode(TRANSPARENT);
+        outtextxy(300, 10, _T("Please go through the maze and eat the stars!"));
         setfillcolor(WHITE); // 设置填充颜色为白色
         for (int i = 0; i < rects_size; ++i) {
             fillrectangle(rects[i].left, rects[i].top, rects[i].right, rects[i].bottom); // 绘制矩形
         }
+        special_player->picture_draw();
     }
 
 

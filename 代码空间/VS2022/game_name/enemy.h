@@ -13,7 +13,6 @@ extern int game_map[14][12];
 extern SceneManager scene_manager;
 
 int enemy_target_x , enemy_target_y;			//怪物移动后的坐标
-int enemy_x, enemy_y;							//坐标
 
 class Enemy {
 public:
@@ -22,6 +21,8 @@ public:
 		animation_enemy_idle.set_loop(true);
 	}
 	~Enemy() = default;
+	int enemy_x, enemy_y;							//坐标
+
 
 	bool get_is_can_bemove() const {
 		return is_can_bemove;

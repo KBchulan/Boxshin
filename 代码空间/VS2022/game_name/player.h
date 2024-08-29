@@ -101,6 +101,10 @@ public:
 			big_steps = 6;
 			moved_steps = 0;
 			break;
+		case 64:
+			big_steps = 7;
+			moved_steps = 0;
+			break;
 		default:
 			break;
 		}
@@ -180,6 +184,7 @@ public:
 			if (game_map[target_x][target_y] != 3 
 				&& game_map[target_x][target_y] != 2
 				&& game_map[target_x][target_y] != 5
+				&& game_map[target_x][target_y] != 9
 				&& game_map[target_x][target_y] != 7) {
 				is_moving = true;
 				game_map[player_map_x][player_map_y] = 0;
@@ -252,11 +257,11 @@ public:
 					if (moved_steps == big_steps) {
 						is_big = false;
 						moved_steps = 0;
-						game_map[pre_position_bubble.x][pre_position_bubble.y] = pre_map_value;
+						game_map[pre_position_bubble.x][pre_position_bubble.y] = 6;
 					}
 
 					if (game_map[player_map_x][player_map_y] == 6) {
-						pre_map_value = game_map[player_map_x][player_map_y];
+						pre_map_value = 6;
 						pre_position_bubble = {player_map_x,player_map_y};
 					}
 

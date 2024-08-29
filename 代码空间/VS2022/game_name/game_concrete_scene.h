@@ -18,7 +18,6 @@ extern int player_map_x, player_map_y;
 
 //敌人信息
 Enemy* enemy_crab = nullptr;
-extern int enemy_x, enemy_y;
 
 //地图信息
 extern int game_map[14][12];
@@ -129,7 +128,7 @@ public:
 		coral_bullle = new CoralBullle();
 		penetration_wall = new Penetration_wall();
 
-		game_map[enemy_x][enemy_y] = 2;
+		game_map[enemy_crab->enemy_x][enemy_crab->enemy_y] = 2;
 
 		for (int i = 0; i <= 7; i++) {
 			game_map[i][1] = 3;
@@ -248,8 +247,6 @@ private:
 	Penetration_wall* penetration_wall;
 
 };
-
-
 
 class Map63 :public Scene {
 public:
@@ -370,8 +367,10 @@ public:
 					game_button->picture_draw(i, j);
 					break;
 				case 9:
-					if (!(enemy_x == 6 && enemy_y == 7))
+					if (!(enemy_crab->enemy_x == 6 && enemy_crab->enemy_y == 7))
 						door->picture_draw(i, j);
+					else
+						game_map[i][j] = 0;
 					break;
 				default:
 					break;
@@ -421,6 +420,7 @@ public:
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
 		player->set_position(4, 5, 1);
+
 		coral = new Coral();
 		star = new Star();
 		bubble = new Bubble();
@@ -451,6 +451,7 @@ public:
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 		player->data_input(msg);
+
 	}
 
 	void data_update(int delta) {
@@ -496,6 +497,7 @@ public:
 	void scene_exit() {
 		game_background_scene->scene_exit();
 		memset(game_map, 0, sizeof(game_map));
+
 		delete coral;
 		delete star;
 		delete bubble;
@@ -559,6 +561,7 @@ public:
 		map->data_input(msg);
 		if (msg.vkcode == 0x43 && msg.message == WM_KEYDOWN) {
 			map->generate();
+			scene_manager.switch_to(flag);
 		}
 	}
 

@@ -41,14 +41,21 @@ public:
 			}
 		);
 
+		time_show.set_wait_time(1000);
+		time_show.set_one_shot(false);
+		time_show.set_callback(
+			[&]() {
+				spend_time++;
+			}
+		);
+
 	}
 	~SpecialPlayer() = default;
 
-	void set_init(int x, int y, int num) {
+	void set_init(int x, int y) {
 		this->position.x = x;
 		this->position.y = y;
-		win_stars = num;
-		get_star_num = 0;
+		spend_time = 0;
 	}
 
 	void data_input(const ExMessage& msg) {
@@ -93,6 +100,10 @@ public:
 		animation_player_win.data_update(delta);
 		special_player_idle_left.data_update(delta);
 		special_player_idle_right.data_update(delta);
+		time_show.data_update(delta);
+		if (is_win) {
+			timer_player_win.data_update(delta);
+		}
 
 		int dir_x = is_move_right - is_move_left;
 		int dir_y = is_move_down - is_move_up;
@@ -104,8 +115,6 @@ public:
 			position.y += (int)(SPEED * normalized_y);
 		}
 
-		if (get_star_num == win_stars)
-			is_win = true;
 	}
 
 	void picture_draw() {
@@ -123,37 +132,41 @@ public:
 			special_player_idle_left.picture_draw(position.x,position.y);
 		else
 			special_player_idle_right.picture_draw(position.x, position.y);
+
+		Drawtimer();
+
 	}
 
 	const POINT& GetPosition() const {
 		return position;
 	}
 
-	void change() {
-		get_star_num++;
-	}
-
-	const int& get_win_star() {
-		return this->win_stars;
+private:
+	void Drawtimer() {
+		static TCHAR arr[64];
+		_stprintf_s(arr, _T("%d"), spend_time);
+		settextstyle(40, 0, _T("Arial"));
+		setbkmode(TRANSPARENT);
+		outtextxy(60, 10, arr);
 	}
 
 
 private:
-	const int SPEED = 6;
-	int win_stars = 0;
-	int get_star_num = 0;
+	int spend_time = 0;
+	Timer time_show;
+
+	const int SPEED = 15;
 	POINT position;
 
 	Animation special_player_idle_left;
 	Animation special_player_idle_right;
+	Animation animation_player_win;
 	bool is_win = false;
 
 	bool is_move_up = false;
 	bool is_move_down = false;
 	bool is_move_left = false;
-	bool is_move_right = false;
-
-	Animation animation_player_win;
+	bool is_move_right = false;	
 
 	Timer timer_player_win;
 

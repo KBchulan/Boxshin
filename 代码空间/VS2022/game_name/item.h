@@ -127,6 +127,7 @@ public:
 
 private:
     bool is_draw = true;
+
 };
 
 class CoralBullle :public Item {                //吐泡泡的珊瑚
