@@ -142,6 +142,7 @@
     <ClInclude Include="game_pause_scene.h" />
     <ClInclude Include="game_scene.h" />
     <ClInclude Include="item.h" />
+    <ClInclude Include="map_randow_create.h" />
     <ClInclude Include="map_scene.h" />
     <ClInclude Include="menu_scene.h" />
     <ClInclude Include="player.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="scene_manager.h" />
     <ClInclude Include="selector_scene.h" />
     <ClInclude Include="set_scene.h" />
+    <ClInclude Include="special_player.h" />
     <ClInclude Include="team_introduction_scene.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="util.h" />

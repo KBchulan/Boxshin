@@ -107,5 +107,11 @@
     <ClInclude Include="enemy_fish.h">
       <Filter>头文件\live</Filter>
     </ClInclude>
+    <ClInclude Include="map_randow_create.h">
+      <Filter>头文件\tool</Filter>
+    </ClInclude>
+    <ClInclude Include="special_player.h">
+      <Filter>头文件\live</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

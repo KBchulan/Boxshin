@@ -7,6 +7,7 @@
 #include"player_diver.h"
 #include"enemy_crab.h"
 #include"enemy_fish.h"
+#include"map_randow_create.h"
 
 extern int flag;
 
@@ -539,7 +540,6 @@ public:
 
 private:
 
-
 };
 
 class Map66 :public Scene {
@@ -550,14 +550,20 @@ public:
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
+		map = new Map();
 	}
 
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 		game_background_scene->data_input(msg);
+		map->data_input(msg);
+		if (msg.vkcode == 0x43 && msg.message == WM_KEYDOWN) {
+			map->generate();
+		}
 	}
 
 	void data_update(int delta) {
+		map->data_update(delta);
 		if (flag != 66) {
 			scene_manager.switch_to(flag);
 		}
@@ -565,14 +571,16 @@ public:
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
+		map->draw();
 	}
 
 	void scene_exit() {
 		game_background_scene->scene_exit();
+		delete map;
 	}
 
 private:
-
+	Map* map;
 
 };
 
