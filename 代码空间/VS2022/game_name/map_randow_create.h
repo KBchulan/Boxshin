@@ -4,6 +4,7 @@
 #include <chrono>
 #include <easyx.h>
 
+#include"item.h"
 #include"special_player.h"
 
 
@@ -12,7 +13,7 @@
 
 #define MAP_BLOCK_SIZE 40                                                       // 单元大小
 
-const int MAP_BLOCK_ROWS = (LOGICAL_SCREEN_HEIGHT - 80 / MAP_BLOCK_SIZE);       //二维数组的行数
+const int MAP_BLOCK_ROWS = (LOGICAL_SCREEN_HEIGHT / MAP_BLOCK_SIZE);            //二维数组的行数
 const int MAP_BLOCK_COLS = (LOGICAL_SCREEN_WIDTH / MAP_BLOCK_SIZE);             //二维数组的列数
 
 const int BLOCK_THICK = (MAP_BLOCK_SIZE / 10);                                  //方块厚度
@@ -34,6 +35,11 @@ struct Map {
     RECT collide_rects[MAP_BLOCK_ROWS][MAP_BLOCK_COLS];         //每个单元格的碰撞信息
     int rects_size = 0;                                         //跟踪 rects 数组中当前存储的矩形块的数量
     SpecialPlayer* special_player = nullptr;                    //玩家对象
+    int test = 0;
+
+    int stars_sum;
+    Star66* star_66 = nullptr;
+    POINT star_pos[3];
 
     void translate() {
         rects_size = 0;
@@ -154,6 +160,16 @@ struct Map {
         generate();
         special_player = new SpecialPlayer();
         special_player->set_init(2 * MAP_BLOCK_SIZE, 4 * MAP_BLOCK_SIZE );
+        stars_sum = 3;
+        star_66 = new Star66();
+        while ((--stars_sum) >= 0) {
+            int x = rand() % MAP_BLOCK_COLS;
+            int temp_y = rand() % MAP_BLOCK_ROWS;
+            int y = (temp_y >= 2) ? temp_y : temp_y + 2;
+            std::cout << x << " " << y << std::endl;
+            star_pos[stars_sum] = { x,y };
+        }
+
     }
     ~Map() = default;
 
@@ -163,17 +179,52 @@ struct Map {
 
     void data_update(int delta) {
         special_player->data_update(delta);
+        int center_x = special_player->GetPosition().x / MAP_BLOCK_SIZE;
+        int center_y = special_player->GetPosition().y / MAP_BLOCK_SIZE;
+        int inter_value = center_x + (center_y - 2) * MAP_BLOCK_COLS;
+
+        /*if (collasion(special_player->GetPosition(), rects[inter_value])
+            ||collasion(special_player->GetPosition(),rects[inter_value + 1])
+            ||collasion(special_player->GetPosition(),rects[inter_value + 2])
+            ||collasion(special_player->GetPosition(),rects[inter_value + 3])
+            ||collasion(special_player->GetPosition(),rects[inter_value + 4])
+            ||collasion(special_player->GetPosition(),rects[inter_value - 1])
+            ||collasion(special_player->GetPosition(),rects[inter_value - 2])
+            ||collasion(special_player->GetPosition(),rects[inter_value - 3])
+            ||collasion(special_player->GetPosition(),rects[inter_value - 4])
+               ) {
+            std::cout << test++ << std::endl;
+        }
+        */
     }
 
     void draw() {
         settextstyle(40, 0, _T("Arial"));
         setbkmode(TRANSPARENT);
         outtextxy(300, 10, _T("Please go through the maze and eat the stars!"));
-        setfillcolor(WHITE); // 设置填充颜色为白色
+        setfillcolor(WHITE);                                                             // 设置填充颜色为白色
         for (int i = 0; i < rects_size; ++i) {
             fillrectangle(rects[i].left, rects[i].top, rects[i].right, rects[i].bottom); // 绘制矩形
         }
+
+        for (const auto& positive : star_pos) {
+            star_66->picture_draw(positive.x , positive.y );
+        }
+
         special_player->picture_draw();
+
+    }
+
+    bool collasion(POINT player_pos, RECT dst_pos) {
+        RECT rect1 = { player_pos.x,player_pos.y,player_pos.x + 30 ,player_pos.y + 25 };
+        return checkCollision(rect1, dst_pos);
+    }
+
+    bool checkCollision(const RECT& rect1, const RECT& rect2) {
+        return !(rect1.right < rect2.left ||
+            rect1.left > rect2.right || 
+            rect1.bottom < rect2.top ||
+            rect1.top > rect2.bottom);
     }
 
 

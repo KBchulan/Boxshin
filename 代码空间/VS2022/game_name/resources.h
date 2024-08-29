@@ -57,6 +57,7 @@ Atlas game_atlas_gamer_lypo_right;
 
 //游戏非生物类素材
 Atlas atlas_star;					//胜利星
+Atlas atlas_star_66;				//胜利星
 Atlas atlas_coral;					//珊瑚
 Atlas atlas_bubble;					//气泡
 Atlas atlas_coral_bubble;			//吐气泡的珊瑚
@@ -117,6 +118,7 @@ void load_game_resources() {
 	//游戏非生物素材类加载
 	atlas_coral.load_from_file(_T("resources/img_coral.png"), 1, 76, 48);
 	atlas_star.load_from_file(_T("resources/img_star.png"), 1, 45, 45);
+	atlas_star_66.load_from_file(_T("resources/img_star.png"), 1, 30, 30);
 	atlas_bubble.load_from_file(_T("resources/bubble_%d.png"), 3, 80, 80);
 	atlas_coral_bubble.load_from_file(_T("resources/coral_%d.png"),2, 80, 80);
 	atlas_crossed_wall.load_from_file(_T("resources/img_penetrationwall.png"), 1, 76, 48);

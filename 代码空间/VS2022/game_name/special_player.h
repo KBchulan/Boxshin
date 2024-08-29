@@ -137,8 +137,13 @@ public:
 
 	}
 
-	const POINT& GetPosition() const {
+	POINT GetPosition() {
 		return position;
+	}
+
+	void change_position(int x, int y) {
+		position.x = x;
+		position.y = y;
 	}
 
 private:
@@ -155,7 +160,7 @@ private:
 	int spend_time = 0;
 	Timer time_show;
 
-	const int SPEED = 15;
+	const int SPEED = 3;
 	POINT position;
 
 	Animation special_player_idle_left;

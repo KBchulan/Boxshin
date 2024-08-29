@@ -10,6 +10,7 @@ extern int game_map[14][12];
 
 extern Atlas atlas_coral;
 extern Atlas atlas_star;
+extern Atlas atlas_star_66;
 extern Atlas atlas_bubble;
 extern Atlas atlas_coral_bubble;
 extern Atlas atlas_crossed_wall;
@@ -82,6 +83,29 @@ public:
 
     void picture_draw(int x, int y) {
         Item::picture_draw(x, y);
+    }
+
+private:
+
+
+};
+
+class Star66 :public Item {
+public:
+    Star66() {
+        animation_item_idle.set_interval(1000);
+        animation_item_idle.set_atlas(&atlas_star_66);
+
+
+    }
+    ~Star66() = default;
+
+    void data_update(int delta) {
+        Item::date_update(delta);
+    }
+
+    void picture_draw(int x, int y) {
+        animation_item_idle.picture_draw(x * 40 + 5, y * 40 + 5);
     }
 
 private:
