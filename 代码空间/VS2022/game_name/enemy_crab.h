@@ -62,6 +62,41 @@ public:
 	void data_update(int delta) {
 		Enemy::data_update(delta);
 
+		if (enemy_x != enemy_target_x || enemy_y != enemy_target_y) {
+			enemy_target.x = enemy_target_x * 80 + 80;
+			enemy_target.y = enemy_target_y * 50 + 60;
+
+			if (enemy_position.x < enemy_target.x) {
+				enemy_position.x += speed * delta;
+				if (enemy_position.x > enemy_target.x)
+					enemy_position.x = enemy_target.x;
+			}
+			else if (enemy_position.x > enemy_target.x) {
+				enemy_position.x -= speed * delta;
+				if (enemy_position.x < enemy_target.x)
+					enemy_position.x = enemy_target.x;
+			}
+			if (enemy_position.y < enemy_target.y) {
+				enemy_position.y += speed * delta;
+				if (enemy_position.y > enemy_target.y)
+					enemy_position.y = enemy_target.y;
+			}
+			else if (enemy_position.y > enemy_target.y) {
+				enemy_position.y -= speed * delta;
+				if (enemy_position.y < enemy_target.y)
+					enemy_position.y = enemy_target.y;
+			}
+
+			if (enemy_position.x == enemy_target.x && enemy_position.y == enemy_target.y) {
+				game_map[enemy_x][enemy_y] = 0;
+
+				enemy_x = enemy_target_x;
+				enemy_y = enemy_target_y;
+
+				game_map[enemy_x][enemy_y] = 2;
+			}
+		}
+
 		//¸üÐÂÊôÐÔ
 		if (is_big) {
 			is_can_bemove = true;
@@ -76,6 +111,9 @@ public:
 			if (enemy_x == 6 && enemy_y == 3)
 				is_can_move = true;
 			break;
+		case 64:
+			if (enemy_x == 8 && enemy_y == 9)
+				is_can_move = true;
 		default:
 			break;
 		}

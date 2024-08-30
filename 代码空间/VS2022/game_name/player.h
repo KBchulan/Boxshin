@@ -62,7 +62,6 @@ public:
 			[&]() {
 				is_win = false;
 				flag++;
-				//scene_manager.switch_to(flag);
 			}
 		);
 
@@ -102,7 +101,7 @@ public:
 			moved_steps = 0;
 			break;
 		case 64:
-			big_steps = 7;
+			big_steps = 14;
 			moved_steps = 0;
 			break;
 		default:
@@ -183,6 +182,8 @@ public:
 			//重置原来位置
 			if (game_map[target_x][target_y] != 3 
 				&& game_map[target_x][target_y] != 2
+				&& game_map[target_x][target_y] != 21
+				&& game_map[target_x][target_y] != 22
 				&& game_map[target_x][target_y] != 5
 				&& game_map[target_x][target_y] != 9
 				&& game_map[target_x][target_y] != 7) {
@@ -202,6 +203,11 @@ public:
 					enemy_target_y += (target_y - player_map_y);
 					is_moving = true;
 					game_map[player_map_x][player_map_y] = 0;
+				}
+			}
+			else if (game_map[target_x][target_y] == 21) {
+				if (!is_big) {
+					is_live = false;
 				}
 			}
 			else {
@@ -271,8 +277,19 @@ public:
 			}
 		}
 
-		game_map[penetration_wall_position.x][penetration_wall_position.y] = 7;
-		game_map[penetration_wall_position_01.x][penetration_wall_position_01.y] = 7;
+		switch (flag) {
+		case 62:
+			game_map[penetration_wall_position.x][penetration_wall_position.y] = 7;
+			game_map[penetration_wall_position_01.x][penetration_wall_position_01.y] = 7;
+			break;
+		case 63:
+			game_map[penetration_wall_position.x][penetration_wall_position.y] = 7;
+			game_map[penetration_wall_position_01.x][penetration_wall_position_01.y] = 7;
+			break;
+		default:
+			break;
+		}
+		
 
 	}
 

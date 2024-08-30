@@ -41,6 +41,7 @@ Atlas atlas_gamer_lypo;
 //游戏敌人图集
 Atlas atlas_enemy_fish;
 Atlas atlas_enemy_crab;
+Atlas atlas_enemy_worried_fish;
 
 //游戏玩家图集
 Atlas game_atlas_gamer_diver_left_small;
@@ -109,9 +110,9 @@ void load_game_resources() {
 	flip_atlas(game_atlas_gamer_diver_right_big, game_atlas_gamer_diver_left_big);
 
 
-
 	//游戏敌人图集
 	atlas_enemy_fish.load_from_file(_T("resources/enemy_fish_%d.png"), 4, 80, 50);
+	atlas_enemy_worried_fish.load_from_file(_T("resources/enemy_fish.png"), 1, 80, 50);
 	atlas_enemy_crab.load_from_file(_T("resources/enemy_crab.png"), 1, 80, 50);
 
 

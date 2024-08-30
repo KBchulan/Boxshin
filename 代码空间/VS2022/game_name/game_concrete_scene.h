@@ -421,46 +421,59 @@ public:
 		game_background_scene->scene_enter();
 		player->set_position(4, 5, 1);
 
+		fish_enemy = new enemy_fish();
 		coral = new Coral();
 		star = new Star();
 		bubble = new Bubble();
 		coral_bullle = new CoralBullle();
 
-		//game_map[4][10]=2;//来回游动的怪物位置
+		fish_enemy->set_pos_xy(6, 10);
+		fish_enemy->set_move_sum(0);
+
 		for (int i = 0; i <= 13; i++) {
 			game_map[i][0] = 3;
 		}
-		for ( int j = 0;j <= 11;j++) {
+		for (int j = 0; j <= 11; j++) {
 			game_map[0][j] = 3;
 		}
-		for (int i = 0; i<= 13;i++) {
+		for (int i = 0; i <= 13; i++) {
 			game_map[i][11] = 3;
 		}
-		for (int j = 0; j <= 11;j++) {
+		for (int j = 0; j <= 11; j++) {
 			game_map[13][j] = 3;
 		}
-		for (int i = 1;i <= 8;i++) {
+		for (int i = 0; i <= 8; i++) {
 			game_map[i][8] = 3;
-		 }
+		}
 		game_map[12][8] = 3;
-		game_map[2][10] = 4;
-		game_map[8][7] = 5;
-		game_map[8][6] = 6;
+		game_map[11][8] = 3;
+
+
+		game_map[2][10] = 4;			//星星
+		game_map[8][7] = 5;				//珊瑚
+		game_map[8][6] = 6;				//泡泡
+
+
+		game_map[fish_enemy->enemy_x][fish_enemy->enemy_y] = 21;			//预留给怪鱼的位置
+
 	}
 
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 		player->data_input(msg);
+		fish_enemy->data_input(msg);
 
 	}
 
 	void data_update(int delta) {
 		player->data_update(delta);
+		fish_enemy->data_update(delta);
+
 		coral->data_update(delta);
 		star->data_update(delta);
 		bubble->data_update(delta);
 		coral_bullle->data_update(delta);
-	
+
 		if (flag != 64) {
 			scene_manager.switch_to(flag);
 		}
@@ -468,13 +481,10 @@ public:
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
-		player->picture_draw();
+		
 		for (int i = 0; i < 14; i++) {
 			for (int j = 0; j < 12; j++) {
 				switch (game_map[i][j]) {
-				case 2:
-					//怪物鱼的位置
-					break;
 				case 3:
 					coral->picture_draw(i, j);
 					break;
@@ -487,11 +497,16 @@ public:
 				case 6:
 					bubble->picture_draw(i, j);
 					break;
+				case 21:case 22:
+					fish_enemy->picture_draw();
+					break;
 				default:
 					break;
 				}
 			}
 		}
+		player->picture_draw();
+		
 	}
 
 	void scene_exit() {
@@ -502,6 +517,8 @@ public:
 		delete star;
 		delete bubble;
 		delete coral_bullle;
+		delete fish_enemy;
+		delete game_background_scene;
 	}
 
 private:
@@ -509,7 +526,8 @@ private:
 	Bubble* bubble;
 	Star* star;
 	Coral* coral;
-	
+	enemy_fish* fish_enemy;
+
 };
 
 class Map65 :public Scene {
