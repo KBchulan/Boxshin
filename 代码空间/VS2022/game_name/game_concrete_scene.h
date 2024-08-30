@@ -598,6 +598,7 @@ public:
 	void scene_exit() {
 		game_background_scene->scene_exit();
 		delete map;
+		delete game_background_scene;
 	}
 
 private:

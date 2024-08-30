@@ -33,7 +33,7 @@ public:
 
 		//初始化定时器
 		timer_player_win.set_one_shot(false);
-		timer_player_win.set_wait_time(1500);
+		timer_player_win.set_wait_time(1000);
 		timer_player_win.set_callback(
 			[&]() {
 				is_win = false;
@@ -51,6 +51,9 @@ public:
 
 	}
 	~SpecialPlayer() = default;
+
+	POINT position;
+	POINT pre_position;
 
 	void set_init(int x, int y) {
 		this->position.x = x;
@@ -97,14 +100,16 @@ public:
 	}
 
 	void data_update(int delta) {
-		animation_player_win.data_update(delta);
 		special_player_idle_left.data_update(delta);
 		special_player_idle_right.data_update(delta);
 		time_show.data_update(delta);
+
 		if (is_win) {
 			timer_player_win.data_update(delta);
+			animation_player_win.data_update(delta);
 		}
 
+		pre_position = position;
 		int dir_x = is_move_right - is_move_left;
 		int dir_y = is_move_down - is_move_up;
 		double len_dir = sqrt(dir_x * dir_x + dir_y * dir_y);
@@ -115,6 +120,14 @@ public:
 			position.y += (int)(SPEED * normalized_y);
 		}
 
+		if (position.x < 4)
+			position.x = 4;
+		if (position.x > 1296)
+			position.x = 1296;
+		if (position.y < 84) 
+			position.y = 84;
+		if (position.y > 716)
+			position.y = 716;
 	}
 
 	void picture_draw() {
@@ -128,22 +141,21 @@ public:
 			is_facing_left = true;
 		}
 
-		if (is_facing_left) 
-			special_player_idle_left.picture_draw(position.x,position.y);
-		else
-			special_player_idle_right.picture_draw(position.x, position.y);
+		if (is_win) {
+			animation_player_win.picture_draw(position.x, position.y);
+		}
+		else {
+			if (is_facing_left)
+				special_player_idle_left.picture_draw(position.x, position.y);
+			else
+				special_player_idle_right.picture_draw(position.x, position.y);
+		}
 
 		Drawtimer();
-
 	}
 
-	POINT GetPosition() {
-		return position;
-	}
-
-	void change_position(int x, int y) {
-		position.x = x;
-		position.y = y;
+	void set_is_win() {
+		is_win = true;
 	}
 
 private:
@@ -161,13 +173,12 @@ private:
 	Timer time_show;
 
 	const int SPEED = 3;
-	POINT position;
 
 	Animation special_player_idle_left;
 	Animation special_player_idle_right;
 	Animation animation_player_win;
-	bool is_win = false;
 
+	bool is_win = false;
 	bool is_move_up = false;
 	bool is_move_down = false;
 	bool is_move_left = false;

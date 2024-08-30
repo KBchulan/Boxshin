@@ -3,15 +3,14 @@
 
 #include <chrono>
 #include <easyx.h>
-
 #include"item.h"
 #include"special_player.h"
-
 
 #define LOGICAL_SCREEN_WIDTH 1280                                               // 逻辑屏幕宽度
 #define LOGICAL_SCREEN_HEIGHT 720                                               // 逻辑屏幕高度
 
 #define MAP_BLOCK_SIZE 40                                                       // 单元大小
+bool DEBUG = false;                                                            // 是否显示调试信息
 
 const int MAP_BLOCK_ROWS = (LOGICAL_SCREEN_HEIGHT / MAP_BLOCK_SIZE);            //二维数组的行数
 const int MAP_BLOCK_COLS = (LOGICAL_SCREEN_WIDTH / MAP_BLOCK_SIZE);             //二维数组的列数
@@ -34,10 +33,12 @@ struct Map {
     RECT rects[MAP_BLOCK_ROWS * MAP_BLOCK_COLS + 4];            //存储所有矩形块的位置信息
     RECT collide_rects[MAP_BLOCK_ROWS][MAP_BLOCK_COLS];         //每个单元格的碰撞信息
     int rects_size = 0;                                         //跟踪 rects 数组中当前存储的矩形块的数量
+
     SpecialPlayer* special_player = nullptr;                    //玩家对象
     int test = 0;
 
     int stars_sum;
+    int getten_star;
     Star66* star_66 = nullptr;
     POINT star_pos[3];
 
@@ -155,18 +156,19 @@ struct Map {
         translate();
     }
 
-
     Map() {
         generate();
         special_player = new SpecialPlayer();
         special_player->set_init(2 * MAP_BLOCK_SIZE, 4 * MAP_BLOCK_SIZE );
+
+        getten_star = 0;
         stars_sum = 3;
+
         star_66 = new Star66();
         while ((--stars_sum) >= 0) {
             int x = rand() % MAP_BLOCK_COLS;
             int temp_y = rand() % MAP_BLOCK_ROWS;
             int y = (temp_y >= 2) ? temp_y : temp_y + 2;
-            std::cout << x << " " << y << std::endl;
             star_pos[stars_sum] = { x,y };
         }
 
@@ -175,27 +177,38 @@ struct Map {
 
     void data_input(const ExMessage& msg) {
         special_player->data_input(msg);
+        if (msg.vkcode == 0x44 && msg.message == WM_KEYDOWN) {
+            DEBUG = (DEBUG == true) ? false : true;
+        }
     }
 
     void data_update(int delta) {
         special_player->data_update(delta);
-        int center_x = special_player->GetPosition().x / MAP_BLOCK_SIZE;
-        int center_y = special_player->GetPosition().y / MAP_BLOCK_SIZE;
-        int inter_value = center_x + (center_y - 2) * MAP_BLOCK_COLS;
+        int center_x = special_player->position.x / MAP_BLOCK_SIZE;
+        int center_y = special_player->position.y / MAP_BLOCK_SIZE;
 
-        /*if (collasion(special_player->GetPosition(), rects[inter_value])
-            ||collasion(special_player->GetPosition(),rects[inter_value + 1])
-            ||collasion(special_player->GetPosition(),rects[inter_value + 2])
-            ||collasion(special_player->GetPosition(),rects[inter_value + 3])
-            ||collasion(special_player->GetPosition(),rects[inter_value + 4])
-            ||collasion(special_player->GetPosition(),rects[inter_value - 1])
-            ||collasion(special_player->GetPosition(),rects[inter_value - 2])
-            ||collasion(special_player->GetPosition(),rects[inter_value - 3])
-            ||collasion(special_player->GetPosition(),rects[inter_value - 4])
-               ) {
-            std::cout << test++ << std::endl;
+        for (auto& pos : star_pos) {
+            if (center_x == pos.x && center_y == pos.y) {
+                pos.x = 0;
+                pos.y = 0;
+                getten_star++;
+                if (getten_star == 3) {
+                    special_player->set_is_win();
+                }
+            }
         }
-        */
+
+        for (int x = center_x - 1; x <= center_x + 1; x++) {
+            for (int y = center_y - 1; y <= center_y + 1; y++) {
+                if (collasion(special_player->position, collide_rects[y][x])) {
+                    special_player->position = special_player->pre_position;
+                    goto next;
+                }
+            }
+        }
+
+    next:;
+
     }
 
     void draw() {
@@ -208,10 +221,13 @@ struct Map {
         }
 
         for (const auto& positive : star_pos) {
-            star_66->picture_draw(positive.x , positive.y );
+            if (positive.y != 0)
+                star_66->picture_draw(positive.x, positive.y);
         }
 
         special_player->picture_draw();
+        if (DEBUG)
+            rectangle(special_player->position.x, special_player->position.y, special_player->position.x + 30, special_player->position.y + 25);
 
     }
 
