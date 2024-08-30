@@ -66,6 +66,7 @@ Atlas atlas_crossed_wall;			//可穿越的墙
 Atlas atlas_button_idle;			//按钮正常
 Atlas atlas_button_down;			//按钮按下
 Atlas atlas_door;					//门
+Atlas atlas_current;                //洋流
 
 
 void load_game_resources() {
@@ -126,6 +127,7 @@ void load_game_resources() {
 	atlas_button_idle.load_from_file(_T("resources/trigger_1.png"), 1, 76, 48);
 	atlas_button_down.load_from_file(_T("resources/trigger_2.png"), 1, 76, 48);
 	atlas_door.load_from_file(_T("resources/door.png"), 1, 76, 48);
+	atlas_current.load_from_file(_T("resources/water_flow_%d.png"), 1, 76, 48);
 
 	  //音效类加载
 	mciSendString(_T("open resources/confirm.mp3 alias confirm"), NULL, 0, NULL);

@@ -421,17 +421,29 @@ public:
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
 		player->set_position(4, 5, 1);
-
+		fish_enemy1 = new enemy_fish();
 		fish_enemy = new enemy_fish();
 		coral = new Coral();
 		star = new Star();
 		bubble = new Bubble();
 		coral_bullle = new CoralBullle();
-
+		fish_enemy1->set_pos_xy(5, 9);
+		fish_enemy1->set_move_sum(20);
 		fish_enemy->set_pos_xy(6, 10);
 		fish_enemy->set_move_sum(18);
 
 		int push_sum = 0;
+		push_sum = 3;
+		while (push_sum--)
+			fish_enemy1->push_back_to(1, 0);
+		push_sum = 7;
+		while (push_sum--)
+			fish_enemy1->push_back_to(-1, 0);
+		push_sum = 4;
+		while (push_sum--)
+			fish_enemy1->push_back_to(1, 0);
+
+
 		push_sum = 6;
 		while (push_sum--)
 			fish_enemy->push_back_to(1, 0);
@@ -460,26 +472,27 @@ public:
 		game_map[12][8] = 3;
 		game_map[11][8] = 3;
 
-		game_map[2][10] = 4;			//星星
-		game_map[8][7] = 5;				//珊瑚
-		game_map[8][6] = 6;				//泡泡
+		game_map[2][10] = 4;            //星星
+		game_map[8][7] = 5;                //珊瑚
+		game_map[8][6] = 6;                //泡泡
 
 
-		game_map[fish_enemy->enemy_x][fish_enemy->enemy_y] = 21;			//预留给怪鱼的位置
-
+		game_map[fish_enemy->enemy_x][fish_enemy->enemy_y] = 21;            //预留给怪鱼的位置
+		game_map[fish_enemy1->enemy_x][fish_enemy1->enemy_y] = 21;
 	}
 
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
 		player->data_input(msg);
 		fish_enemy->data_input(msg);
+		fish_enemy1->data_input(msg);
 
 	}
 
 	void data_update(int delta) {
 		player->data_update(delta);
 		fish_enemy->data_update(delta);
-
+		fish_enemy1->data_update(delta);
 		coral->data_update(delta);
 		star->data_update(delta);
 		bubble->data_update(delta);
@@ -492,7 +505,7 @@ public:
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
-		
+
 		for (int i = 0; i < 14; i++) {
 			for (int j = 0; j < 12; j++) {
 				switch (game_map[i][j]) {
@@ -510,6 +523,7 @@ public:
 					break;
 				case 21:case 22:
 					fish_enemy->picture_draw(i, j);
+					fish_enemy1->picture_draw(i, j);
 					break;
 				default:
 					break;
@@ -517,7 +531,7 @@ public:
 			}
 		}
 		player->picture_draw();
-		
+
 	}
 
 	void scene_exit() {
@@ -538,7 +552,7 @@ private:
 	Star* star;
 	Coral* coral;
 	enemy_fish* fish_enemy;
-
+	enemy_fish* fish_enemy1;
 };
 
 class Map65 :public Scene {
@@ -762,13 +776,70 @@ public:
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
+
+		player->set_position(2, 4, 1);
+
+		star = new Star();
+		coral = new Coral();
+		bubble = new Bubble();
+		coral_bullle = new CoralBullle();
+		enemyfish = new enemy_fish();
+		flow = new Current(5, 8, 2, 7);
+
+		enemyfish->set_pos_xy(9, 7);
+
+		for (int j = 0; j < 5; j++)
+		{
+			game_map[j][2] = 3;
+			game_map[j][6] = 3;
+		}
+		for (int j = 4; j < 10; j++)
+		{
+			game_map[j][1] = 3;
+			game_map[j][9] = 3;
+		}
+		for (int j = 9; j < 14; j++)
+		{
+			game_map[j][2] = 3;
+			game_map[j][6] = 3;
+		}
+		for (int i = 3; i < 6; i++)
+		{
+			game_map[0][i] = 3;
+			game_map[13][i] = 3;
+		}
+		for (int j = 2; j < 5; j++)
+		{
+			game_map[j][8] = 3;
+		}
+		for (int j = 9; j < 12; j++)
+		{
+			game_map[j][8] = 3;
+		}
+
+		game_map[2][7] = 3;
+		game_map[11][7] = 3;
+		game_map[11][4] = 4;
+		game_map[9][7] = 21;//初始大鱼
+		for (int j = 5; j < 9; j++)
+		{
+			game_map[j][8] = 5;//下方珊瑚
+		}
 	}
 
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
+		player->data_input(msg);
+		//enemy_fish->data_input(msg);
 	}
 
 	void data_update(int delta) {
+		star->data_update(delta);
+		coral->data_update(delta);
+		coral_bullle->data_update(delta);
+		enemyfish->data_update(delta);
+		flow->data_update(delta);
+		player->data_update(delta);
 		if (flag != 67) {
 			scene_manager.switch_to(flag);
 		}
@@ -776,14 +847,62 @@ public:
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
+		setbkmode(TRANSPARENT);
+		for (int i = 0; i < 14; i++) {
+			for (int j = 0; j < 12; j++) {
+				if (i >= 5 && i <= 8 && j >= 2 && j <= 7) {
+					flow->picture_draw(i, j);
+				}
+				switch (game_map[i][j]) {
+				case 2:
+					enemy_crab->picture_draw();
+					break;
+				case 21:
+					enemyfish->picture_draw();
+					break;
+				case 3:
+					coral->picture_draw(i, j);
+					break;
+				case 4:
+					star->picture_draw(i, j);
+					break;
+				case 5:
+					coral_bullle->picture_draw(i, j);
+					break;
+				case 6:
+					bubble->picture_draw(i, j);
+					break;
+				default:
+					break;
+				}
+
+
+			}
+		}
+		player->picture_draw();
+
+
 	}
 
 	void scene_exit() {
 		game_background_scene->scene_exit();
+		memset(game_map, 0, sizeof(game_map));
+		delete star;
+		delete coral;
+		delete bubble;
+		delete coral_bullle;
+		delete enemyfish;
+		delete flow;
+		delete game_background_scene;
 	}
 
 private:
-
+	Star* star;
+	CoralBullle* coral_bullle;
+	Bubble* bubble;
+	Coral* coral;
+	enemy_fish* enemyfish;
+	Current* flow;
 
 };
 

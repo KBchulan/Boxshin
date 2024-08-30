@@ -25,8 +25,8 @@ public:
 
 	std::vector<Move_direction> move_direction_list;
 	int pre_move_sum = 0;
-	int fish_target_x
-		, fish_target_y;
+	int fish_target_x = 0
+		, fish_target_y = 0;
 	int idx = 0;
 
 	void set_move_sum(int x) {
@@ -65,7 +65,7 @@ public:
 		if (game_map[enemy_x][enemy_y] == 21) {
 			if (enemy_x != fish_target_x || enemy_y != fish_target_y) {
 				enemy_target.x = fish_target_x * 80 + 80;
-				enemy_target.y = fish_target_x * 50 + 60;
+				enemy_target.y = fish_target_y * 50 + 60;
 
 				if (enemy_position.x < enemy_target.x) {
 					enemy_position.x += speed * delta;
@@ -113,6 +113,11 @@ public:
 
 	}
 
+	void picture_draw() {
+		Enemy::picture_draw();
+		
+	}
+
 	void picture_draw(int x,int y) {
 		Enemy::picture_draw(x, y);
 	}
@@ -124,10 +129,10 @@ public:
 
 	void Move() {
 		if (idx != move_direction_list.size()) {
-			fish_target_x += move_direction_list[idx].x;
-			fish_target_y += move_direction_list[idx].y;
+			Move_direction& current_move = move_direction_list[idx];
+			fish_target_x += current_move.x;
+			fish_target_y += current_move.y;
 			idx++;
-			std::cout << move_direction_list[idx].x << move_direction_list[idx].y << std::endl;
 		}
 		else {
 			idx = 0;

@@ -17,6 +17,7 @@ extern Atlas atlas_crossed_wall;
 extern Atlas atlas_button_idle;
 extern Atlas atlas_button_down;
 extern Atlas atlas_door;
+extern Atlas atlas_current;
 
 extern bool is_big;						//标定是否为无敌状态,用于传入enemy使用
 extern int flag;
@@ -240,6 +241,38 @@ public:
 
 private:
 
+};
+
+
+class Current :public Item {
+public:
+    Current(int left, int right, int top, int bottom) {
+        this->animation_item_idle.set_interval(100);
+        this->animation_item_idle.set_atlas(&atlas_current);
+        this->animation_item_idle.set_loop(true);
+        this->left = left;
+        this->right = right;
+        this->top = top;
+        this->bottom = bottom;
+    }
+
+    ~Current() = default;
+
+    void data_update(int delta) {
+        Item::date_update(delta);
+        if (player_map_x >= left && player_map_x <= right && player_map_y >= top && player_map_y <= bottom) {
+            if (game_map[player_map_x][player_map_y + 1] == 0 || game_map[player_map_x][player_map_y + 1] == 10 || game_map[player_map_x][player_map_y + 1] == 7) {
+                srand(time(nullptr));
+                player_map_y += ((rand() * rand() * 13) % 100 < 70) ? 1 : 0;
+            }
+        }
+    }
+
+    void picture_draw(int x, int y) {
+        Item::picture_draw(x, y);
+    }
+private:
+    int left, right, top, bottom;
 };
 
 
