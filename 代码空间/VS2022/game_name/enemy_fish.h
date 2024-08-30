@@ -7,18 +7,27 @@ extern Atlas atlas_enemy_fish;
 extern Atlas atlas_enemy_worried_fish;
 extern bool is_big;
 
+struct Move_direction {
+	int x, y;
+};
+
 class enemy_fish :public Enemy {
 public:
 	enemy_fish() {
 		animation_enemy_idle.set_atlas(&atlas_enemy_fish);
-		is_can_move = false;
+		is_can_move = true;
 		is_can_bemove = false;
 
 		move_direction_list.clear();
-		
 
 	}
 	~enemy_fish() = default;
+
+	std::vector<Move_direction> move_direction_list;
+	int pre_move_sum = 0;
+	int fish_target_x
+		, fish_target_y;
+	int idx = 0;
 
 	void set_move_sum(int x) {
 		this->move_sum = x;
@@ -28,8 +37,8 @@ public:
 	void set_pos_xy(int x, int y) {
 		this->enemy_x = x;
 		this->enemy_y = y;
-		enemy_target_x = enemy_x;
-		enemy_target_y = enemy_y;
+		fish_target_x = enemy_x;
+		fish_target_y = enemy_y;
 	}
 
 	void data_input(const ExMessage& msg) {
@@ -54,9 +63,9 @@ public:
 		Enemy::data_update(delta);
 
 		if (game_map[enemy_x][enemy_y] == 21) {
-			if (enemy_x != enemy_target_x || enemy_y != enemy_target_y) {
-				enemy_target.x = enemy_target_x * 80 + 80;
-				enemy_target.y = enemy_target_y * 50 + 60;
+			if (enemy_x != fish_target_x || enemy_y != fish_target_y) {
+				enemy_target.x = fish_target_x * 80 + 80;
+				enemy_target.y = fish_target_x * 50 + 60;
 
 				if (enemy_position.x < enemy_target.x) {
 					enemy_position.x += speed * delta;
@@ -82,8 +91,8 @@ public:
 				if (enemy_position.x == enemy_target.x && enemy_position.y == enemy_target.y) {
 					game_map[enemy_x][enemy_y] = 0;
 
-					enemy_x = enemy_target_x;
-					enemy_y = enemy_target_y;
+					enemy_x = fish_target_x;
+					enemy_y = fish_target_y;
 
 					game_map[enemy_x][enemy_y] = 21;
 				}
@@ -104,8 +113,8 @@ public:
 
 	}
 
-	void picture_draw() {
-		Enemy::picture_draw();
+	void picture_draw(int x,int y) {
+		Enemy::picture_draw(x, y);
 	}
 
 	void push_back_to(int x, int y) {
@@ -114,28 +123,17 @@ public:
 	}
 
 	void Move() {
-		if (!move_direction_list.empty()) {
-			Move_direction& current_move = move_direction_list.front();
-			enemy_target_x += current_move.x;
-			enemy_target_y += current_move.y;
-			move_direction_list.erase(move_direction_list.begin());
-			if (move_sum == 0) {
-				move_direction_list.clear();
-				is_can_move = false;
-			}
+		if (idx != move_direction_list.size()) {
+			fish_target_x += move_direction_list[idx].x;
+			fish_target_y += move_direction_list[idx].y;
+			idx++;
+			std::cout << move_direction_list[idx].x << move_direction_list[idx].y << std::endl;
 		}
-
+		else {
+			idx = 0;
+		}
 	}
 
-private:
-	struct Move_direction {
-		int x, y;
-	};
-
-private:
-	std::vector<Move_direction> move_direction_list;
-	int pre_move_sum = 0;
-	
 };
 
 #endif // !_ENEMY_FISH_H_

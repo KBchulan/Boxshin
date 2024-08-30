@@ -429,7 +429,18 @@ public:
 		coral_bullle = new CoralBullle();
 
 		fish_enemy->set_pos_xy(6, 10);
-		fish_enemy->set_move_sum(0);
+		fish_enemy->set_move_sum(18);
+
+		int push_sum = 0;
+		push_sum = 6;
+		while (push_sum--)
+			fish_enemy->push_back_to(1, 0);
+		push_sum = 9;
+		while (push_sum--)
+			fish_enemy->push_back_to(-1, 0);
+		push_sum = 3;
+		while (push_sum--)
+			fish_enemy->push_back_to(1, 0);
 
 		for (int i = 0; i <= 13; i++) {
 			game_map[i][0] = 3;
@@ -448,7 +459,6 @@ public:
 		}
 		game_map[12][8] = 3;
 		game_map[11][8] = 3;
-
 
 		game_map[2][10] = 4;			//星星
 		game_map[8][7] = 5;				//珊瑚
@@ -499,7 +509,7 @@ public:
 					bubble->picture_draw(i, j);
 					break;
 				case 21:case 22:
-					fish_enemy->picture_draw();
+					fish_enemy->picture_draw(i, j);
 					break;
 				default:
 					break;
