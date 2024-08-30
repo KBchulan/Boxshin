@@ -43,6 +43,10 @@ public:
 		animation_enemy_idle.picture_draw(enemy_position.x, enemy_position.y);
 	}
 
+	void picture_draw(int x, int y) {
+		animation_enemy_idle.picture_draw(80 * x + 80, y * 50 + 60);
+	}
+
 
 protected:
 	Animation animation_enemy_idle;		//¶¯»­

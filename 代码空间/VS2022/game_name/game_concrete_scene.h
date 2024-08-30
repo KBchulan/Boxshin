@@ -18,6 +18,7 @@ extern int player_map_x, player_map_y;
 
 //敌人信息
 Enemy* enemy_crab = nullptr;
+extern int box_flag;
 
 //地图信息
 extern int game_map[14][12];
@@ -538,28 +539,165 @@ public:
 	void scene_enter() {
 		game_background_scene = new GameScene();
 		game_background_scene->scene_enter();
+		player->set_position(4, 5, 1);
+
+		coral = new Coral();
+		star = new Star();
+		bubble = new Bubble();
+		coral_bullle = new CoralBullle();
+
+		enemybox_1 = new EnemyBox();
+		enemybox_2 = new EnemyBox();
+		enemybox_3 = new EnemyBox();
+		enemybox_1->set_posxy(7, 3);
+		enemybox_2->set_posxy(7, 4);
+		enemybox_3->set_posxy(7, 5);
+		enemybox_1->set_number(23);
+		enemybox_2->set_number(24);
+		enemybox_3->set_number(25);
+
+		for (int i = 5; i <= 9; i++) {
+			game_map[i][2] = 3;
+		}
+		for (int i = 2; i <= 5; i++) {
+			game_map[i][3] = 3;
+		}
+		for (int i = 9; i <= 12; i++) {
+			game_map[i][3] = 3;
+		}
+		for (int i = 4; i <= 10; i++) {
+			game_map[i][8] = 3;
+		}
+		for (int i = 3; i <= 5; i++) {
+			game_map[2][i] = 3;
+		}
+		for (int i = 3; i <= 7; i++) {
+			game_map[12][i] = 3;
+		}
+		for (int i = 3; i <= 5; i++) {
+			game_map[i][7] = 3;
+		}
+		for (int i = 7; i <= 11; i++) {
+			game_map[i][7] = 3;
+		}
+		for (int i = 2; i <= 5; i++) {
+			game_map[i][6] = 3;
+		}
+		game_map[9][6] = 3;
+		game_map[9][5] = 3;
+		game_map[8][6] = 3;
+
+		game_map[11][6] = 4;
+
+		game_map[6][6] = 6;
+		game_map[6][7] = 5;
+
+		game_map[7][3] = 23;
+		game_map[7][4] = 24;
+		game_map[7][5] = 25;
+
+
 	}
 
 	void data_input(const ExMessage& msg) {
 		game_background_scene->data_input(msg);
+
+		player->data_input(msg);
 	}
 
 	void data_update(int delta) {
+		//std::cout << enemybox_3->box_target_x << " " << enemybox_3->box_target_y << std::endl;
+
+		star->data_update(delta);
+		coral->data_update(delta);
+		bubble->data_update(delta);
+		player->data_update(delta);
+		coral_bullle->data_update(delta);
+
+		switch (box_flag) {
+		case 3:
+			enemybox_1->data_update(delta);
+			enemybox_2->data_update(delta);
+			enemybox_3->data_update(delta);
+			break;
+		case 4:
+			enemybox_2->data_update(delta);
+			enemybox_1->data_update(delta);
+			enemybox_3->data_update(delta);
+			break;
+		case 5:
+			enemybox_3->data_update(delta);
+			enemybox_1->data_update(delta);
+			enemybox_2->data_update(delta);
+			break;
+		default:
+			break;
+		}
+
 		if (flag != 65) {
 			scene_manager.switch_to(flag);
 		}
+
 	}
 
 	void picture_draw() {
 		game_background_scene->picture_draw();
+		player->picture_draw();
+		for (int i = 0; i < 14; i++) {
+			for (int j = 0; j < 12; j++) {
+				switch (game_map[i][j]) {
+				case 23:
+					//BOX1鱼的位置
+					enemybox_1->picture_draw(i, j);
+					break;
+				case 24:
+					//BOX2鱼的位置
+					enemybox_2->picture_draw(i, j);
+					break;
+				case 25:
+					//BOX3鱼的位置
+					enemybox_3->picture_draw(i, j);
+					break;
+				case 3:
+					coral->picture_draw(i, j);
+					break;
+				case 4:
+					star->picture_draw(i, j);
+					break;
+				case 5:
+					coral_bullle->picture_draw(i, j);
+					break;
+				case 6:
+					bubble->picture_draw(i, j);
+					break;
+				default:
+					break;
+				}
+			}
+		}
 	}
 
 	void scene_exit() {
 		game_background_scene->scene_exit();
+		memset(game_map, 0, sizeof(game_map));
+
+		delete coral;
+		delete star;
+		delete bubble;
+		delete coral_bullle;
+		delete enemybox_1;
+		delete enemybox_2;
+		delete enemybox_3;
 	}
 
 private:
-
+	CoralBullle* coral_bullle;
+	Bubble* bubble;
+	Star* star;
+	Coral* coral;
+	EnemyBox* enemybox_1;
+	EnemyBox* enemybox_2;
+	EnemyBox* enemybox_3;
 };
 
 class Map66 :public Scene {

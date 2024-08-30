@@ -17,6 +17,8 @@ extern POINT penetration_wall_position_01;
 extern POINT button_position;
 
 extern int enemy_target_x, enemy_target_y;
+extern int box_target_temp_x, box_target_temp_y;
+int box_flag = 3;
 
 enum class Direction {
 	NONE,
@@ -104,6 +106,10 @@ public:
 			big_steps = 14;
 			moved_steps = 0;
 			break;
+		case 65:
+			big_steps = 5;
+			moved_steps = 0;
+			break;
 		default:
 			break;
 		}
@@ -184,6 +190,9 @@ public:
 				&& game_map[target_x][target_y] != 2
 				&& game_map[target_x][target_y] != 21
 				&& game_map[target_x][target_y] != 22
+				&& game_map[target_x][target_y] != 23
+				&& game_map[target_x][target_y] != 24
+				&& game_map[target_x][target_y] != 25
 				&& game_map[target_x][target_y] != 5
 				&& game_map[target_x][target_y] != 9
 				&& game_map[target_x][target_y] != 7) {
@@ -208,6 +217,63 @@ public:
 			else if (game_map[target_x][target_y] == 21) {
 				if (!is_big) {
 					is_live = false;
+				}
+			}
+			else if (game_map[target_x][target_y] == 23) {
+				if (!is_big) {
+					is_live = false;
+				}
+				else {
+					if (game_map[target_x + target_x - player_map_x][target_y + target_y - player_map_y] == 0)
+					{
+						is_moving = true;
+						box_target_temp_x = target_x - player_map_x;
+						box_target_temp_y = target_y - player_map_y;
+						box_flag = 3;
+					}
+					else {
+						is_moving = false;
+						box_target_temp_x = 0;
+						box_target_temp_y = 0;
+					}
+				}
+			}
+			else if (game_map[target_x][target_y] == 24) {
+				if (!is_big) {
+					is_live = false;
+				}
+				else {
+					if (game_map[target_x + target_x - player_map_x][target_y + target_y - player_map_y] == 0)
+					{
+						is_moving = true;
+						box_target_temp_x = target_x - player_map_x;
+						box_target_temp_y = target_y - player_map_y;
+						box_flag = 4;
+					}
+					else {
+						is_moving = false;
+						box_target_temp_x = 0;
+						box_target_temp_y = 0;
+					}
+				}
+			}
+			else if (game_map[target_x][target_y] == 25) {
+				if (!is_big) {
+					is_live = false;
+				}
+				else {
+					if (game_map[target_x + target_x - player_map_x][target_y + target_y - player_map_y] == 0)
+					{
+						is_moving = true;
+						box_target_temp_x = target_x - player_map_x;
+						box_target_temp_y = target_y - player_map_y;
+						box_flag = 5;
+					}
+					else {
+						is_moving = false;
+						box_target_temp_x = 0;
+						box_target_temp_y = 0;
+					}
 				}
 			}
 			else {

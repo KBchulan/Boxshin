@@ -10,6 +10,9 @@ extern Atlas atlas_enemy_crab;
 extern Direction move_direction;
 extern bool is_big;
 
+int box_target_temp_x = 0,
+box_target_temp_y = 0;
+
 class EnemyCrab :public Enemy {
 public:
 	EnemyCrab() {
@@ -150,6 +153,105 @@ private:
 
 private:
 	std::vector<Move_direction> move_direction_list;
+
+};
+
+
+
+
+class EnemyBox :public Enemy {
+public:
+	EnemyBox() {
+		animation_enemy_idle.set_atlas(&atlas_enemy_crab);
+		is_can_bemove = false;
+		is_can_move = false;
+		enemy_x = enemy_y = 0;
+		box_target_x = enemy_x;
+		box_target_y = enemy_y;
+	}
+	~EnemyBox() = default;
+
+	void data_input(const ExMessage& msg) {
+		Enemy::data_input(msg);
+
+	}
+
+	void data_update(int delta) {
+		Enemy::data_update(delta);
+		box_target_x = enemy_x;
+		box_target_y = enemy_y;
+		set_target_posxy();
+		if (enemy_x != box_target_x || enemy_y != box_target_y) {
+			box_target.x = box_target_x * 80 + 80;
+			box_target.y = box_target_y * 50 + 60;
+
+			if (enemy_position.x < box_target.x) {
+				enemy_position.x += speed * delta;
+				if (enemy_position.x > box_target.x)
+					enemy_position.x = box_target.x;
+			}
+			else if (enemy_position.x > box_target.x) {
+				enemy_position.x -= speed * delta;
+				if (enemy_position.x < box_target.x)
+					enemy_position.x = box_target.x;
+			}
+			if (enemy_position.y < box_target.y) {
+				enemy_position.y += speed * delta;
+				if (enemy_position.y > box_target.y)
+					enemy_position.y = box_target.y;
+			}
+			else if (enemy_position.y > box_target.y) {
+				enemy_position.y -= speed * delta;
+				if (enemy_position.y < box_target.y)
+					enemy_position.y = box_target.y;
+			}
+
+			if (enemy_position.x == box_target.x && enemy_position.y == box_target.y) {
+				game_map[enemy_x][enemy_y] = 0;
+
+				enemy_x = box_target_x;
+				enemy_y = box_target_y;
+
+				game_map[enemy_x][enemy_y] = box_number;
+			}
+		}
+
+		//¸üÐÂÊôÐÔ
+		if (is_big) {
+			is_can_bemove = true;
+		}
+	}
+
+	void picture_draw(int x, int y) {
+		Enemy::picture_draw(x, y);
+	}
+
+	void set_posxy(int x, int y) {
+		enemy_x = x;
+		enemy_y = y;
+		box_target_x = enemy_x;
+		box_target_y = enemy_y;
+	}
+
+	void set_target_posxy() {
+		std::cout << box_target_temp_x << " " << box_target_temp_y << std::endl;
+		box_target_x += box_target_temp_x;
+		box_target_y += box_target_temp_y;
+		box_target_temp_x = 0;
+		box_target_temp_y = 0;
+	}
+
+	void set_number(int x) {
+		box_number = x;
+	}
+
+	int box_target_x = 0;
+	int box_target_y = 0;
+
+private:
+	POINT box_target;
+	int box_number;
+
 
 };
 
