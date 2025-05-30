@@ -1,2 +1,214 @@
-**/.vs/
-**/x64/
+# Visual Studio 生成的文件
+*.user
+*.aps
+*.pch
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.sdf
+*.opensdf
+*.unsuccessfulbuild
+ipch/
+obj/
+[Bb]in
+[Dd]ebug*/
+[Rr]elease*/
+Ankh.NoLoad
+
+# Visual Studio 2015/2017/2019/2022 缓存/选项目录
+.vs/
+
+# Visual Studio 2017/2019/2022 用户特定文件
+*.rsuser
+
+# Visual Studio 代码覆盖率结果
+*.coverage
+*.coveragexml
+
+# NCrunch
+_NCrunch_*
+.*crunch*.local.xml
+nCrunchTemp_*
+
+# MightyMoose
+*.mm.*
+AutoTest.Net/
+
+# Web workbench (sass)
+.sass-cache/
+
+# Installshield 输出文件夹
+[Ee]xpress/
+
+# DocProject 是一个文档生成器加载项
+DocProject/buildhelp/
+DocProject/Help/*.HxT
+DocProject/Help/*.HxC
+DocProject/Help/Html2
+DocProject/Help/html
+
+# Click-Once 目录
+publish/
+
+# Publish Web Output
+*.[Pp]ublish.xml
+*.azurePubxml
+*.publishproj
+
+# Microsoft Azure Web App 发布设置
+PublishScripts/
+
+# NuGet 包
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+
+# Microsoft Azure Build Output
+csx/
+*.build.csdef
+
+# Microsoft Azure Emulator
+ecf/
+rcf/
+
+# Windows Store app package directories and files
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+_pkginfo.txt
+*.appx
+*.appxbundle
+*.appxupload
+
+# Visual Studio cache files
+*.2a
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# CodeRush personal settings
+.cr/personal
+
+# Python Tools for Visual Studio (PTVS)
+__pycache__/
+*.pyc
+
+# Cake - 取消注释如果您正在使用它
+# tools/**
+# !tools/packages.config
+
+# Tabs Studio
+*.tss
+
+# Telerik's JustMock configuration file
+*.jmconfig
+
+# BizTalk build output
+*.btp.cs
+*.btm.cs
+*.odx.cs
+*.xsd.cs
+
+# OpenCover UI analysis results
+OpenCover/
+
+# Azure Stream Analytics local run output
+ASALocalRun/
+
+# MSBuild Binary and Structured Log
+*.binlog
+
+# NVidia Nsight GPU debugger configuration file
+*.nvuser
+
+# MFractors (Xamarin productivity tool) working folder
+.mfractor/
+
+# Local History for Visual Studio
+.localhistory/
+
+# BeatPulse healthcheck temp database
+healthchecksdb
+
+# Backup folder for Package Reference Convert tool in Visual Studio 2017
+MigrationBackup/
+
+# Ionide (cross platform F# VS Code tools) working folder
+.ionide/
+
+# Fody - auto-generated XML schema
+FodyWeavers.xsd
+
+# 项目特定的忽略文件
+# 编译输出目录
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# 临时文件
+*.tmp
+*.temp
+*.swp
+*~
+
+# 系统文件
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Mac 系统文件
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# 游戏运行时生成的文件
+rank.txt.bak
+*.save
+
+# 测试文件
+test/
+tests/
+Test/
+Tests/
+
+# 文档生成文件
+docs/_build/
+site/
+
+# 环境变量文件
+.env
+.env.local
+.env.*.local
+
+# IDE 配置文件
+.vscode/
+*.code-workspace
+
+# 压缩文件
+*.zip
+*.rar
+*.7z
+*.tar.gz
+
+# 日志文件
+*.log
+logs/
